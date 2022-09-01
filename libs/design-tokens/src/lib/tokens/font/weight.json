@@ -1,0 +1,18 @@
+{
+  "font": {
+    "weight": {
+      "100"  : { "value": "100" },
+      "300"  : { "value": "300" },
+      "400" : { "value": "400" },
+      "500": { "value": "500" },
+      "700" : { "value": "700" },
+      "900"    : { "value": "900" },
+      "thin"  : { "value": "{font.weight.100.value}" },
+      "light"  : { "value": "{font.weight.300.value}" },
+      "regular"  : { "value": "{font.weight.400.value}" },
+      "medium"  : { "value": "{font.weight.500.value}" },
+      "bold"  : { "value": "{font.weight.700.value}" },
+      "black"  : { "value": "{font.weight.900.value}" }
+    }
+  }
+}

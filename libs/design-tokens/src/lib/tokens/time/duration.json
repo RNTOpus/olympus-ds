@@ -1,0 +1,9 @@
+{
+  "time": {
+    "duration": {
+      "short": { "value":"2000" },
+      "base":  { "value":"4000" },
+      "long":  { "value":"6000" }
+    }
+  }
+}

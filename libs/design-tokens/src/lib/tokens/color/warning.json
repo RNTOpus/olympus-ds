@@ -1,0 +1,18 @@
+{
+  "color": {
+    "warning": {
+      "00": { "value": "#161304" },
+      "10": { "value": "#2B2608" },
+      "20": { "value": "#564B10" },
+      "30": { "value": "#817118" },
+      "40": { "value": "#AC9620" },
+      "50": { "value": "#DBC23B" },
+      "60": { "value": "#DFC953" },
+      "70": { "value": "#E7D77E" },
+      "80": { "value": "#EFE4A9" },
+      "90": { "value": "#F7F2D4" },
+      "100": { "value": "#FBF8E9" },
+      "base": { "value": "{color.warning.50.value}" }
+    }
+  }
+}
