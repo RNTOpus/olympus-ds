@@ -46,6 +46,7 @@ pipeline {
 
         stage('Publish - Lib'){
           when { anyOf { branch pattern: "^(publish_.*)", comparator: 'REGEXP' } }
+          agent any
           steps{
             script {
               branchName = "${BRANCH_NAME}"
