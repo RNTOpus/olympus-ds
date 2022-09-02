@@ -42,7 +42,7 @@ pipeline {
 
                 stage('Publish') {
                     when {
-                        branch pattern: "^(publish_.*)", comparator: 'REGEXP'
+                        branch "publish_.*"
                     }
                     agent any
                     steps {
