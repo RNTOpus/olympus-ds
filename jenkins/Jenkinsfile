@@ -1,8 +1,8 @@
 pipeline {
   agent none
   environment {
-      NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
-      BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
+    NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
+    BASE_SHA = 'HEAD~1'
   }
   stages {
     stage('Pipeline') {
@@ -10,6 +10,7 @@ pipeline {
         stage('Prepare') {
           steps {
             script {
+              env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
               sh "npm ci"
             }
           }
