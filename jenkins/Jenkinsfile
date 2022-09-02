@@ -2,7 +2,8 @@ pipeline {
   agent none
   environment {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
-    BASE_SHA = 'HEAD~1'
+    BASE_SHA = 'HEAD~1';
+    NPMJS_TOKEN = credentials('jenkins-npmjs-token')
   }
   stages {
     stage('Prepare') {
@@ -51,6 +52,7 @@ pipeline {
           branchName = "${BRANCH_NAME}"
           version = branchName.substring(branchName.indexOf("_"))
           version = version.replace("_", "")
+          sh 'echo "//registry.npmjs.org/:_authToken=${NPMJS_TOKEN}" >> ~/.npmrc'
           sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --parallel=3"
         }
       }

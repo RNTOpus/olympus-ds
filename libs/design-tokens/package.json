@@ -1,5 +1,5 @@
 {
-  "name": "@olympus-ds/design-tokens",
+  "name": "olympus-ds-design-tokens",
   "description": "Design tokens for using the Olympus Design System",
   "version": "0.0.1",
   "main": "lib/index.js",
