@@ -1,8 +1,8 @@
 pipeline {
     agent none
     environment {
-        NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
-        PACK_VERSION = env.BRANCH_NAME.replace('release-', '')
+        NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
+        PACK_VERSION = 0.0.0
     }
     stages {
         stage('Pipeline') {
@@ -13,13 +13,16 @@ pipeline {
                     }
                     agent any
                     steps {
-                        sh 'printenv'
-                        sh "npm ci"
-                        sh "npx nx workspace-lint"
-                        sh "npx nx format:check --base=HEAD~1"
-                        sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
-                        sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
-                        sh "npx nx affected --base=HEAD~1 --target=publish --ver=${PACK_VERSION} --parallel=3"
+                        script {
+                          sh 'printenv'
+                          sh "npm ci"
+                          sh "npx nx workspace-lint"
+                          sh "npx nx format:check --base=HEAD~1"
+                          sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
+                          sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
+                          sh "npx nx affected --base=HEAD~1 --target=build --parallel=3"
+                        }
+
                     }
                 }
                 stage('PR') {
@@ -28,13 +31,20 @@ pipeline {
                     }
                     agent any
                     steps {
+                      script {
                         sh 'printenv'
                         sh "npm ci"
                         sh "npx nx workspace-lint"
                         sh "npx nx format:check --base origin/${env.CHANGE_TARGET}"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=lint --parallel=3"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
-                        sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=build --parallel=3"
+                        branchName = "${CHANGE_BRANCH}"
+                        if (branchName.matches("^(hotfix_.*|release_.*)")) {
+                          sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=publish --ver=${PACK_VERSION} --parallel=3"
+                        } else {
+                          sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=build --parallel=3"
+                        }
+                      }
                     }
                 }
             }
