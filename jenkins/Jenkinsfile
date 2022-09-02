@@ -42,7 +42,7 @@ pipeline {
 
                 stage('Publish') {
                     when {
-                        branch "publish_.*"
+                        branch "publish_*"
                     }
                     agent any
                     steps {
