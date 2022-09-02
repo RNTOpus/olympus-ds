@@ -6,6 +6,14 @@ pipeline {
     stages {
         stage('Pipeline') {
             parallel {
+                stage('Initialization') {
+                  steps {
+                    script {
+                      sh "npm ci"
+                      sh "npx nx workspace-lint"
+                    }
+                  }
+                }
                 stage('Master') {
                     when {
                         branch 'master'
@@ -13,8 +21,6 @@ pipeline {
                     agent any
                     steps {
                         script {
-                          sh "npm ci"
-                          sh "npx nx workspace-lint"
                           sh "npx nx format:check --base=HEAD~1"
                           sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
                           sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
@@ -30,8 +36,6 @@ pipeline {
                     agent any
                     steps {
                       script {
-                        sh "npm ci"
-                        sh "npx nx workspace-lint"
                         sh "npx nx format:check --base origin/${env.CHANGE_TARGET}"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=lint --parallel=3"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
@@ -42,13 +46,11 @@ pipeline {
 
                 stage('Publish') {
                     when {
-                        branch pattern: "^(publish_.*)", comparator: 'REGEXP'
+                        branch "publish_.*"
                     }
                     agent any
                     steps {
                       script {
-                        sh "npm ci"
-                        sh "npx nx workspace-lint"
                         sh "npx nx format:check --base=HEAD~1"
                         sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
                         sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
