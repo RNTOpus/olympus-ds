@@ -40,6 +40,8 @@ pipeline {
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
                         branchName = "${CHANGE_BRANCH}"
                         if (branchName.matches("^(hotfix_.*|release_.*)")) {
+                          PACK_VERSION = branchName.substring(0, branchName.indexOf("_"))
+                          sh 'printenv'
                           sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=publish --ver=${PACK_VERSION} --parallel=3"
                         } else {
                           sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=build --parallel=3"
