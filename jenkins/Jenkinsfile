@@ -5,58 +5,53 @@ pipeline {
     BASE_SHA = 'HEAD~1'
   }
   stages {
-    stage('Pipeline') {
-      parallel {
-        stage('Prepare') {
-          when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
-          agent any
-          steps {
-            script {
-              env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
-              sh "npm ci"
-            }
-          }
+    stage('Prepare') {
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+      agent any
+      steps {
+        script {
+          env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
+          sh "npm ci"
         }
-        stage('Lint') {
-          when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
-          agent any
-          steps {
-            script {
-              sh "npx nx workspace-lint"
-              sh "npx nx affected --base=${BASE_SHA} --target=lint --parallel=3"
-            }
-          }
+      }
+    }
+    stage('Lint') {
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+      agent any
+      steps {
+        script {
+          sh "npx nx workspace-lint"
+          sh "npx nx affected --base=${BASE_SHA} --target=lint --parallel=3"
         }
-        stage('Test') {
-          when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
-          agent any
-          steps {
-            script {
-              sh "npx nx affected --base=${BASE_SHA} --target=test --parallel=3"
-            }
-          }
+      }
+    }
+    stage('Test') {
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+      agent any
+      steps {
+        script {
+          sh "npx nx affected --base=${BASE_SHA} --target=test --parallel=3"
         }
-        stage('Build') {
-          when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*)", comparator: 'REGEXP' } }
-          agent any
-          steps {
-            script {
-              sh "npx nx affected --base=${BASE_SHA} --target=build --parallel=3"
-            }
-          }
+      }
+    }
+    stage('Build') {
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*)", comparator: 'REGEXP' } }
+      agent any
+      steps {
+        script {
+          sh "npx nx affected --base=${BASE_SHA} --target=build --parallel=3"
         }
-
-        stage('Publish - Lib'){
-          when { anyOf { branch pattern: "^(publish_.*)", comparator: 'REGEXP' } }
-          agent any
-          steps{
-            script {
-              branchName = "${BRANCH_NAME}"
-              version = branchName.substring(branchName.indexOf("_"))
-              version = version.replace("_", "")
-              sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --parallel=3"
-            }
-          }
+      }
+    }
+    stage('Publish - Lib'){
+      when { anyOf { branch pattern: "^(publish_.*)", comparator: 'REGEXP' } }
+      agent any
+      steps{
+        script {
+          branchName = "${BRANCH_NAME}"
+          version = branchName.substring(branchName.indexOf("_"))
+          version = version.replace("_", "")
+          sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --parallel=3"
         }
       }
     }
