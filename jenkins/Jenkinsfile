@@ -8,6 +8,8 @@ pipeline {
     stage('Pipeline') {
       parallel {
         stage('Prepare') {
+          when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+          agent any
           steps {
             script {
               env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
