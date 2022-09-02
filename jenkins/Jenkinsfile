@@ -2,7 +2,7 @@ pipeline {
     agent none
     environment {
         NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
-        PACK_VERSION = 0.0.0
+        PACK_VERSION = '0.0.0'
     }
     stages {
         stage('Pipeline') {
