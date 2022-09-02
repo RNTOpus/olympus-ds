@@ -53,47 +53,10 @@ pipeline {
           version = branchName.substring(branchName.indexOf("_"))
           version = version.replace("_", "")
           sh 'echo "//registry.npmjs.org/:_authToken=${NPMJS_TOKEN}" >> ~/.npmrc'
-          sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --parallel=3"
+          sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --tag=latest --parallel=3"
+          sh 'rm ~/.npmrc'
         }
       }
     }
   }
 }
-
-
-// stage('PR') {
-//                     when {
-//                         not { branch 'master' || "publish_*" }
-//                     }
-//                     agent any
-//                     steps {
-//                       script {
-//                         sh "npm ci"
-//                         sh "npx nx workspace-lint"
-//                         sh "npx nx format:check --base origin/${env.CHANGE_TARGET}"
-//                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=lint --parallel=3"
-//                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
-//                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=build --parallel=3"
-//                       }
-//                     }
-//                 }
-
-//                 stage('Publish') {
-//                     when {
-//                         branch pattern: "^(publish_.*)", comparator: 'REGEXP'
-//                     }
-//                     agent any
-//                     steps {
-//                       script {
-//                         sh "npm ci"
-//                         sh "npx nx workspace-lint"
-//                         sh "npx nx format:check --base=HEAD~1"
-//                         sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
-//                         sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
-//                         branchName = "${BRANCH_NAME}"
-//                         version = branchName.substring(branchName.indexOf("_"))
-//                         version = version.replace("_", "")
-//                         sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --parallel=3"
-//                       }
-//                     }
-//                 }
