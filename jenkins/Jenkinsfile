@@ -54,7 +54,6 @@ pipeline {
           version = version.replace("_", "")
           sh 'echo "//registry.npmjs.org/:_authToken=${NPMJS_TOKEN}" >> ~/.npmrc'
           sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --tag=latest --parallel=3"
-          sh 'rm ~/.npmrc'
         }
       }
     }
