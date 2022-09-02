@@ -1,78 +1,78 @@
-pipeline {
-    agent none
-    environment {
-        NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
+def distributedTasks = [:]
+
+def jsTask(Closure cl) {
+  node {
+    withEnv(["HOME=${workspace}"]) {
+      docker.image('node:latest').inside('--tmpfs /.config', cl)
     }
-    stages {
+  }
+}
 
-      def distributedTasks = [:]
+def distributed(String target, int bins) {
+  def jobs = splitJobs(target, bins)
+  def tasks = [:]
 
-      stage("Building Distributed Tasks") {
-        jsTask {
+  jobs.eachWithIndex { jobRun, i ->
+    def list = jobRun.join(',')
+    def title = "${target} - ${i}"
+
+    tasks[title] = {
+      jsTask {
+        stage(title) {
           checkout scm
           sh 'npm ci'
-
-          distributedTasks << distributed('test', 3)
-          distributedTasks << distributed('lint', 3)
-          distributedTasks << distributed('build', 3)
+          sh "npx nx workspace-lint"
+          sh "npx nx format:check --target=${target} --projects=${list} --parallel"
+          sh "npx nx run-many --target=${target} --projects=${list} --parallel"
         }
       }
+    }
+  }
 
-      stage("Run Distributed Tasks") {
-        parallel distributedTasks
+  return tasks
+}
+
+def splitJobs(String target, int bins) {
+  def String baseSha = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
+  def String raw
+  raw = sh(script: "npx nx print-affected --base=${baseSha} --target=${target}", returnStdout: true)
+  def data = readJSON(text: raw)
+
+  def tasks = data['tasks'].collect { it['target']['project'] }
+
+  if (tasks.size() == 0) {
+    return tasks
+  }
+
+  // this has to happen because Math.ceil is not allowed by jenkins sandbox (╯°□°）╯︵ ┻━┻
+  def c = sh(script: "echo \$(( ${tasks.size()} / ${bins} ))", returnStdout: true).toInteger()
+  def split = tasks.collate(c)
+
+  return split
+}
+
+pipeline {
+  agent none
+  environment {
+      NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
+  }
+  stages {
+    stage('Building Distributed Tasks') {
+      jsTask {
+        checkout scm
+        sh 'npm ci'
+
+        distributedTasks << distributed('test', 3)
+        distributedTasks << distributed('lint', 3)
+        distributedTasks << distributed('build', 3)
       }
+    }
 
-      def jsTask(Closure cl) {
-        node {
-          withEnv(["HOME=${workspace}"]) {
-            docker.image('node:latest').inside('--tmpfs /.config', cl)
-          }
-        }
-      }
-
-      def distributed(String target, int bins) {
-        def jobs = splitJobs(target, bins)
-        def tasks = [:]
-
-        jobs.eachWithIndex { jobRun, i ->
-          def list = jobRun.join(',')
-          def title = "${target} - ${i}"
-
-          tasks[title] = {
-            jsTask {
-              stage(title) {
-                checkout scm
-                sh 'npm ci'
-                sh "npx nx workspace-lint"
-                sh "npx nx format:check --target=${target} --projects=${list} --parallel"
-                sh "npx nx run-many --target=${target} --projects=${list} --parallel"
-              }
-            }
-          }
-        }
-
-        return tasks
-      }
-
-      def splitJobs(String target, int bins) {
-        def String baseSha = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
-        def String raw
-        raw = sh(script: "npx nx print-affected --base=${baseSha} --target=${target}", returnStdout: true)
-        def data = readJSON(text: raw)
-
-        def tasks = data['tasks'].collect { it['target']['project'] }
-
-        if (tasks.size() == 0) {
-          return tasks
-        }
-
-        // this has to happen because Math.ceil is not allowed by jenkins sandbox (╯°□°）╯︵ ┻━┻
-        def c = sh(script: "echo \$(( ${tasks.size()} / ${bins} ))", returnStdout: true).toInteger()
-        def split = tasks.collate(c)
-
-        return split
-      }
-
+    stage('Run Distributed Tasks') {
+      parallel distributedTasks
+    }
+  }
+}
         // stage('Pipeline') {
         //     parallel {
         //         stage('Master') {
@@ -130,5 +130,3 @@ pipeline {
         //         }
         //     }
         // }
-    }
-}
