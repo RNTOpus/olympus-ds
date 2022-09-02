@@ -25,7 +25,7 @@ pipeline {
                 }
                 stage('PR') {
                     when {
-                        not { branch 'master' || branch pattern: "^(publish_.*)", comparator: 'REGEXP' }
+                        not { branch 'master' || "publish_.*" }
                     }
                     agent any
                     steps {
