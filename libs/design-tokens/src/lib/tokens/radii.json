@@ -6,6 +6,8 @@
     "sm": { "value": "0.5rem" },
     "md": { "value": "1rem" },
     "lg": { "value": "1.5rem" },
-    "circular": { "value": "50%" }
+    "circular": { "value": "50%" },
+    "pill": { "value": "9999px" },
+    "test": { "value": 0}
   }
 }
