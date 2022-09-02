@@ -52,7 +52,8 @@ pipeline {
                         sh "npx nx format:check --base origin/${env.CHANGE_TARGET}"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=lint --parallel=3"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
-                        let version = branchName.substring(name.indexOf("_"))
+                        branchName = "${BRANCH_NAME}"
+                        let version = branchName.substring(branchName.indexOf("_"))
                         version = version.replace("_", "")
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=publish --ver=${version} --parallel=3"
                       }
