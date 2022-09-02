@@ -13,6 +13,7 @@ pipeline {
                     }
                     agent any
                     steps {
+                        sh 'printenv'
                         sh "npm ci"
                         sh "npx nx workspace-lint"
                         sh "npx nx format:check --base=HEAD~1"
