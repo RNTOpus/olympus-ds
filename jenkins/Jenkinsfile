@@ -2,7 +2,6 @@ pipeline {
     agent none
     environment {
         NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
-        PACK_VERSION = '0.0.0'
     }
     stages {
         stage('Pipeline') {
@@ -14,7 +13,6 @@ pipeline {
                     agent any
                     steps {
                         script {
-                          sh 'printenv'
                           sh "npm ci"
                           sh "npx nx workspace-lint"
                           sh "npx nx format:check --base=HEAD~1"
@@ -32,20 +30,31 @@ pipeline {
                     agent any
                     steps {
                       script {
-                        sh 'printenv'
                         sh "npm ci"
                         sh "npx nx workspace-lint"
                         sh "npx nx format:check --base origin/${env.CHANGE_TARGET}"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=lint --parallel=3"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
-                        branchName = "${CHANGE_BRANCH}"
-                        if (branchName.matches("^(hotfix_.*|release_.*)")) {
-                          PACK_VERSION = branchName.substring(0, branchName.indexOf("_"))
-                          sh 'printenv'
-                          sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=publish --ver=${PACK_VERSION} --parallel=3"
-                        } else {
-                          sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=build --parallel=3"
-                        }
+                        sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=build --parallel=3"
+                      }
+                    }
+                }
+
+                stage('Publish') {
+                    when {
+                        branch pattern: "^(publish_.*)", comparator: 'REGEXP'
+                    }
+                    agent any
+                    steps {
+                      script {
+                        sh "npm ci"
+                        sh "npx nx workspace-lint"
+                        sh "npx nx format:check --base origin/${env.CHANGE_TARGET}"
+                        sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=lint --parallel=3"
+                        sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
+                        let version = branchName.substring(name.indexOf("_"))
+                        version = version.replace("_", "")
+                        sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=publish --ver=${version} --parallel=3"
                       }
                     }
                 }
