@@ -1,65 +1,134 @@
-def distributedTasks = [:]
-
-stage("Building Distributed Tasks") {
-  jsTask {
-    checkout scm
-    sh 'yarn install'
-
-    distributedTasks << distributed('test', 3)
-    distributedTasks << distributed('lint', 3)
-    distributedTasks << distributed('build', 3)
-  }
-}
-
-stage("Run Distributed Tasks") {
-  parallel distributedTasks
-}
-
-def jsTask(Closure cl) {
-  node {
-    withEnv(["HOME=${workspace}"]) {
-      docker.image('node:latest').inside('--tmpfs /.config', cl)
+pipeline {
+    agent none
+    environment {
+        NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
     }
-  }
-}
+    stages {
 
-def distributed(String target, int bins) {
-  def jobs = splitJobs(target, bins)
-  def tasks = [:]
+      def distributedTasks = [:]
 
-  jobs.eachWithIndex { jobRun, i ->
-    def list = jobRun.join(',')
-    def title = "${target} - ${i}"
-
-    tasks[title] = {
-      jsTask {
-        stage(title) {
+      stage("Building Distributed Tasks") {
+        jsTask {
           checkout scm
-          sh 'yarn install'
-          sh "npx nx run-many --target=${target} --projects=${list} --parallel"
+          sh 'npm ci'
+
+          distributedTasks << distributed('test', 3)
+          distributedTasks << distributed('lint', 3)
+          distributedTasks << distributed('build', 3)
         }
       }
+
+      stage("Run Distributed Tasks") {
+        parallel distributedTasks
+      }
+
+      def jsTask(Closure cl) {
+        node {
+          withEnv(["HOME=${workspace}"]) {
+            docker.image('node:latest').inside('--tmpfs /.config', cl)
+          }
+        }
+      }
+
+      def distributed(String target, int bins) {
+        def jobs = splitJobs(target, bins)
+        def tasks = [:]
+
+        jobs.eachWithIndex { jobRun, i ->
+          def list = jobRun.join(',')
+          def title = "${target} - ${i}"
+
+          tasks[title] = {
+            jsTask {
+              stage(title) {
+                checkout scm
+                sh 'npm ci'
+                sh "npx nx workspace-lint"
+                sh "npx nx format:check --target=${target} --projects=${list} --parallel"
+                sh "npx nx run-many --target=${target} --projects=${list} --parallel"
+              }
+            }
+          }
+        }
+
+        return tasks
+      }
+
+      def splitJobs(String target, int bins) {
+        def String baseSha = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
+        def String raw
+        raw = sh(script: "npx nx print-affected --base=${baseSha} --target=${target}", returnStdout: true)
+        def data = readJSON(text: raw)
+
+        def tasks = data['tasks'].collect { it['target']['project'] }
+
+        if (tasks.size() == 0) {
+          return tasks
+        }
+
+        // this has to happen because Math.ceil is not allowed by jenkins sandbox (╯°□°）╯︵ ┻━┻
+        def c = sh(script: "echo \$(( ${tasks.size()} / ${bins} ))", returnStdout: true).toInteger()
+        def split = tasks.collate(c)
+
+        return split
+      }
+
+        // stage('Pipeline') {
+        //     parallel {
+        //         stage('Master') {
+        //             when {
+        //                 branch 'master'
+        //             }
+        //             agent any
+        //             steps {
+        //                 script {
+        //                   sh "npm ci"
+        //                   sh "npx nx workspace-lint"
+        //                   sh "npx nx format:check --base=HEAD~1"
+        //                   sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
+        //                   sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
+        //                   sh "npx nx affected --base=HEAD~1 --target=build --parallel=3"
+        //                 }
+
+        //             }
+        //         }
+        //         stage('PR') {
+        //             when {
+        //                 not { branch 'master' || "publish_*" }
+        //             }
+        //             agent any
+        //             steps {
+        //               script {
+        //                 sh "npm ci"
+        //                 sh "npx nx workspace-lint"
+        //                 sh "npx nx format:check --base origin/${env.CHANGE_TARGET}"
+        //                 sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=lint --parallel=3"
+        //                 sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=test --parallel=3 --ci  --code-coverage"
+        //                 sh "npx nx affected --base origin/${env.CHANGE_TARGET} --target=build --parallel=3"
+        //               }
+        //             }
+        //         }
+
+        //         stage('Publish') {
+        //             when {
+        //                 branch pattern: "^(publish_.*)", comparator: 'REGEXP'
+        //             }
+        //             agent any
+        //             steps {
+        //               script {
+        //                 sh "npm ci"
+        //                 sh "npx nx workspace-lint"
+        //                 sh "npx nx format:check --base=HEAD~1"
+        //                 sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
+        //                 sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
+        //                 branchName = "${BRANCH_NAME}"
+        //                 version = branchName.substring(branchName.indexOf("_"))
+        //                 version = version.replace("_", "")
+        //                 sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --parallel=3"
+        //               }
+        //             }
+        //         }
+        //     }
+        // }
     }
-  }
-
-  return tasks
-}
-
-def splitJobs(String target, int bins) {
-  def String baseSha = env.CHANGE_ID ? 'origin/master' : 'origin/master~1'
-  def String raw
-  raw = sh(script: "npx nx print-affected --base=${baseSha} --target=${target}", returnStdout: true)
-  def data = readJSON(text: raw)
-
-  def tasks = data['tasks'].collect { it['target']['project'] }
-
-  if (tasks.size() == 0) {
-    return tasks
-  }
-
-  // this has to happen because Math.ceil is not allowed by jenkins sandbox (╯°□°）╯︵ ┻━┻
-  def c = sh(script: "echo \$(( ${tasks.size()} / ${bins} ))", returnStdout: true).toInteger()
-  def split = tasks.collate(c)
-
-  return split
 }
