@@ -53,7 +53,7 @@ pipeline {
                         sh "npx nx affected --base=HEAD~1 --target=lint --parallel=3"
                         sh "npx nx affected --base=HEAD~1 --target=test --parallel=3"
                         branchName = "${BRANCH_NAME}"
-                        let version = branchName.substring(branchName.indexOf("_"))
+                        version = branchName.substring(branchName.indexOf("_"))
                         version = version.replace("_", "")
                         sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --parallel=3"
                       }
