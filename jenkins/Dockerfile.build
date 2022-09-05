@@ -1,2 +1,2 @@
 FROM node:14-alpine3.10
-RUN apt-get update && apt-get install python -y
+RUN apk add -U python3
