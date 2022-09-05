@@ -11,10 +11,11 @@ pipeline {
     stage('Prepare') {
       when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
       agent {
-				docker {
-					image 'node:14-alpine3.10'
-				}
-			}
+        dockerfile {
+          filename 'Dockerfile.build'
+          dir 'jenkins'
+        }
+      }
       steps {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
@@ -25,10 +26,11 @@ pipeline {
     stage('Lint') {
       when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
       agent {
-				docker {
-					image 'node:14-alpine3.10'
-				}
-			}
+        dockerfile {
+          filename 'Dockerfile.build'
+          dir 'jenkins'
+        }
+      }
       steps {
         script {
           sh "npx nx workspace-lint"
@@ -39,10 +41,11 @@ pipeline {
     stage('Test') {
       when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
       agent {
-				docker {
-					image 'node:14-alpine3.10'
-				}
-			}
+        dockerfile {
+          filename 'Dockerfile.build'
+          dir 'jenkins'
+        }
+      }
       steps {
         script {
           sh "npx nx affected --base=${BASE_SHA} --target=test --parallel=3"
@@ -52,10 +55,11 @@ pipeline {
     stage('Build') {
       when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*)", comparator: 'REGEXP' } }
       agent {
-				docker {
-					image 'node:14-alpine3.10'
-				}
-			}
+        dockerfile {
+          filename 'Dockerfile.build'
+          dir 'jenkins'
+        }
+      }
       steps {
         script {
           sh "npx nx affected --base=${BASE_SHA} --target=build --parallel=3"
@@ -65,10 +69,11 @@ pipeline {
     stage('Publish - Lib'){
       when { anyOf { branch pattern: "^(publish_.*)", comparator: 'REGEXP' } }
       agent {
-				docker {
-					image 'node:14-alpine3.10'
-				}
-			}
+        dockerfile {
+          filename 'Dockerfile.build'
+          dir 'jenkins'
+        }
+      }
       steps{
         script {
           branchName = "${BRANCH_NAME}"
