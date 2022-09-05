@@ -14,6 +14,7 @@ pipeline {
         dockerfile {
           filename 'Dockerfile.build'
           dir 'jenkins'
+          reuseNode true
         }
       }
       steps {
@@ -29,6 +30,7 @@ pipeline {
         dockerfile {
           filename 'Dockerfile.build'
           dir 'jenkins'
+          reuseNode true
         }
       }
       steps {
@@ -44,6 +46,7 @@ pipeline {
         dockerfile {
           filename 'Dockerfile.build'
           dir 'jenkins'
+          reuseNode true
         }
       }
       steps {
@@ -58,6 +61,7 @@ pipeline {
         dockerfile {
           filename 'Dockerfile.build'
           dir 'jenkins'
+          reuseNode true
         }
       }
       steps {
@@ -72,6 +76,7 @@ pipeline {
         dockerfile {
           filename 'Dockerfile.build'
           dir 'jenkins'
+          reuseNode true
         }
       }
       steps{
