@@ -1,4 +1,5 @@
 FROM node:14-alpine3.10
 RUN apk add -U \
         python3\
-        make
+        make\
+        alpine-sdk
