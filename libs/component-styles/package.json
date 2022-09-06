@@ -1,13 +1,12 @@
 {
-  "name": "@olympus-ds/design-tokens",
-  "description": "Design tokens for using the Olympus Design System",
+  "name": "@olympus-ds/component-styles",
+  "description": "Styles for Olympus Design System components",
   "version": "0.0.1",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "index.css",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/opusbr/opus-olympus-design-system.git",
-    "directory": "libs/design-tokens"
+    "directory": "libs/component-styles"
   },
   "author": "Renato Andrade <renato.andrade@opus-software.com.br> (http://opus-software.com.br/)",
   "contributors": [
@@ -18,19 +17,15 @@
   ],
   "files": [
     "css",
-    "lib",
-    "scss",
-    "index.css",
-    "index.scss"
+    "index.css"
   ],
   "keywords": [
     "opus",
     "olympus-design-system",
-    "tokens",
-    "design-tokens"
+    "design-tokens",
+    "component-styles"
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false
+  }
 }

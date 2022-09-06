@@ -1,19 +1,19 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/design-tokens/src",
+  "sourceRoot": "libs/component-styles/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/design-tokens",
+        "outputPath": "dist/libs/component-styles",
         "commands": [
           {
-            "command": "rimraf dist/libs/design-tokens"
+            "command": "rimraf dist/libs/component-styles"
           },
           {
-            "command": "node libs/design-tokens/src/tasks/build"
+            "command": "node libs/component-styles/src/tasks/build"
           }
         ]
       }
@@ -21,7 +21,7 @@
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs design-tokens {args.ver} {args.tag}"
+        "command": "node tools/scripts/publish.mjs component-styles {args.ver} {args.tag}"
       },
       "dependsOn": [
         {

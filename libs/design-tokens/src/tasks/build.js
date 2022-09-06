@@ -3,7 +3,7 @@ const copyFiles = require('./copyFiles');
 const getPlatforms = require('./platforms');
 const { customEs6Format, customEs6DeclarationsFormat } = require('./customFormats/es6');
 const rootPath = path.resolve(__dirname, '../../');
-const buildPath = path.resolve(__dirname, `${rootPath}/dist`);
+const buildPath = path.resolve(__dirname, `${rootPath}/../../dist/libs/design-tokens`);
 const tokensPath = path.resolve(__dirname, '../lib/tokens');
 const StyleDictionary = require('style-dictionary').extend({
   source: [`${tokensPath}/**/*.json`],
