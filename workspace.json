@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "design-tokens": "libs/design-tokens"
+    "design-tokens": "libs/design-tokens",
+    "react-components": "libs/react-components"
   }
 }
