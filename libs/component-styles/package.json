@@ -27,5 +27,8 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "olympus-ds-design-tokens": "^0.0.8"
   }
 }
