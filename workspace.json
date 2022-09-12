@@ -4,6 +4,7 @@
   "projects": {
     "component-styles": "libs/component-styles",
     "design-tokens": "libs/design-tokens",
-    "react-components": "libs/react-components"
+    "react-components": "libs/react-components",
+    "web-components": "libs/web-components"
   }
 }

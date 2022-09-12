@@ -1,0 +1,12 @@
+{
+  "name": "@olympus-ds/web-components",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "@olympus-ds/component-styles": "file:../../dist/libs/component-styles/olympus-ds-component-styles-0.0.1.tgz"
+  },
+  "devDependencies": {
+    "lit-element": "^3.2.2"
+  },
+  "sideEffects": ["**/*.css"]
+}
