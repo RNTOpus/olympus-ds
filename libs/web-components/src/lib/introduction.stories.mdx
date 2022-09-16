@@ -1,3 +1,7 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Introduction" />
+
 # @olympus-ds/web-components
 
 Biblioteca de componentes criado com [Web Components](https://developer.mozilla.org/pt-BR/docs/Web/Web_Components) para uso nas tecnologias abaixo:
@@ -27,12 +31,12 @@ yarn add @olympus-ds/web-components
 ```js dark
 import '@olympus-ds/web-components';
 ```
-Se preferir, importe um componente específico:
+> Caso o seu projeto não precise de todos os componentes do **ODS**, é recomendado a importação apenas do(s) componente(s) que for(em) utilizado(s), veja:
 ```js dark
 import '@olympus-ds/web-components/lib/{nome-do-componente}';
 ```
 
-> **Importante:** Para usar os tokens do **Olympus DS** será necessário importar o arquivo **index.css**, conforme abaixo:
+> **Importante:** Para usar os tokens do **Olympus DS** será necessário importar o arquivo **index.css**, conforme exemplo mais abaixo:
 - **OBS.:** É de responsabilidade da aplicação setar os tokens, desta forma é mais fácil para customizá-los.<br />
 [Saiba mais sobre a biblioteca de Tokens do Olympus DS]().
 ```css dark
@@ -151,7 +155,7 @@ module.exports = {
 ```
 
 ## Svelte
-> Não é necesário configuração para usar **Web Components** no Svelte, veja um exemplo de uso:
+> Não é necessário configuração para usar **Web Components** no Svelte, veja um exemplo de uso:
 
 ```javascript dark
   <script>
@@ -166,3 +170,6 @@ module.exports = {
       {buttonText}
   </ods-button>
 ```
+
+
+

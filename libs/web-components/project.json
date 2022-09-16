@@ -10,8 +10,9 @@
         "outputPath": "dist/libs/web-components",
         "tsConfig": "libs/web-components/tsconfig.lib.json",
         "project": "libs/web-components/package.json",
-        "main": "libs/web-components/src/index.js",
+        "main": "libs/web-components/src/index.ts",
         "webpackConfig": "libs/web-components/webpack.config.js",
+        "compiler": "babel",
         "assets": [
           {
             "glob": "libs/web-components/README.md",
@@ -40,7 +41,7 @@
       "executor": "@nrwl/storybook:storybook",
       "options": {
         "uiFramework": "@storybook/web-components",
-        "port": 4400,
+        "port": 4500,
         "config": {
           "configFolder": "libs/web-components/.storybook"
         }

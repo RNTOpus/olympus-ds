@@ -2,10 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "declaration": true,
     "types": []
   },
-  "include": ["**/*.ts", "src/lib/components/button/button.stories.js", "src/lib/components/button/button.js", "src/index.js"],
+  "include": ["**/*.ts", "src/lib/components/button/stories/button.danger.stories.js", "src/lib/components/button/stories/button.warning.stories.js", "src/lib/components/button/stories/button.success.stories.js", "src/lib/components/button/stories/button.primary.stories.js", "src/lib/components/button/stories/button.playground.stories.js"],
   "exclude": [
     "jest.config.ts",
     "**/*.spec.ts",

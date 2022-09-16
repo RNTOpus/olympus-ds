@@ -1,30 +1,55 @@
-const { merge } = require('webpack-merge');
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const fs = require('fs-extra');
+const CopyPlugin = require('copy-webpack-plugin');
+const { merge } = require('webpack-merge');
+
+const entryFiles = () => {
+  const components = fs
+    .readdirSync(path.resolve(__dirname, './src/lib/components'))
+    .filter((dir) => !dir.includes('.ts'))
+    .reduce(
+      (prev, acc) => ({
+        ...prev,
+        [acc]: [
+          path.resolve(__dirname, `./src/lib/components/${[acc]}`),
+        ],
+      }),
+      {}
+    );
+  return components;
+};
+
 module.exports = (config, context) => {
+  console.log(config);
   return merge(config, {
+    entry: {
+      index: [path.resolve(__dirname, './src/index.ts')],
+      ...entryFiles(),
+    },
     mode: 'production',
     devtool: 'source-map',
     resolve: {
       extensions: ['.css'],
-      alias: {
-        '@olympus-ds/component-styles/css/button.css': path.resolve(__dirname, './node_modules/@olympus-ds/component-styles/css/button.css'),
-      }
     },
     output: {
-      filename: 'index.js',
+      filename: ({ chunk: { name } }) => {
+        return name === 'index' ? '[name].js' : 'lib/[name].js';
+      },
       clean: true,
       library: {
         name: '@olympus-ds/web-components',
-        type: 'esm'
-      }
+        type: 'umd',
+      },
     },
     module: {
       rules: [
         {
-          test: /\\.js$/,
-          loader: "babel-loader",
-          exclude: "/node_modules/",
+          test: /\.ts?$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
+          options: {
+            presets: ['@babel/preset-typescript'],
+          },
         },
         {
           test: /\.html$/i,
@@ -32,23 +57,19 @@ module.exports = (config, context) => {
         },
         {
           test: /\.css$/i,
-          use: [
-            // {
-            //   loader: "style-loader",
-            //   options: {
-            //     injectType: "lazyStyleTag",
-            //     insert: function insertIntoTarget(element, options) {
-            //       var parent = options.target || document.head;
-            //       parent.appendChild(element);
-            //     },
-            //   },
-            // },
-            {
-              loader: "css-loader"
-            },
-          ],
+          use: ['css-loader'],
         },
       ],
-    }
+    },
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, './', 'package.json'),
+            to: path.resolve(__dirname, '../../dist/libs/web-components'),
+          },
+        ],
+      }),
+    ],
   });
 };

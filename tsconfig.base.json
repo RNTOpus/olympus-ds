@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,7 +17,7 @@
     "paths": {
       "@olympus-ds/component-styles": ["libs/component-styles/src/index.css"],
       "@olympus-ds/react-components": ["libs/react-components/src/index.ts"],
-      "@olympus-ds/web-components": ["libs/web-components/src/index.js"]
+      "@olympus-ds/web-components": ["libs/web-components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

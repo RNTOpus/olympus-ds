@@ -1,5 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noFallthroughCasesInSwitch": true
+  },
   "files": [],
   "include": [],
   "references": [
@@ -12,11 +24,5 @@
     {
       "path": "./.storybook/tsconfig.json"
     }
-  ],
-  "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
-  }
+  ]
 }
