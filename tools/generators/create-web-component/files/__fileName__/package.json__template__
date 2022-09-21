@@ -1,0 +1,32 @@
+{
+  "name": "<%= npmScope %>/<%= fileName %>",
+  "version": "0.0.1",
+  "description": "Olympus DS | <%= propertyName %> web component",
+  "main": "<%= fileName %>.js",
+  "module": "<%= fileName %>.js",
+  "dependencies": {
+    "olympus-ds-design-tokens": "^0.0.8"
+  },
+  "peerDependencies": {
+    "core-js": "^3.25.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/opusbr/opus-olympus-design-system.git",
+    "directory": "<%= libsDir %>/<%= fileName %>"
+  },
+  "files": [],
+  "keywords": [
+    "opus",
+    "opus software",
+    "olympus design system",
+    "olympus ds",
+    "olympus",
+    "web components",
+    "<%= fileName %>"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

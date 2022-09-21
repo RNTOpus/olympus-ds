@@ -1,0 +1,52 @@
+import css from './<%= fileName %>.css';
+
+export class <%= className %> extends HTMLElement {
+
+  static get observedAttributes() {
+    return [] as string[];
+  }
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(
+    name: string,
+    oldValue: string,
+    newValue: string
+  ) {
+    if (oldValue === newValue) return;
+    this[name] = newValue;
+  }
+
+  private renderStyles() {
+    const style = new CSSStyleSheet();
+    style.replaceSync(css?.toString());
+    return style
+  }
+
+  private renderTemplate() {
+    return ``
+  }
+
+  private render() {
+    const { shadowRoot } = this;
+    const style = this.renderStyles();
+    const template = this.renderTemplate();
+    if (shadowRoot) {
+      shadowRoot.innerHTML = template;
+      shadowRoot.adoptedStyleSheets = [style];
+    }
+  }
+}
+
+if (!customElements.get('ods-<%= fileName %>')) {
+  customElements.define('ods-<%= fileName %>', <%= className %>);
+}
+
+export default <%= className %>;

@@ -1,0 +1,26 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "<%= libsDir %>/<%= fileName %>",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": ".",
+        "tsConfig": "<%= libsDir %>/<%= fileName %>/tsconfig.lib.json",
+        "project": "<%= libsDir %>/<%= fileName %>/package.json",
+        "main": "<%= libsDir %>/<%= fileName %>/src/<%= fileName %>.ts",
+        "compiler": "babel"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["<%= libsDir %>/<%= fileName %>/src/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
