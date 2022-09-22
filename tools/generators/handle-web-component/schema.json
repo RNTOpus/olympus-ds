@@ -30,6 +30,18 @@
           {
             "value": "disabled/boolean",
             "label": "Disabled"
+          },
+          {
+            "value": "outlined/boolean",
+            "label": "Outlined"
+          },
+          {
+            "value": "state/string",
+            "label": "State"
+          },
+          {
+            "value": "size/string",
+            "label": "Size"
           }
         ]
       }

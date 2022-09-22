@@ -3,7 +3,11 @@ import css from './<%= fileName %>.css';
 export class <%= className %> extends HTMLElement {
 
   static get observedAttributes() {
-    return [] as string[];
+    return [<% if (attributes.length > 0) { %>
+      <% for (let attribute of attributes) { %> "<%= attribute.name.propertyName %>",
+      <% } %>
+    <% } %>
+    ] as string[];
   }
 
   constructor() {
@@ -43,6 +47,20 @@ export class <%= className %> extends HTMLElement {
       shadowRoot.adoptedStyleSheets = [style];
     }
   }
+
+  <% if (attributes.length > 0) { %>
+    <% for (let attribute of attributes) { %> get <%= attribute.name.propertyName %>() {
+    return <% if (attribute.type.name === 'boolean') { %>this.hasAttribute('<%= attribute.name.propertyName %>');<% } else { %>this.getAttribute('<%= attribute.name.propertyName %>') as <%= attribute.type.name %>; <% } %>
+  }
+  set <%= attribute.name.propertyName %>(<%= attribute.name.propertyName %>: <%= attribute.type.name %>) {
+    <%= attribute.name.propertyName %>
+      ? this.setAttribute('<%= attribute.name.propertyName %>', <% if (attribute.type.name === 'boolean') { %>''<% } else { %><%= attribute.name.propertyName %><% } %>)
+      : this.removeAttribute('<%= attribute.name.propertyName %>');
+  }
+
+    <% } %>
+  <% } %>
+
 }
 
 if (!customElements.get('ods-<%= fileName %>')) {

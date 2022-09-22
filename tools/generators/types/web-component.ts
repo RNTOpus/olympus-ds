@@ -1,6 +1,6 @@
 export interface WebComponentSchema {
   name: string
-  attributes?: string[]
+  attributes?: string[] | { name: Partial<NxDevKitNames>, type: Partial<NxDevKitNames> }[] | undefined
 }
 
 export type NxDevKitNames = {
