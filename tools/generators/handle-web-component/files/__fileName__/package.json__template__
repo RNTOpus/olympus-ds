@@ -20,7 +20,7 @@
   },
   "files": [
     "<%= fileName %>.js",
-    "<%= fileName %>.map.js"
+    "<%= fileName %>.js.map"
   ],
   "keywords": [
     "opus",
