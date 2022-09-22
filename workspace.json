@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "button": "packages/button",
     "component-styles": "libs/component-styles",
     "design-tokens": "libs/design-tokens",
     "react-components": "libs/react-components",

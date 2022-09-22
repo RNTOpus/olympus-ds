@@ -1,0 +1,24 @@
+:host {
+  --ods-button-width: max-content;
+  --ods-button-height: var(--ods-size-xxl);
+  --ods-button-border: none;
+  --ods-button-border-style: solid;
+  --ods-button-border-width: var(--ods-border-stroke-xxs);
+  --ods-button-border-color: var(--ods-color-primary-base);
+  --ods-button-border-radius: var(--ods-radii-xs);
+  --ods-button-bg-color: var(--ods-color-primary-base);
+  --ods-button-text-color: var(--ods-color-primary-100);
+  --ods-button-font-family: 'system-ui';
+  --ods-button-font-size: var(--ods-font-size-md);
+  --ods-button-font-weight: var(--ods-font-weight-bold);
+  --ods-button-padding-x: var(--ods-spacing-lg);
+  --ods-button-padding-y: var(--ods-spacing-xs);
+  --ods-button-cursor: pointer;
+  --ods-button-transition: all 0.4s ease;
+  --ods-button-shadow: unset;
+  --ods-button-shadow-offset-x: 0;
+  --ods-button-shadow-offset-y: var(--ods-size-xxxs);
+  --ods-button-shadow-blur-radius: var(--ods-size-xxxs);
+  --ods-button-shadow-spread-radius: none;
+  --ods-button-shadow-color: rgba(0, 0, 0, 0.16);
+}

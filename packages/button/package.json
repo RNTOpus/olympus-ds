@@ -1,0 +1,37 @@
+{
+  "name": "@olympus/button",
+  "version": "0.0.1",
+  "description": "Olympus DS | button web component",
+  "main": "button.js",
+  "module": "button.js",
+  "dependencies": {
+    "olympus-ds-design-tokens": "^0.0.8"
+  },
+  "peerDependencies": {
+    "core-js": "^3.25.1"
+  },
+  "devDependencies": {
+    "lit": "^2.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/opusbr/opus-olympus-design-system.git",
+    "directory": "packages/button"
+  },
+  "files": [
+    "button.js",
+    "button.map.js"
+  ],
+  "keywords": [
+    "opus",
+    "opus software",
+    "olympus design system",
+    "olympus ds",
+    "olympus",
+    "web components",
+    "button"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/button",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "packages/button/dist",
+        "tsConfig": "packages/button/tsconfig.lib.json",
+        "project": "packages/button/package.json",
+        "main": "packages/button/src/button.ts",
+        "webpackConfig": "webpack.config.js",
+        "compiler": "babel",
+        "outputFileName": "button.js",
+        "assets": [
+          {
+            "glob": "packages/button/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/button/src/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
