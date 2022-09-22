@@ -2,7 +2,7 @@ import css from './button.css';
 
 export class Button extends HTMLElement {
   static get observedAttributes() {
-    return ['label', 'disabled', 'outlined', 'state', 'size'] as string[];
+    return ['label', 'disabled'] as string[];
   }
 
   constructor() {
@@ -16,17 +16,34 @@ export class Button extends HTMLElement {
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     if (oldValue === newValue) return;
-    this[name] = newValue;
+    switch (name) {
+      case 'disabled':
+        this.handleDisabledAttribute();
+        break;
+      case 'label':
+        this.rerender();
+        break;
+      default:
+        break;
+    }
   }
 
   private renderStyles() {
     const style = new CSSStyleSheet();
-    style.replaceSync(css?.toString());
+    (style as any).replaceSync(css?.toString());
     return style;
   }
 
   private renderTemplate() {
-    return ``;
+    return `
+    <button type="${this.type || 'button'}" part="button" ${
+      this.disabled ? 'disabled' : ''
+    }>
+      <span class="ods-button-label" part="label">${this.label || ''}</span>
+      <span class="ods-button-container-slot" part="container-slot">
+        <slot></slot>
+      </span>
+    </button>`;
   }
 
   private render() {
@@ -35,8 +52,26 @@ export class Button extends HTMLElement {
     const template = this.renderTemplate();
     if (shadowRoot) {
       shadowRoot.innerHTML = template;
-      shadowRoot.adoptedStyleSheets = [style];
+      (shadowRoot as any).adoptedStyleSheets = [style];
     }
+  }
+
+  private rerender() {
+    const { shadowRoot } = this;
+    const template = this.renderTemplate();
+    if (shadowRoot) shadowRoot.innerHTML = template;
+  }
+
+  private handleDisabledAttribute() {
+    this.rerender();
+    this.shadowRoot?.addEventListener(
+      'click',
+      (event) => {
+        this.disabled && event.preventDefault();
+        this.disabled && event.stopImmediatePropagation();
+      },
+      true
+    );
   }
 
   get label() {
@@ -44,6 +79,13 @@ export class Button extends HTMLElement {
   }
   set label(label: string) {
     label ? this.setAttribute('label', label) : this.removeAttribute('label');
+  }
+
+  get type() {
+    return this.getAttribute('type') as string;
+  }
+  set type(type: string) {
+    type ? this.setAttribute('type', type) : this.removeAttribute('type');
   }
 
   get disabled() {
@@ -62,6 +104,13 @@ export class Button extends HTMLElement {
     outlined
       ? this.setAttribute('outlined', '')
       : this.removeAttribute('outlined');
+  }
+
+  get fully() {
+    return this.hasAttribute('fully');
+  }
+  set fully(fully: boolean) {
+    fully ? this.setAttribute('fully', '') : this.removeAttribute('fully');
   }
 
   get state() {

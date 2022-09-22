@@ -20,7 +20,7 @@
   },
   "files": [
     "button.js",
-    "button.map.js"
+    "button.js.map"
   ],
   "keywords": [
     "opus",
