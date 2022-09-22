@@ -7,12 +7,20 @@ module.exports = (config, context) => {
   console.log(config);
   console.log(context);
   return merge(config, {
-    mode: "production",
+    mode: 'production',
     resolve: {
       extensions: ['.css'],
     },
     module: {
       rules: [
+        {
+          test: /\.ts?$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
+          options: {
+            presets: ['@babel/preset-typescript'],
+          },
+        },
         {
           test: /\.css$/i,
           use: ['css-loader'],
