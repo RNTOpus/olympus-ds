@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '..';
 
 import Documentation from './button.doc.mdx';

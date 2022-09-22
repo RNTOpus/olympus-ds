@@ -1,4 +1,4 @@
-export interface CreateWebComponentSchema {
+export interface WebComponentSchema {
   name: string
   attributes?: string[]
 }

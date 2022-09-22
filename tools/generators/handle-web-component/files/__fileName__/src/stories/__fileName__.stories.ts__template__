@@ -1,0 +1,10 @@
+import { html } from 'lit';
+import '../<%= fileName %>.ts';
+
+export default {
+  title: 'Web/Components/<%= className %>'
+};
+
+const Template = () => html`<ods-<%= fileName %> />`;
+
+export const Default = Template.bind({});

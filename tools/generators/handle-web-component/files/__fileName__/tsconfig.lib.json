@@ -2,12 +2,12 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "rootDir": ".",
-    "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
+    "rootDir": "./src",
+    "outDir": "./dist"
   },
   "include": [
-    "*.ts"
+    "*.ts",
+    "../../declaration.d.ts"
   ],
   "exclude": [
     "test/*.ts"

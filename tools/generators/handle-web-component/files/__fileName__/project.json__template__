@@ -7,11 +7,20 @@
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": ".",
+        "outputPath": "<%= libsDir %>/<%= fileName %>/dist",
         "tsConfig": "<%= libsDir %>/<%= fileName %>/tsconfig.lib.json",
         "project": "<%= libsDir %>/<%= fileName %>/package.json",
         "main": "<%= libsDir %>/<%= fileName %>/src/<%= fileName %>.ts",
-        "compiler": "babel"
+        "webpackConfig": "webpack.config.js",
+        "compiler": "babel",
+        "outputFileName": "<%= fileName %>.js",
+        "assets": [
+          {
+            "glob": "packages/button/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "lint": {

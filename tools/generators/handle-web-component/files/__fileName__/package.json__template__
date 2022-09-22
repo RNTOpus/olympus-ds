@@ -10,13 +10,18 @@
   "peerDependencies": {
     "core-js": "^3.25.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "lit": "^2.3.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/opusbr/opus-olympus-design-system.git",
     "directory": "<%= libsDir %>/<%= fileName %>"
   },
-  "files": [],
+  "files": [
+    "<%= fileName %>.js",
+    "<%= fileName %>.map.js"
+  ],
   "keywords": [
     "opus",
     "opus software",

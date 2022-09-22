@@ -1,0 +1,24 @@
+:host {
+  --ods-<%= fileName %>-width: max-content;
+  --ods-<%= fileName %>-height:  var(--ods-size-xxl);
+  --ods-<%= fileName %>-border: none;
+  --ods-<%= fileName %>-border-style: solid;
+  --ods-<%= fileName %>-border-width: var(--ods-border-stroke-xxs);
+  --ods-<%= fileName %>-border-color: var(--ods-color-primary-base);
+  --ods-<%= fileName %>-border-radius: var(--ods-radii-xs);
+  --ods-<%= fileName %>-bg-color: var(--ods-color-primary-base);
+  --ods-<%= fileName %>-text-color: var(--ods-color-primary-100);
+  --ods-<%= fileName %>-font-family: 'system-ui';
+  --ods-<%= fileName %>-font-size: var(--ods-font-size-md);
+  --ods-<%= fileName %>-font-weight: var(--ods-font-weight-bold);
+  --ods-<%= fileName %>-padding-x: var(--ods-spacing-lg);
+  --ods-<%= fileName %>-padding-y: var(--ods-spacing-xs);
+  --ods-<%= fileName %>-cursor: pointer;
+  --ods-<%= fileName %>-transition: all .4s ease;
+  --ods-<%= fileName %>-shadow: unset;
+  --ods-<%= fileName %>-shadow-offset-x: 0;
+  --ods-<%= fileName %>-shadow-offset-y: var(--ods-size-xxxs);
+  --ods-<%= fileName %>-shadow-blur-radius: var(--ods-size-xxxs);
+  --ods-<%= fileName %>-shadow-spread-radius: none;
+  --ods-<%= fileName %>-shadow-color: rgba(0, 0, 0, 0.16);
+}

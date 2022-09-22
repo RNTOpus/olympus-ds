@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "create:component": "nx workspace-generator handle-web-component",
+    "update:component": "nx workspace-generator handle-web-component",
+    "remove:component": "nx workspace-generator remove-web-component"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +22,7 @@
     "@babel/core": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
     "@nrwl/cli": "14.5.10",
+    "@nrwl/devkit": "14.7.9",
     "@nrwl/eslint-plugin-nx": "14.5.10",
     "@nrwl/jest": "14.5.10",
     "@nrwl/js": "14.5.10",
@@ -40,6 +44,9 @@
     "@storybook/theming": "^6.5.12",
     "@storybook/web-components": "^6.5.12",
     "@svgr/webpack": "^5.4.0",
+    "@swc-node/register": "^1.4.2",
+    "@swc/cli": "~0.1.55",
+    "@swc/core": "^1.2.173",
     "@testing-library/react": "13.3.0",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",
@@ -61,6 +68,8 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "27.5.1",
     "jest-environment-jsdom": "28.1.1",
+    "jsonc-eslint-parser": "^2.1.0",
+    "lit": "^2.3.1",
     "lit-element": "^3.2.2",
     "lit-html": "^2.3.1",
     "mini-css-extract-plugin": "^2.6.1",

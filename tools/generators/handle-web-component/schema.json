@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
-  "$id": "create-web-component",
+  "$id": "handle-web-component",
   "type": "object",
   "properties": {
     "name": {
@@ -19,7 +19,7 @@
       "type": "array",
       "description": "Selecionar attributos",
       "x-prompt": {
-        "message": "Selecione atributos que possam ser útil neste novo componente:",
+        "message": "Selecione atributos que possam ser útil neste componente:",
         "type": "list",
         "multiselect": true,
         "items": [

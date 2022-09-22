@@ -7,9 +7,9 @@ import {
   getWorkspaceLayout,
   updateJson,
 } from '@nrwl/devkit';
-import { CreateWebComponentSchema, NxDevKitNames } from './schema';
+import { WebComponentSchema, NxDevKitNames } from '../types/web-component';
 
-interface NormalizedOptions extends CreateWebComponentSchema, NxDevKitNames {
+interface NormalizedOptions extends WebComponentSchema, NxDevKitNames {
   path: string;
   libsDir: string;
   npmScope: string;
@@ -17,7 +17,7 @@ interface NormalizedOptions extends CreateWebComponentSchema, NxDevKitNames {
 
 function normalizeOptions(
   tree: Tree,
-  options: CreateWebComponentSchema
+  options: WebComponentSchema
 ): NormalizedOptions {
   const { libsDir, npmScope } = getWorkspaceLayout(tree);
   const path = `./${libsDir}/`;
@@ -37,7 +37,6 @@ function addFiles(tree: Tree, options: NormalizedOptions) {
     creationDate: new Date().toISOString(),
   };
   console.log(templateOptions);
-
   generateFiles(
     tree,
     joinPathFragments(__dirname, './files/'),
@@ -70,7 +69,7 @@ function addProjectToWorkspaceJson(host: Tree, options: NormalizedOptions) {
 
 export async function webComponentGenerator(
   tree: Tree,
-  options: CreateWebComponentSchema
+  options: WebComponentSchema
 ) {
   const normalizedOptions = normalizeOptions(tree, options);
   addFiles(tree, normalizedOptions);
