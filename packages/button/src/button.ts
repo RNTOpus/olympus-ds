@@ -14,18 +14,9 @@ export class Button extends HTMLElement {
     this.render();
   }
 
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-    if (oldValue === newValue) return;
-    switch (name) {
-      case 'disabled':
-        this.handleDisabledAttribute();
-        break;
-      case 'label':
-        this.rerender();
-        break;
-      default:
-        break;
-    }
+  attributeChangedCallback(name: string) {
+    if (name === 'disabled') this.handleDisabledAttribute();
+    if (name === 'label') this.rerender();
   }
 
   private renderStyles() {

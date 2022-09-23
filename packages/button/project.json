@@ -29,6 +29,18 @@
       "options": {
         "lintFilePatterns": ["packages/button/src/*.ts"]
       }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "packages/button",
+        "commands": [
+          {
+            "command": "karma start karma.config.js"
+          }
+        ]
+      }
     }
   },
   "tags": []
