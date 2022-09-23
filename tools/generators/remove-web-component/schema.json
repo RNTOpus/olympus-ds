@@ -14,7 +14,14 @@
       },
       "alias": "n",
       "x-prompt": "Qual é o nome do componente que deseja excluir (EN)?"
+    },
+    "shouldRemoveFromThePlayground": {
+      "type": "boolean",
+      "description": "Se verdadeiro remove do playground",
+      "default": true,
+      "alias": "p",
+      "x-prompt": "Deseja remover do playground (storybook)?"
     }
   },
-  "required": ["name"]
+  "required": ["name", "shouldRemoveFromThePlayground"]
 }

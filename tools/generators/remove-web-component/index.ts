@@ -27,6 +27,9 @@ function normalizeOptions(
 
 function removeFiles(tree: Tree, options: NormalizedOptions) {
   const project = readProjectConfiguration(tree, options.name);
+  if (options.shouldRemoveFromThePlayground) {
+    tree.delete(`demos/playground/src/packages/${options.name}`);
+  }
   visitNotIgnoredFiles(tree, project.root, (file) => {
     tree.delete(file);
   });
