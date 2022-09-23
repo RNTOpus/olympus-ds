@@ -1,0 +1,186 @@
+
+# Button
+## @olympus/button
+
+**Componente de botão _`<ods-button>`_ criado com web-components**, suporte para:
+
+![Badge](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Badge](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00)
+![Badge](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
+![Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Badge](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[...](https://custom-elements-everywhere.com/)
+
+### Como usar:
+> [Instalar a biblioteca](/docs/introduction--page) e depois:
+
+#### no js/ts:
+```js dark
+import '@olympus/button';
+```
+#### no html:
+
+```html dark
+<ods-button></ods-button>;
+```
+[ver outros exemplos em html](#outros-exemplos-de-uso-no-html)
+
+#### no css:
+> **Importante:** Para usar os tokens do **Olympus DS** será necessário importar o arquivo **index.css**, conforme abaixo:
+- **OBS.:** É de responsabilidade da aplicação setar os tokens, desta forma é mais fácil para customizá-los.
+[Ler mais sobre os design tokens do ODS]().
+
+```css dark
+  @import "~@olympus/design-tokens/index.css";
+```
+## Sumário
+
+- [Playground](#playground)
+- [Uso no **Angular**](#angular)
+- [Uso no **React**](#react)
+- [Uso no **Svelte**](#svelte)
+- [Uso no **Vue**](#vue)
+- [Estilo **customizado**](#estilo-customizado)
+- [Variações de **UI**](#ui)
+
+import { Story, Primary, ArgsTable, PRIMARY_STORY } from "@storybook/addon-docs";
+
+## Playground
+> Visualize o código clicando em `Show code`
+
+<Primary />
+
+> Altere os valores nos controles abaixo para interagir com o _`<ods-button>`_ acima
+
+<ArgsTable story={PRIMARY_STORY} />
+
+## Outros exemplos de uso no html
+
+```html dark
+<!-- Default (color="primary" & size="normal") -->
+<ods-button></ods-button>
+<!-- Color danger|warning|success -->
+<ods-button state="danger | warning | success"></ods-button>
+<!-- Size medium|small -->
+<ods-button size="medium | small"></ods-button>
+<!-- Disabled -->
+<ods-button disabled></ods-button>
+<!-- Oulined -->
+<ods-button outlined></ods-button>
+<!-- Fully -->
+<ods-button fully></ods-button>;
+```
+
+## Angular
+> No **Angular** é necessário adicionar `schemas: [CUSTOM_ELEMENTS_SCHEMA]` no **module**, [ver mais](/docs/introduction--page#angular).
+
+```typescript dark
+import '@olympus/button';
+
+...
+
+export class MyComponent {
+
+  buttonState = "primary"
+  buttonSize = "medium"
+  buttonText = "Botão no angular"
+  buttonDisabled = false
+
+  onClick() {
+    this.buttonText = "Botão clicado"
+    this.buttonDisabled = true
+  }
+  ...
+}
+```
+
+```html dark
+<ods-button
+  [state]="buttonState"
+  [size]="buttonSize"
+  [disabled]="buttonDisabled"
+  outlined
+  fully
+  (click)="onClick()"
+>
+  {{buttonText}}
+</ods-button>
+```
+
+## Svelte
+> No **Svelte** não precisa de configuração prévia.
+
+```javascript dark
+  <script>
+    import "@olympus/design-tokens/index.css";
+    import '@olympus/button';
+    export let buttonText = "Botão no Svelte";
+    export let state = "primary"
+  </script>
+```
+
+```html dark
+  <ods-button
+    state={state}
+    on:click="{() => state = 'success'}">
+      {buttonText}
+  </ods-button>
+```
+
+## Vue
+> No **Vue** é necessário adicionar `isCustomElement` no **compilerOptions no vite.config.js**, [ver mais](/docs/introduction--page#vue).
+
+```javascript dark
+<script setup>
+  import { reactive } from 'vue'
+  import '@olympus/button';
+  const button = reactive({
+    label: 'Botão no VUE',
+    state: 'primary',
+    disabled: false,
+    outlined: true
+  })
+  function clickEvent(event) {
+    console.log('CLICADO!');
+    button.state = 'success'
+  }
+</script>
+```
+
+```html dark
+<template>
+  <ods-button
+    :state="button.state"
+    :disabled="button.disabled"
+    :outlined="button.outlined"
+    @click="clickEvent"
+  >
+    {{button.label}}
+  </ods-button>
+</template>
+```
+
+```css dark
+<style>
+  @import "@olympus/design-tokens/index.css";
+</style>
+```
+
+## Estilo customizado
+É possível customizar o estilo do botão usando `::part()`, veja abaixo:<br />[Saiba mais](https://developer.mozilla.org/en-US/docs/Web/CSS/::part)
+
+```css dark
+ods-button::part(button) {
+  width: 100px;
+  --ods-button-border-radius: 50px;
+}
+```
+
+## UI
+
+<Story id="web-components-button-variations--primary" />
+<Story id="web-components-button-variations--danger" />
+<Story id="web-components-button-variations--warning" />
+<Story id="web-components-button-variations--success" />
+

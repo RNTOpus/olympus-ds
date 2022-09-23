@@ -32,7 +32,7 @@
     }
   },
   "workspaceLayout": {
-    "appsDir": "apps",
+    "appsDir": "demos",
     "libsDir": "packages"
   },
   "generators": {
@@ -40,6 +40,18 @@
       "application": {
         "babel": true
       }
+    },
+    "@nrwl/web:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "none",
+      "e2eTestRunner": "none"
+    },
+    "@nrwl/web:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "none"
     }
-  }
+  },
+  "defaultProject": "playground"
 }

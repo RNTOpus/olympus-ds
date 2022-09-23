@@ -5,6 +5,7 @@
     "button": "packages/button",
     "component-styles": "libs/component-styles",
     "design-tokens": "libs/design-tokens",
+    "playground": "demos/playground",
     "react-components": "libs/react-components",
     "web-components": "libs/web-components"
   }
