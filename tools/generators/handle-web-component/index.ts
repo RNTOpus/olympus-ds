@@ -11,6 +11,7 @@ import { WebComponentSchema, NxDevKitNames } from '../types/web-component';
 
 interface NormalizedOptions extends WebComponentSchema, NxDevKitNames {
   libsDir: string;
+  appsDir: string;
   npmScope: string;
 }
 
@@ -18,7 +19,7 @@ function normalizeOptions(
   tree: Tree,
   options: WebComponentSchema
 ): NormalizedOptions {
-  const { libsDir, npmScope } = getWorkspaceLayout(tree);
+  const { libsDir, appsDir, npmScope } = getWorkspaceLayout(tree);
   const attributes = options.attributes?.map(attr => {
     const attribute = attr.split('/')
     return {
@@ -27,8 +28,10 @@ function normalizeOptions(
     }
   })
   return {
+    ...options,
     ...names(options.name),
     libsDir,
+    appsDir,
     npmScope,
     attributes
   };
@@ -41,9 +44,17 @@ function addFiles(tree: Tree, options: NormalizedOptions) {
     creationDate: new Date().toISOString(),
   };
   console.log(templateOptions);
+  if (options.shouldAddToThePlayground) {
+    generateFiles(
+      tree,
+      joinPathFragments(__dirname, './playground/'),
+      `./${options.appsDir}/playground/src/packages`,
+      templateOptions
+    );
+  }
   generateFiles(
     tree,
-    joinPathFragments(__dirname, './files/'),
+    joinPathFragments(__dirname, './packages/'),
     `./${options.libsDir}/`,
     templateOptions
   );

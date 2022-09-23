@@ -15,6 +15,13 @@
       "alias": "n",
       "x-prompt": "Qual é o nome do componente (EN)?"
     },
+    "shouldAddToThePlayground": {
+      "type": "boolean",
+      "description": "Se verdadeiro adiciona ao playground",
+      "default": true,
+      "alias": "p",
+      "x-prompt": "Deseja adicionar ao playground (storybook)?"
+    },
     "attributes": {
       "type": "array",
       "description": "Selecionar attributos",

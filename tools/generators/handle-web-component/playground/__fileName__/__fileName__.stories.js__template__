@@ -1,0 +1,17 @@
+import { html } from 'lit';
+import '<%= npmScope %>/<%= fileName %>';
+
+import Documentation from './<%= fileName %>.doc.mdx';
+
+export default {
+  title: 'Components/<%= className %>',
+  parameters: {
+    docs: {
+      page: Documentation,
+    },
+  },
+};
+
+const Template = () => html`<ods-<%= fileName %> />`;
+
+export const Default = Template.bind({});
