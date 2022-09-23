@@ -17,8 +17,9 @@ export default {
   },
 };
 
-const Template = ({ state, size, label, type, disabled, outlined, fully }) => {
+const Template = ({ state, size, label, type, disabled, outlined, fully, slot }) => {
   return html` <ods-button
+    label=${label}
     state=${state}
     size=${size}
     type=${type}
@@ -27,7 +28,7 @@ const Template = ({ state, size, label, type, disabled, outlined, fully }) => {
     ?fully=${fully}
     onclick="console.log('CLICOU!')"
   >
-    ${label}
+    ${slot}
   </ods-button>`;
 };
 
@@ -41,4 +42,5 @@ Default.args = {
   disabled: false,
   outlined: false,
   fully: false,
+  slot: ''
 };

@@ -1,7 +1,6 @@
 export const argTypes = (showControl = true) => ({
   label: {
-    description:
-      'Essa propriedade só existe no storybook<br />**O componente tem um `<slot></slot>` para adicionar conteúdo dentro dele.**',
+    description: 'Adiciona um texto dentro do botão',
   },
   type: {
     description: 'Altera o tipo do componente nativo',
@@ -74,5 +73,9 @@ export const argTypes = (showControl = true) => ({
         summary: 'false',
       },
     }
+  },
+  slot: {
+    description:
+      '**O componente tem um `<slot></slot>` para adicionar conteúdo extra dentro dele.**',
   },
 });
