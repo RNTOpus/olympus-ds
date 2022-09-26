@@ -15,9 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@olympus-ds/component-styles": ["libs/component-styles/src/index.css"],
-      "@olympus-ds/react-components": ["libs/react-components/src/index.ts"],
-      "@olympus-ds/web-components": ["libs/web-components/src/index.ts"],
       "@olympus/button": ["packages/button/src/button.ts"]
     }
   },

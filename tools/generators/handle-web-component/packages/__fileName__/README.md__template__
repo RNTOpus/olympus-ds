@@ -32,7 +32,7 @@ import '<%= npmScope %>/<%= fileName %>';
 > **Attention:** Import **Olympus** tokens or overwrite with your own values<br />.
 [Learn more about tokens and see how to customize them]().
 ```css dark
-  @import "~<%= npmScope %>/design-tokens/index.css";
+  @import "~<%= npmScope %>/tokens/index.css";
 ```
 
 ## Summary
@@ -80,7 +80,7 @@ export class MyComponent {}
 
 ```javascript dark
   <script>
-    import "<%= npmScope %>/design-tokens/index.css";
+    import "<%= npmScope %>/tokens/index.css";
     import '<%= npmScope %>/<%= fileName %>';
   </script>
   <ods-<%= fileName %> />
@@ -140,7 +140,7 @@ module.exports = {
   <ods-<%= fileName %> />
 </template>
 <style>
-  @import "<%= npmScope %>/design-tokens/index.css";
+  @import "<%= npmScope %>/tokens/index.css";
 </style>
 ```
 

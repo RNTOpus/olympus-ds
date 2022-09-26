@@ -3,10 +3,7 @@
   "version": 2,
   "projects": {
     "button": "packages/button",
-    "component-styles": "libs/component-styles",
     "tokens": "packages/tokens",
-    "playground": "demos/playground",
-    "react-components": "libs/react-components",
-    "web-components": "libs/web-components"
+    "playground": "demos/playground"
   }
 }
