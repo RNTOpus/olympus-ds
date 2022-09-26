@@ -1,0 +1,10 @@
+{
+  "time": {
+    "transition": {
+      "short": { "value":"200" },
+      "base":  { "value":"400" },
+      "long":  { "value":"600" },
+      "xl":    { "value":"1000" }
+    }
+  }
+}

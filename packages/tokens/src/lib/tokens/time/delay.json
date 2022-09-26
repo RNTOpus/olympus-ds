@@ -1,0 +1,9 @@
+{
+  "time": {
+    "delay": {
+      "short": { "value":"50" },
+      "base":  { "value":"100" },
+      "long":  { "value":"200" }
+    }
+  }
+}

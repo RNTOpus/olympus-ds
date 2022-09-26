@@ -1,0 +1,12 @@
+{
+  "border": {
+    "stroke": {
+      "none": { "value": 0 },
+      "xxs": { "value": "0.063rem" },
+      "xs": { "value": "0.125rem" },
+      "sm": { "value": "0.25rem" },
+      "md": { "value": "0.5rem" },
+      "lg": { "value": "1rem" }
+    }
+  }
+}

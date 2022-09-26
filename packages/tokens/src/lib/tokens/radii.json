@@ -1,0 +1,12 @@
+{
+  "radii": {
+    "none": { "value": 0 },
+    "xxs": { "value": "0.125rem" },
+    "xs": { "value": "0.25rem" },
+    "sm": { "value": "0.5rem" },
+    "md": { "value": "1rem" },
+    "lg": { "value": "1.5rem" },
+    "circular": { "value": "50%" },
+    "pill": {"value": "9999px"}
+  }
+}

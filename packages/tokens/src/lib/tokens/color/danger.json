@@ -1,0 +1,18 @@
+{
+  "color": {
+    "danger": {
+      "00": { "value": "#160504" },
+      "10": { "value": "#2B0B08" },
+      "20": { "value": "#57160F" },
+      "30": { "value": "#822017" },
+      "40": { "value": "#AD2B1F" },
+      "50": { "value": "#D83627" },
+      "60": { "value": "#E05E52" },
+      "70": { "value": "#E8867D" },
+      "80": { "value": "#F0AFA8" },
+      "90": { "value": "#F7D7D4" },
+      "100": { "value": "#FBEBE9" },
+      "base": { "value": "{color.danger.50.value}" }
+    }
+  }
+}

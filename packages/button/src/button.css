@@ -8,7 +8,7 @@
   --ods-button-border-radius: var(--ods-radii-xs);
   --ods-button-bg-color: var(--ods-color-primary-base);
   --ods-button-text-color: var(--ods-color-primary-100);
-  --ods-button-font-family: 'system-ui';
+  --ods-button-font-family: var(--ods-font-family-base, 'system-ui');
   --ods-button-font-size: var(--ods-font-size-md);
   --ods-button-font-weight: var(--ods-font-weight-bold);
   --ods-button-padding-x: var(--ods-spacing-lg);
