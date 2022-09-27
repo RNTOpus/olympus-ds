@@ -78,4 +78,26 @@ export const argTypes = (showControl = true) => ({
     description:
       '**O componente tem um `<slot></slot>` para adicionar conteúdo extra dentro dele.**',
   },
+  leftIcon: {
+    description: 'Adiciona um ícone a esquerda. Nessa documentação é utilizado o <a href="https://fonts.google.com/icons?icon.set=Material+Symbols" target="_blank">Material Symbols</a>, mas você pode usar qualquer biblioteca de ícones.',
+    options: ['none', 'home', 'person', 'lock'],
+    control: showControl ? { type: 'inline-radio' } : false,
+    table: {
+      type: {
+        summary: 'Exemplo',
+        detail: '<span slot="left-icon">...</span>'
+      },
+    },
+  },
+  rightIcon: {
+    description: 'Adiciona um ícone a direita. Nessa documentação é utilizado o <a href="https://fonts.google.com/icons?icon.set=Material+Symbols" target="_blank">Material Symbols</a>, mas você pode usar qualquer biblioteca de ícones.',
+    options: ['none', 'search', 'edit', 'send'],
+    control: showControl ? { type: 'inline-radio' } : false,
+    table: {
+      type: {
+        summary: 'Exemplo',
+        detail: '<span slot="right-icon">...</span>'
+      },
+    },
+  },
 });

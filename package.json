@@ -13,6 +13,7 @@
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.3.1",
     "@ryansonshine/commitizen": "^4.2.8",
     "core-js": "^3.6.5",
+    "olympus-ds-design-tokens": "^0.0.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",

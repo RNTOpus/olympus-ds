@@ -25,15 +25,21 @@ export class Button extends HTMLElement {
     return style;
   }
 
+  private renderLabel() {
+    return `<span class="ods-button-label" part="label">${this.label}</span>`
+  }
+
   private renderTemplate() {
     return `
     <button type="${this.type || 'button'}" part="button" ${
       this.disabled ? 'disabled' : ''
     }>
-      <span class="ods-button-label" part="label">${this.label || ''}</span>
+      <slot name="left-icon"></slot>
+      ${this.label ? this.renderLabel() : ''}
       <span class="ods-button-container-slot" part="container-slot">
         <slot></slot>
       </span>
+      <slot name="right-icon"></slot>
     </button>`;
   }
 

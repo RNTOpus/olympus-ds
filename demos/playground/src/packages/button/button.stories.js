@@ -17,7 +17,20 @@ export default {
   },
 };
 
-const Template = ({ state, size, label, type, disabled, outlined, fully, slot }) => {
+const getIcon = (icon, position = 'left') => html`<span class="material-symbols-outlined" slot="${position}-icon"> ${icon} </span>`
+
+const Template = ({
+  state,
+  size,
+  label,
+  type,
+  disabled,
+  outlined,
+  fully,
+  slot,
+  leftIcon,
+  rightIcon
+}) => {
   return html` <ods-button
     label=${label}
     state=${state}
@@ -28,7 +41,9 @@ const Template = ({ state, size, label, type, disabled, outlined, fully, slot })
     ?fully=${fully}
     onclick="console.log('CLICOU!')"
   >
-    ${slot}
+    ${leftIcon !== 'none' ? getIcon(leftIcon) : ''}
+    ${slot ? slot : ''}
+    ${rightIcon !== 'none' ? getIcon(rightIcon, 'right') : ''}
   </ods-button>`;
 };
 
@@ -42,5 +57,7 @@ Default.args = {
   disabled: false,
   outlined: false,
   fully: false,
-  slot: ''
+  slot: '',
+  leftIcon: 'none',
+  rightIcon: 'none'
 };

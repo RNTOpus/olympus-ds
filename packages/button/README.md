@@ -34,7 +34,7 @@ import '@olympus/button';
 > [Learn more about tokens and see how to customize them]().
 
 ```css dark
-@import '~@olympus/design-tokens/index.css';
+@import '~@olympus/tokens/index.css';
 ```
 
 ## Summary
@@ -85,7 +85,7 @@ export class MyComponent {}
 
 ```javascript dark
   <script>
-    import "@olympus/design-tokens/index.css";
+    import "@olympus/tokens/index.css";
     import '@olympus/button';
   </script>
   <ods-button />
@@ -149,7 +149,7 @@ module.exports = {
   <ods-button />
 </template>
 <style>
-  @import "@olympus/design-tokens/index.css";
+  @import "@olympus/tokens/index.css";
 </style>
 ```
 

@@ -1,4 +1,9 @@
 :host {
+  --ods-button-display: flex;
+  --ods-button-flex-direction: row;
+  --ods-button-align-items: center;
+  --ods-button-justify-content:  center;
+  --ods-button-border: none;
   --ods-button-width: max-content;
   --ods-button-height:  var(--ods-size-xxl);
   --ods-button-border: none;
@@ -11,7 +16,7 @@
   --ods-button-font-family: var(--ods-font-family-base, 'system-ui');
   --ods-button-font-size: var(--ods-font-size-md);
   --ods-button-font-weight: var(--ods-font-weight-bold);
-  --ods-button-padding-x: var(--ods-spacing-lg);
+  --ods-button-padding-x: var(--ods-spacing-xs);
   --ods-button-padding-y: var(--ods-spacing-xs);
   --ods-button-cursor: pointer;
   --ods-button-transition: all .4s ease;
@@ -24,8 +29,12 @@
 }
 
 :host button {
+  display: var(--ods-button-display);
+  flex-direction: var(--ods-button-flex-direction);
+  align-items: var(--ods-button-align-items);
+  justify-content: var(--ods-button-justify-content);
   width: var(--ods-button-width);
-  height: var(--ods-button-height);
+  min-height: var(--ods-button-height);
   background: var(--ods-button-bg-color);
   padding: var(--ods-button-padding-y) var(--ods-button-padding-x);
   border-radius: var(--ods-button-border-radius);
@@ -37,6 +46,13 @@
   cursor: var(--ods-button-cursor);
   transition: var(--ods-button-transition);
   box-shadow: var(--ods-button-shadow);
+}
+
+:host slot[name=left-icon]::slotted(*),
+:host slot[name=right-icon]::slotted(*),
+:host button .ods-button-label,
+:host button .ods-button-container-slot slot::slotted(*) {
+  padding: 0 var(--ods-spacing-xxs);
 }
 
 :host button:disabled {
@@ -154,17 +170,17 @@
 
 /* Size */
 :host([size="medium"]) {
-  --ods-button-padding-x: var(--ods-spacing-md);
   --ods-button-padding-y: var(--ods-spacing-xxs);
   --ods-button-height:  var(--ods-size-xl);
   --ods-button-font-size: var(--ods-font-size-sm);
 }
 :host([size="small"]) {
-  --ods-button-padding-x: var(--ods-spacing-md);
   --ods-button-padding-y: var(--ods-spacing-xxs);
   --ods-button-height:  var(--ods-size-lg);
   --ods-button-font-size: var(--ods-font-size-tiny);
 }
+:host slot[name=left-icon]::slotted(*),
+:host slot[name=right-icon]::slotted(*),
 :host([fully]) {
   --ods-button-width: 100%;
 }

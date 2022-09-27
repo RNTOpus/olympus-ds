@@ -58,9 +58,11 @@ import { Story, Primary, ArgsTable, PRIMARY_STORY } from "@storybook/addon-docs"
 ## Outros exemplos de uso no html
 
 ```html dark
-<!-- Default (color="primary" & size="normal") -->
+<!-- Default (state="primary" & size="normal") -->
 <ods-button></ods-button>
-<!-- Color danger|warning|success -->
+<!-- Label -->
+<ods-button label="Avançar"></ods-button>
+<!-- State danger|warning|success -->
 <ods-button state="danger | warning | success"></ods-button>
 <!-- Size medium|small -->
 <ods-button size="medium | small"></ods-button>
@@ -70,6 +72,18 @@ import { Story, Primary, ArgsTable, PRIMARY_STORY } from "@storybook/addon-docs"
 <ods-button outlined></ods-button>
 <!-- Fully -->
 <ods-button fully></ods-button>;
+<!-- Left Icon -->
+<ods-button>
+  <span class="icon" slot="left-icon"> {icon} </span>
+</ods-button>;
+<!-- Slot -->
+<ods-button>
+  <span> Avançar </span>
+</ods-button>;
+<!-- Right Icon -->
+<ods-button>
+  <span class="icon" slot="right-icon"> {icon} </span>
+</ods-button>
 ```
 
 ## Angular
