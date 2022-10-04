@@ -24,7 +24,7 @@ describe('Button', () => {
 
   it('should render `ods-button` with a label', () => {
     const { shadowRoot, buttonElement } = setup('label="Button label"');
-    const labelElement =  buttonElement.querySelector('.ods-button-label');
+    const labelElement = buttonElement.querySelector('.ods-button-label');
     expect(shadowRoot?.host.hasAttribute('label')).toBeTruthy();
     expect(labelElement?.textContent).toBe('Button label');
   });

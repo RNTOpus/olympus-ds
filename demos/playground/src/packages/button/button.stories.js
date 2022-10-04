@@ -20,7 +20,7 @@ export default {
 const getIcon = (icon, position = 'left') => html`<span class="material-symbols-outlined" slot="${position}-icon"> ${icon} </span>`
 
 const Template = ({
-  state,
+  variant,
   size,
   label,
   type,
@@ -31,20 +31,12 @@ const Template = ({
   leftIcon,
   rightIcon
 }) => {
-  return html` <ods-button
-    label=${label}
-    state=${state}
-    size=${size}
-    type=${type}
-    ?disabled=${disabled}
-    ?outlined=${outlined}
-    ?fully=${fully}
-    onclick="console.log('CLICOU!')"
-  >
-    ${leftIcon !== 'none' ? getIcon(leftIcon) : ''}
-    ${slot ? slot : ''}
-    ${rightIcon !== 'none' ? getIcon(rightIcon, 'right') : ''}
-  </ods-button>`;
+  return html`<ods-button label=${label} variant=${variant} size=${size} type=${type} ?disabled=${disabled} ?outlined=${outlined}
+  ?fully=${fully} onclick="console.log('CLICOU!')">
+  ${leftIcon !== 'none' ? getIcon(leftIcon) : ''}
+  ${slot ? slot : ''}
+  ${rightIcon !== 'none' ? getIcon(rightIcon, 'right') : ''}
+</ods-button>`;
 };
 
 export const Default = Template.bind({});
@@ -52,12 +44,12 @@ export const Default = Template.bind({});
 Default.args = {
   label: 'Botão',
   type: 'button',
-  state: 'primary',
+  variant: 'primary',
   size: 'normal',
   disabled: false,
   outlined: false,
   fully: false,
-  slot: '',
+  slot: 'Renato',
   leftIcon: 'none',
   rightIcon: 'none'
 };

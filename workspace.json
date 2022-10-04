@@ -3,7 +3,7 @@
   "version": 2,
   "projects": {
     "button": "packages/button",
-    "tokens": "packages/tokens",
-    "playground": "demos/playground"
+    "playground": "demos/playground",
+    "tokens": "packages/tokens"
   }
 }

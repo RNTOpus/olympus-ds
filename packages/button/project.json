@@ -3,17 +3,15 @@
   "sourceRoot": "packages/button",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nrwl/node:webpack",
+    "pre-build": {
+      "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "packages/button/dist",
-        "tsConfig": "packages/button/tsconfig.lib.json",
+        "tsConfig": "packages/button/tsconfig.json",
         "project": "packages/button/package.json",
-        "main": "packages/button/src/button.ts",
-        "webpackConfig": "webpack.config.js",
+        "entryFile": "packages/button/src/index.ts",
         "compiler": "babel",
-        "outputFileName": "button.js",
         "assets": [
           {
             "glob": "packages/button/README.md",
@@ -22,6 +20,18 @@
           }
         ]
       }
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/react-build.mjs button"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "pre-build"
+        }
+      ]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",

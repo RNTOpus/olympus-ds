@@ -8,7 +8,7 @@
       "executor": "@nrwl/storybook:storybook",
       "options": {
         "uiFramework": "@storybook/web-components",
-        "port": 4500,
+        "port": 4210,
         "config": {
           "configFolder": "demos/playground/.storybook"
         }
@@ -21,7 +21,9 @@
     },
     "build": {
       "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "uiFramework": "@storybook/web-components",
         "outputPath": "demos/playground/dist",

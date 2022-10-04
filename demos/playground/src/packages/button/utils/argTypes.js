@@ -15,7 +15,7 @@ export const argTypes = (showControl = true) => ({
     },
     control: showControl ? { type: 'inline-radio' } : false,
   },
-  state: {
+  variant: {
     description: 'Define o estado do botão',
     table: {
       type: {
