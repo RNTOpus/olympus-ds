@@ -1,15 +1,11 @@
 # Frameworks
 
-::: tip Olympus components are web components, so they're framework-agnostic:
+::: tip We're framework-agnostic:
 [**See more**](https://custom-elements-everywhere.com/)
 :::
 
-in this documentation we will cover the main frameworks:
+<Frameworks />
 
-[Angular](/frameworks/angular)
-
-[React](/frameworks/react)
-
-[Vue](/frameworks/vue)
-
-[Svelte](/frameworks/svelte)
+::: info
+This documentation deals with the main frameworks
+:::
