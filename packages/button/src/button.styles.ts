@@ -2,14 +2,15 @@ import { css } from 'lit';
 
 export default css`
 :host {
-  display: inline-block;
+  display: flex;
   position: relative;
-  width: auto;
-  --ods-button-width:  100%;
+  align-items: center;
+  justify-content: center;
+  --ods-button-width:  max-content;
   --ods-button-height:  var(--ods-size-xxl);
   --ods-button-bg-color: var(--ods-color-primary-base);
   --ods-button-text-color: var(--ods-color-primary-100);
-  --ods-button-border-color: var(--ods-color-primary-base);
+  --ods-button-border-color: transparent;
   --ods-button-font-size: var(--ods-font-size-md);
   --ods-button-border: none;
   --ods-button-shadow: unset;
@@ -21,11 +22,12 @@ export default css`
 }
 
 .button {
-  display: inline-flex;
-  align-items: stretch;
+  display: flex;
+  align-items: center;
   justify-content: center;
   width: var(--ods-button-width);
   height: var(--ods-button-height);
+  padding: 0 var(--ods-spacing-xxs);
   border-style: solid;
   border-width: var(--ods-border-stroke-xxs);
   border-color: var(--ods-button-border-color);
@@ -124,6 +126,7 @@ export default css`
 
 /* Outlined:hover */
 :host([outlined]) .button:not(:disabled):not(:active):hover {
+  --ods-button-bg-color: transparent;
   --ods-button-text-color: var(--ods-color-primary-70);
   --ods-button-border-color: var(--ods-color-primary-60);
   filter: drop-shadow(var(--ods-button-shadow-offset-x) var(--ods-button-shadow-offset-y) var(--ods-button-shadow-blur-radius) var(--ods-button-shadow-color));
