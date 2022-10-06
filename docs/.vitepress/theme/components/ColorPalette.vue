@@ -1,15 +1,13 @@
 <script setup>
-import * as colors from 'https://cdn.jsdelivr.net/npm/olympus-ds-design-tokens@0.0.8/lib/color.js'
-import { ref } from 'vue'
-const categories = ref(['Primary', 'Success', 'Warning', 'Danger', 'Neutral'])
-const getColors = category => {
-  return Object.keys(colors)
-    .filter(color => color.includes(category))
+const props = defineProps(['tokens', 'type'])
+const getColors = tokenType => {
+  return Object.keys(props.tokens)
+    .filter(color => color.includes(tokenType))
     .map(color => ({
-      name: category,
+      name: tokenType,
       key: color,
-      scale: color.replace(`color${category}`, ''),
-      value: colors[color]
+      scale: color.replace(`color${tokenType}`, ''),
+      value: props.tokens[color]
     }))
     .sort((a, b) => a.scale - b.scale)
 }
@@ -17,26 +15,26 @@ const getColors = category => {
 
 <template>
   <section class="color-pallette">
-    <div class="item" v-for="(category, index) in categories">
+    <div class="item">
       <div class="info">
         <div class="title">
-          <strong>{{ category }}</strong>
+          <strong>{{ type }}</strong>
         </div>
         <div class="type">
           <img src="/icons/css.png" class="icon" alt="CSS" />
-          <small>--ods-color-{{ category.toLowerCase() }}-{n}</small>
+          <small>--ods-color-{{ type.toLowerCase() }}-{n}</small>
         </div>
         <div class="type">
           <img src="/icons/sass.png" class="icon" alt="SASS" />
-          <small>$ods-color-{{ category.toLowerCase() }}-{n}</small>
+          <small>$ods-color-{{ type.toLowerCase() }}-{n}</small>
         </div>
         <div class="type">
           <img src="/icons/js.png" class="icon" alt="javascript" />
-          <small>color{{ category }}{n}</small>
+          <small>color{{ type }}{n}</small>
         </div>
       </div>
       <div class="colors">
-        <div class="color" v-for="(color, index) in getColors(category)">
+        <div class="color" v-for="(color, index) in getColors(type)" :key="index">
           <div class="rect" :style="{ backgroundColor: color.value }"></div>
           <div class="scale">{{ color.scale }}</div>
         </div>
