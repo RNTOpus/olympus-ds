@@ -1,24 +1,55 @@
 <script setup>
-  import { ref, onMounted, computed } from 'vue';
-  import { getHighlighter, setCDN } from 'shiki'
   const props = defineProps(['lang', 'content' ]);
-  const code = ref(null)
+  async function copyToClipboard() {
+    try {
+      return navigator.clipboard.writeText(props.content)
+    } catch {
+      const element = document.createElement('textarea')
+      const previouslyFocusedElement = document.activeElement
 
-  setCDN('https://unpkg.com/shiki/')
+      element.value = props.content
 
-  onMounted(async () => {
-  if (!code.value) {
-    const highlighter = await getHighlighter({theme: 'dark-plus'})
-    code.value = highlighter.codeToHtml(props.content, { lang: props.lang })
+      // Prevent keyboard from showing on mobile
+      element.setAttribute('readonly', '')
+
+      element.style.contain = 'strict'
+      element.style.position = 'absolute'
+      element.style.left = '-9999px'
+      element.style.fontSize = '12pt' // Prevent zooming on iOS
+
+      const selection = document.getSelection()
+      const originalRange = selection
+        ? selection.rangeCount > 0 && selection.getRangeAt(0)
+        : null
+
+      document.body.appendChild(element)
+      element.select()
+
+      // Explicit selection workaround for iHTMLElementOS
+      element.selectionStart = 0
+      element.selectionEnd = text.length
+
+      document.execCommand('copy')
+      document.body.removeChild(element)
+
+      if (originalRange) {
+        selection.removeAllRanges() // originalRange can't be truthy when selection is falsy
+        selection.addRange(originalRange)
+      }
+
+      // Get the focus back on the previously focused element, if any
+      if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus()
+      }
   }
-})
+}
 </script>
 
 <template>
-  <div class="language-bash" :class="'language-'+ lang">
-      <button class="copy"></button>
-      <span class="lang">{{lang}}</span>
-      <span class="code" v-html="code"></span>
+  <div :class="'language-'+ lang">
+    <button class="copy" @click="copyToClipboard"></button>
+    <span class="lang">{{lang}}</span>
+    <highlightjs :language='lang' :code="content" />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <script setup>
-  import * as tokens from 'https://cdn.jsdelivr.net/npm/olympus-ds-design-tokens@0.0.8/lib/time.js'
+  import * as tokens from 'olympus-ds-design-tokens/lib/time.js'
   const types = ['Transition', 'Delay'];
 </script>
 

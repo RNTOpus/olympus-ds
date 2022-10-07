@@ -27,7 +27,7 @@
 
 <Tabs>
   <Tab active="true" title="JS/TS">
-    <BlockCode lang="js" :content="`import '${packageName}'`" />
+    <BlockCode lang="javascript" :content="`import '${packageName}'`" />
   </Tab>
   <Tab title="HTML">
     <BlockCode lang="html" content="<ods-button>Button</ods-button>" />

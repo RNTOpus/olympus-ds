@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "type":"module",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/opusbr/opus-olympus-design-system.git",
