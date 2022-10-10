@@ -73,8 +73,10 @@ try {
   `, { semi: false, parser: "babel" }
   );
   const indexSource = `export { default as ${reactName} } from './${fileName}'`
+  const indexTypeSource = `declare module '@olympus/${reactDir}';`
   writeFileSync(`${reactDir}/${fileName}.js`, source, 'utf8');
   writeFileSync(`${reactDir}/index.js`, indexSource, 'utf8');
+  writeFileSync(`${reactDir}/index.d.ts`, indexTypeSource, 'utf8');
 } catch (error) {
   deleteSync(outputPath);
   console.error(error);

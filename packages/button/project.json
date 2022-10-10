@@ -7,7 +7,7 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "packages/button/dist",
+        "outputPath": "dist/packages/button",
         "tsConfig": "packages/button/tsconfig.json",
         "project": "packages/button/package.json",
         "entryFile": "packages/button/src/index.ts",

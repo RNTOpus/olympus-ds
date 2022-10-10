@@ -25,7 +25,7 @@
     "types",
     "custom-elements.json",
     "button.d.ts",
-    "button.styles.d.ts",
+    "button.*.d.ts",
     "index.js",
     "index.d.ts"
   ],
