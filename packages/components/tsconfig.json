@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "outDir": "dist/packages/components",
     "sourceMap": true,
     "target": "es2019",
     "module": "es2015",
@@ -22,11 +23,12 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "useUnknownInCatchVariables": true,
-    "baseUrl": ".",
-    "paths": {
-      "@olympus/components": ["packages/components/src/index.ts"],
-      "@olympus/button": ["packages/button/src/index.ts"]
-    }
+    "baseUrl": "."
   },
-  "exclude": ["node_modules", "tmp"]
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
 }
