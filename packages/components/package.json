@@ -38,6 +38,5 @@
     "access": "public"
   },
   "type": "module",
-  "types": "./index.d.ts",
-  "sideEffects": false
+  "types": "./index.d.ts"
 }

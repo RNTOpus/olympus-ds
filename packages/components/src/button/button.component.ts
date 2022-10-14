@@ -1,5 +1,5 @@
 import { CSSResultGroup, html, LitElement } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import type { OdsButtonSize as Size, OdsButtonType as Type, OdsButtonVariant as Variant } from './button.types';
 import styles from './button.styles';
 
@@ -20,8 +20,6 @@ import styles from './button.styles';
 export class OdsButton extends LitElement {
 
   static styles: CSSResultGroup = styles;
-
-  @query('.button') button: HTMLButtonElement;
 
   @property({ reflect: true }) variant: Variant = 'primary';
 
