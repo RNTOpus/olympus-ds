@@ -13,7 +13,7 @@ Button component
 ```html
 <script>
   import "@olympus/tokens/index.css";
-  import '@olympus/button';
+  import '@olympus/components/button';
 </script>
 <ods-button />
 ```

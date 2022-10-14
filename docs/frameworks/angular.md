@@ -29,7 +29,7 @@ Button component
 :::
 
 ```ts{1,5}
-import '@olympus/button';
+import '@olympus/components/button';
 
 @Component({
   selector: 'my-component',

@@ -60,7 +60,7 @@ Button component
 
 ```vue
 <script setup>
-  import '@olympus/button';
+  import '@olympus/components/button';
 </script>
 <template>
   <ods-button />

@@ -1,8 +1,9 @@
 <script setup>
-  import '../../packages/button/dist/index'
+  import '../../dist/packages/components/button'
   const version = '0.0.1'
-  const cdn = `https://cdn.jsdelivr.net/npm/@olympus/button@${version}/index.js`
-  const packageName = '@olympus/button'
+  const packageName = '@olympus/components'
+  const componentName = 'button'
+  const cdn = `https://cdn.jsdelivr.net/npm/${packageName}/${componentName}@${version}/index.js`
 </script>
 
 
@@ -27,13 +28,13 @@
 
 <Tabs>
   <Tab active="true" title="JS/TS">
-    <BlockCode lang="javascript" :content="`import '${packageName}'`" />
+    <BlockCode lang="javascript" :content="`import '${packageName}/${componentName}'`" />
   </Tab>
   <Tab title="HTML">
-    <BlockCode lang="html" content="<ods-button>Button</ods-button>" />
+    <BlockCode lang="html" content="<ods-button> Label </ods-button>" />
   </Tab>
   <Tab title="REACT">
-    <BlockCode lang="jsx" :content="`import { OdsButton } from '${packageName}/react';
+    <BlockCode lang="jsx" :content="`import { OdsButton } from '${packageName}/react/${componentName}';
 const App = () => (<OdsButton>Button</OdsButton>);`" />
   </Tab>
 </Tabs>
@@ -41,7 +42,7 @@ const App = () => (<OdsButton>Button</OdsButton>);`" />
 ## Examples
 
 ### Variants
->Use the `variant` attribute to change a button's color.<br />**Default:** Primary
+>Use the `variant` attribute to change a button's color.<br />**Default:** Primary<br />**Type:** OdsButtonVariant
 
 <Preview>
   <ods-button>Primary</ods-button>
@@ -58,7 +59,8 @@ const App = () => (<OdsButton>Button</OdsButton>);`" />
 <ods-button variant="success">Success</ods-button>' />
   </Tab>
   <Tab title="REACT">
-    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react";
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
+import type { OdsButtonVariant } from "${packageName}/${componentName}";
 const App = () => (
   <>
     <OdsButton>Primary</OdsButton>
@@ -72,7 +74,7 @@ const App = () => (
 
 
 ### Size
->Use the `size` attribute to change a button's size<br />**Default:** Normal
+>Use the `size` attribute to change a button's size<br />**Default:** Normal<br />**Type:** OdsButtonSize
 
 <Preview>
   <ods-button size="small">Small</ods-button>
@@ -87,7 +89,8 @@ const App = () => (
 <ods-button size="normal">Normal</ods-button>' />
   </Tab>
   <Tab title="REACT">
-    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react";
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
+import type { OdsButtonSize } from "${packageName}/${componentName}";
 const App = () => (
   <>
     <OdsButton size="small">Small</OdsButton>
@@ -117,7 +120,7 @@ const App = () => (
 <ods-button variant="success" outlined>Success</ods-button>' />
   </Tab>
   <Tab title="REACT">
-    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react";
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
 const App = () => (
   <>
     <OdsButton outlined>Primary</OdsButton>
@@ -147,7 +150,7 @@ const App = () => (
 <ods-button variant="success" disabled>Success</ods-button>' />
   </Tab>
   <Tab title="REACT">
-    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react";
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
 const App = () => (
   <>
     <OdsButton disabled>Primary</OdsButton>
@@ -177,7 +180,7 @@ const App = () => (
 <ods-button variant="success" fully>Success</ods-button>' />
   </Tab>
   <Tab title="REACT">
-    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react";
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
 const App = () => (
   <>
     <OdsButton fully>Primary</OdsButton>
@@ -203,11 +206,11 @@ const App = () => (
   </Tab>
   <Tab title="BUNDLER">
     <small>To import this component using a bundler.</small>
-    <BlockCode lang="js" :content='`import "${packageName}"`' />
+    <BlockCode lang="js" :content='`import "${packageName}/${componentName}"`' />
   </Tab>
   <Tab title="REACT">
     <small>To import this component as a React Component.</small>
-    <BlockCode lang="js" :content='`import { OdsButton } from "${packageName}/react"`' />
+    <BlockCode lang="js" :content='`import { OdsButton } from "${packageName}/react/${componentName}"`' />
   </Tab>
 </Tabs>
 

@@ -7,7 +7,7 @@ Button component
 :::
 
 ```jsx
-import { OdsButton } from '@olympus/button/react';
+import { OdsButton } from '@olympus/components/react/button';
 
 const MyComponent = () => <OdsButton>Click me</OdsButton>;
 
