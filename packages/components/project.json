@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/components/lib",
+  "sourceRoot": "packages/components/src",
   "projectType": "library",
   "targets": {
     "build": {
@@ -17,11 +17,15 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/components"],
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "jestConfig": "packages/components/jest.config.ts",
-        "passWithNoTests": true
+        "outputPath": "packages/components",
+        "commands": [
+          {
+            "command": "web-test-runner"
+          }
+        ]
       }
     }
   },
