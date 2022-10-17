@@ -1,25 +1,14 @@
 import { CSSResultGroup, html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import type { OdsButtonSize as Size, OdsButtonType as Type, OdsButtonVariant as Variant } from './button.types';
 import styles from './button.styles';
 
-/**
- * @event ods-blur - Emitted when the button loses focus.
- * @event ods-focus - Emitted when the button gains focus.
- *
- * @slot - The button's label.
- * @slot prefix - Used to prepend an icon or similar element to the button.
- * @slot suffix - Used to append an icon or similar element to the button.
- *
- * @csspart button - The component's internal wrapper.
- * @csspart prefix - The prefix slot's container.
- * @csspart label - The button's label.
- * @csspart suffix - The suffix slot's container.
- */
 @customElement('ods-button')
 export class OdsButton extends LitElement {
 
   static styles: CSSResultGroup = styles;
+
+  @query('.button') button?: HTMLButtonElement;
 
   @property({ reflect: true }) variant: Variant = 'primary';
 
@@ -32,6 +21,10 @@ export class OdsButton extends LitElement {
   @property({ type: Boolean, reflect: true }) fully = false;
 
   @property() type: Type = 'button';
+
+  click() {
+    this.button?.click();
+  }
 
   handleBlur() {
     const event = new CustomEvent('ods-blur', {
