@@ -162,6 +162,36 @@ const App = () => (
   </Tab>
 </Tabs>
 
+### Ghost
+>Use the `ghost` attribute to render a button with no background and no border.
+
+<Preview>
+  <ods-button ghost>Primary</ods-button>
+  <ods-button variant="danger" ghost>Danger</ods-button>
+  <ods-button variant="warning" ghost>Warning</ods-button>
+  <ods-button variant="success" ghost>Success</ods-button>
+</Preview>
+
+<Tabs>
+  <Tab active="true" title="HTML">
+    <BlockCode lang="html" content='<ods-button ghost>Primary</ods-button>
+<ods-button variant="danger" ghost>Danger</ods-button>
+<ods-button variant="warning" ghost>Warning</ods-button>
+<ods-button variant="success" ghost>Success</ods-button>' />
+  </Tab>
+  <Tab title="REACT">
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
+const App = () => (
+  <>
+    <OdsButton ghost>Primary</OdsButton>
+    <OdsButton variant="danger" ghost>Danger</OdsButton>
+    <OdsButton variant="warning" ghost>Warning</OdsButton>
+    <OdsButton variant="success" ghost>Success</OdsButton>
+  </>
+);`' />
+  </Tab>
+</Tabs>
+
 ### Fully
 >Use the `fully` attribute to apply 100% width to the button.
 
@@ -193,6 +223,107 @@ const App = () => (
 </Tabs>
 
 
+### Rounded
+>Use the `rounded` attribute to change the rounded shape of the button<br />**Default:** Standard<br />**Type:** OdsRoundedButton
+
+<Preview>
+  <ods-button rounded="standard">Standard</ods-button>
+  <ods-button rounded="none">None</ods-button>
+  <ods-button rounded="pill">Pill</ods-button>
+  <ods-button rounded="circle">+</ods-button>
+</Preview>
+
+<Tabs>
+  <Tab active="true" title="HTML">
+    <BlockCode lang="html" content='<ods-button rounded="standard">Standard</ods-button>
+<ods-button rounded="none">None</ods-button>
+<ods-button rounded="pill">Pill</ods-button>
+<ods-button rounded="circle">+</ods-button>' />
+  </Tab>
+  <Tab title="REACT">
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
+const App = () => (
+  <>
+    <OdsButton rounded="standard">Standard</OdsButton>
+    <OdsButton rounded="none">None</OdsButton>
+    <OdsButton rounded="pill">Pill</OdsButton>
+    <OdsButton rounded="circle">+</OdsButton>
+  </>
+);`' />
+  </Tab>
+</Tabs>
+
+### Slots
+>To add a label to the button, just define the text or some html element. <br />Use the `prefix` and `suffix` slots to add icons.
+
+<Preview>
+  <ods-button rounded="standard">
+    <span class="material-symbols-outlined" style="display: flex; padding: 0"> settings </span>
+  </ods-button>
+  <ods-button rounded="standard">
+    <span class="material-symbols-outlined" slot="prefix"> settings </span>
+    Settings
+  </ods-button>
+  <ods-button rounded="standard">
+    <span>Next</span>
+    <span class="material-symbols-outlined" slot="suffix"> chevron_right </span>
+  </ods-button>
+  <ods-button rounded="standard">
+    <span class="material-symbols-outlined" slot="prefix"> link </span>
+    Open
+    <span class="material-symbols-outlined" slot="suffix" style="font-size: 20px"> open_in_new </span>
+  </ods-button>
+</Preview>
+
+<Tabs>
+  <Tab active="true" title="HTML">
+    <BlockCode lang="html" content='<ods-button>
+  <span class="mso" style="display: flex; padding: 0"> settings </span>
+</ods-button>
+<ods-button>
+  <span class="mso" slot="prefix"> settings </span>
+  Settings
+</ods-button>
+<ods-button>
+  <span>Next</span>
+  <span class="mso" slot="suffix"> chevron_right </span>
+</ods-button>
+<ods-button>
+  <span class="mso" slot="prefix"> link </span>
+    Open
+  <span class="mso" slot="suffix" style="font-size: 20px"> open_in_new </span>
+</ods-button>' />
+  </Tab>
+  <Tab title="REACT">
+    <BlockCode lang="jsx" :content='`import { OdsButton } from "${packageName}/react/${componentName}";
+const App = () => (
+  <>
+    <OdsButton>
+      <span class="mso" style="display: flex; padding: 0"> settings </span>
+    </OdsButton>
+    <OdsButton>
+       <span class="mso" slot="prefix"> settings </span>
+      Settings
+    </OdsButton>
+    <OdsButton>
+      <span>Next</span>
+      <span class="mso" slot="suffix"> chevron_right </span>
+    </OdsButton>
+    <OdsButton>
+      <span class="mso" slot="prefix"> link </span>
+        Open
+      <span class="mso" slot="suffix" style="font-size: 20px"> open_in_new </span>
+    </OdsButton>
+  </>
+);`' />
+  </Tab>
+</Tabs>
+
+::: tip Material Icon
+In the examples above, Material Symbols was used,
+`class=mso` equal `class=material-symbols-outlined`
+:::
+
 ## Importing
 
 <Tabs>
@@ -218,21 +349,31 @@ const App = () => (
 ## Properties
 
 | Name        | Description           | Type  | Default  |
-| ------------|:---------------------:| -----:| --------:|
+| ------------|:---------------------:| -----| --------|
 | `variant`   | The button's variant. <br /> <sub>Type: `OdsButtonVariant`</sub> | `'primary'` <br /> `'danger'` <br /> `'warning'` <br /> `'success'` | `'primary'`
 | `size`   | The button's size. <br /> <sub>Type: `OdsButtonSize`</sub> | `'small'` <br /> `'medium'` <br /> `'normal'` | `'normal'`
 | `type`   | The button's type. <br /> <sub>Type: `OdsButtonType`</sub> | `'button'` <br /> `'submit'` <br /> `'reset'` | `'button'`
 | `oulined`   | Render outlined buttons with transparent backgrounds | `boolean` | `false`
 | `disabled`   | Disabled button | `boolean` | `false`
 | `fully`   | Apply 100% width to the button | `boolean` | `false`
+| `rounded`   | The button's rounded shape. <br /> <sub>Type: `OdsRoundedButton`</sub> | `'standard'` <br /> `'none'` <br /> `'pill'` <br /> `'circle'` | `'standard'`
+| `ghost`   | Render buttons without background and border | `boolean` | `false`
 
 
 ## Events
 
 | Event        | React Event   | Description                         | Event Detail
-| -------------| --------------|:-----------------------------------:| -----------:| 
+| -------------| --------------|:-----------------------------------:| -----------| 
 | `ods-blur`   | `onOdsBlur`   | Emitted when the button loses focus | -
 | `ods-focus`  | `onOdsFocus`  | Emitted when the button gains focus | -
+
+## Methods
+
+| Event        | Description                   | Arguments
+| -------------| ------------------------------|-----------| 
+| `click`      | Click on the button           | -
+| `focus`      | Focus on the button           | `options: FocusOptions`
+| `blur`       | Removes focus from the button | -
 
 ## Slots
 
@@ -247,4 +388,5 @@ const App = () => (
 | Name     | Description                       
 | ---------| ---------------------------------|
 | `button` | The native button component.
+| `label`  | The `<span>` button label.
 

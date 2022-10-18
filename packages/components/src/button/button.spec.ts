@@ -1,5 +1,5 @@
 import './.'
-import type { OdsButton, OdsButtonSize, OdsButtonType, OdsButtonVariant } from './.'
+import type { OdsButton, OdsButtonType } from './.'
 import { expect, fixture, html, waitUntil } from '@open-wc/testing'
 import sinon from 'sinon'
 
@@ -17,73 +17,38 @@ describe('<ods-button>', () => {
     </ods-button>`)
   }
 
-  describe('when not passing attributes', () => {
-    it('should be accessible', async () => {
-      const el = await render({})
-      await expect(el).to.be.accessible()
-      expect(el.shadowRoot!.querySelector('button')).to.exist
-    })
+  it('should render successfully', async () => {
+    const el = await fixture<OdsButton>(html`<ods-button> Label </ods-button>`)
+    await expect(el).to.be.accessible()
 
-    it('default values are set correctly', async () => {
-      const el = await fixture<OdsButton>(html`<ods-button> Label </ods-button>`)
+    expect(el.variant).to.equal('primary')
+    expect(el.size).to.equal('normal')
+    expect(el.rounded).to.equal('standard')
 
-      expect(el.variant).to.equal('primary');
-      expect(el.size).to.equal('normal');
-
-      const nativeButton = el.shadowRoot!.querySelector('button')
-      if (nativeButton) {
-        expect(nativeButton.type).to.equal('button');
-      }
-
-    });
+    const nativeButton = el.shadowRoot!.querySelector('button')
+    if (nativeButton) {
+      expect(nativeButton.type).to.equal('button')
+    }
   })
 
-  describe('when passing attributes', () => {
 
-    const variants: OdsButtonVariant[] = ['primary', 'success', 'warning', 'danger', 'neutral']
-    variants.forEach(variant => {
-      it(`should be accessible with the "${variant}" variant`, async () => {
-        const el = await render({ variant })
-        await expect(el).to.be.accessible()
-      })
-    })
-
-    const sizes: OdsButtonSize[] = ['small', 'medium', 'normal']
-    sizes.forEach(size => {
-      it(`should be accessible with the "${size}" size`, async () => {
-        const el = await render({ size: size })
-        await expect(el).to.be.accessible()
-      })
-    })
+  describe('when passing type attribute', () => {
 
     const types: OdsButtonType[] = ['button', 'submit', 'reset']
     types.forEach(type => {
-      it(`should be accessible with the "${type}" type`, async () => {
+      it(`should change type in the native <button> to "${type}"`, async () => {
         const el = await render({ type })
-        await expect(el).to.be.accessible()
-        await expect(el.shadowRoot!.querySelector(`button[type='${type}']`)).to.exist
+        expect(el).to.be.accessible()
+        expect(el.shadowRoot!.querySelector(`button[type='${type}']`)).to.exist
       })
     })
 
-    it(`should be accessible with the fully attribute`, async () => {
-      const el = await render({ fully: true })
-      await expect(el).to.be.accessible()
-    })
-
-    it(`should be accessible with the outlined attribute`, async () => {
-      const el = await render({ outlined: true })
-      await expect(el).to.be.accessible()
-    })
   })
 
   describe('when disabled', () => {
-    it('should be accessible with the disabled attribute', async () => {
-      const el = await render({ disabled: true })
-      await expect(el).to.be.accessible()
-    })
-
     it('should disable the native <button>', async () => {
       const el = await render({ disabled: true })
+      expect(el).to.be.accessible()
       expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist
     })
 
@@ -101,6 +66,23 @@ describe('<ods-button>', () => {
   })
 
   describe('when using methods', () => {
+    it('should emit ods-focus and ods-blur when the button is focused and blurred', async () => {
+      const el = await render({})
+      const focusHandler = sinon.spy()
+      const blurHandler = sinon.spy()
+
+      el.addEventListener('ods-focus', focusHandler)
+      el.addEventListener('ods-blur', blurHandler)
+
+      el.focus()
+      await waitUntil(() => focusHandler.calledOnce)
+
+      el.blur()
+      await waitUntil(() => blurHandler.calledOnce)
+
+      expect(focusHandler).to.have.been.calledOnce
+      expect(blurHandler).to.have.been.calledOnce
+    })
     it('should emit a click event when calling click()', async () => {
       const el = await render({})
       const clickHandler = sinon.spy()

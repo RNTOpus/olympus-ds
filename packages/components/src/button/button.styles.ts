@@ -13,6 +13,7 @@ export default css`
   --ods-button-border-color: transparent;
   --ods-button-font-size: var(--ods-font-size-md);
   --ods-button-border: none;
+  --ods-button-border-radius: var(--ods-radii-xs);
   --ods-button-shadow: unset;
   --ods-button-shadow-offset-x: 0;
   --ods-button-shadow-offset-y: var(--ods-size-xxxs);
@@ -33,7 +34,7 @@ export default css`
   border-color: var(--ods-button-border-color);
   background-color: var(--ods-button-bg-color);
   color: var(--ods-button-text-color);
-  border-radius: var(--ods-radii-xs);
+  border-radius: var(--ods-button-border-radius);
   font-family: var(--ods-font-family-base, 'system-ui');
   font-weight: var(--ods-font-weight-bold);
   font-size: var(--ods-button-font-size);
@@ -52,6 +53,11 @@ export default css`
 }
 
 :host slot::slotted(*) {
+  padding: 0 var(--ods-spacing-xxs);
+  font-size: var(--ods-button-font-size);
+}
+
+:host .label {
   padding: 0 var(--ods-spacing-xxs);
 }
 
@@ -175,5 +181,80 @@ export default css`
 :host slot::slotted(*),
 :host([fully]) .button {
   --ods-button-width: 100%;
+}
+
+/* Rounded */
+:host([rounded="none"]) {
+  --ods-button-border-radius: var(--ods-radii-none);
+}
+:host([rounded="pill"]) {
+  --ods-button-border-radius: var(--ods-radii-pill);
+}
+:host([rounded="pill"]) .button {
+  min-width: var(--ods-size-giga);
+}
+:host([rounded="circle"]) {
+  --ods-button-border-radius: var(--ods-radii-circular);
+  --ods-button-width: var(--ods-size-xxl);
+  --ods-button-height: var(--ods-size-xxl);
+}
+:host([rounded="circle"]) .button {
+  padding: 0
+}
+
+/* Ghost */
+:host([ghost]) {
+  --ods-button-bg-color: transparent;
+  --ods-button-border-color: transparent;
+  --ods-button-text-color: var(--ods-color-primary-base);
+}
+:host([ghost][variant="danger"]) {
+  --ods-button-bg-color: transparent;
+  --ods-button-border-color: transparent;
+  --ods-button-text-color: var(--ods-color-danger-base);
+}
+:host([ghost][variant="warning"])  {
+  --ods-button-bg-color: transparent;
+  --ods-button-border-color: transparent;
+  --ods-button-text-color: var(--ods-color-warning-30);
+}
+:host([ghost][variant="success"]) {
+  --ods-button-bg-color: transparent;
+  --ods-button-border-color: transparent;
+  --ods-button-text-color: var(--ods-color-success-30);
+}
+
+/* Ghost:hover */
+:host([ghost]) .button:not(:disabled):not(:active):hover {
+  --ods-button-bg-color: transparent;
+  --ods-button-border-color: transparent;
+  --ods-button-text-color: var(--ods-color-primary-70);
+  --ods-button-shadow: none;
+}
+:host([ghost][variant="danger"]) .button:not(:disabled):not(:active):hover {
+  --ods-button-text-color: var(--ods-color-danger-60);
+}
+:host([ghost][variant="warning"]) .button:not(:disabled):not(:active):hover  {
+  --ods-button-text-color: var(--ods-color-warning-60);
+}
+:host([ghost][variant="success"]) .button:not(:disabled):not(:active):hover  {
+  --ods-button-text-color: var(--ods-color-success-60);
+}
+
+/* Ghost:active */
+:host([ghost]) .button:not(:disabled):active {
+  --ods-button-bg-color: transparent;
+  --ods-button-border-color: transparent;
+  --ods-button-text-color: var(--ods-color-primary-30);
+  --ods-button-shadow: none;
+}
+:host([ghost][variant="danger"]) .button:not(:disabled):active {
+  --ods-button-text-color: var(--ods-color-danger-30);
+}
+:host([ghost][variant="warning"]) .button:not(:disabled):active {
+  --ods-button-text-color: var(--ods-color-warning-30);
+}
+:host([ghost][variant="success"]) .button:not(:disabled):active {
+  --ods-button-text-color: var(--ods-color-success-30);
 }
 `;
