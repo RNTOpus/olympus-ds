@@ -53,6 +53,10 @@ export default defineConfig({
             {
               text: 'Usage',
               link: '/getting-started/usage'
+            },
+            {
+              text: 'Packages',
+              link: '/getting-started/packages'
             }
           ]
         }

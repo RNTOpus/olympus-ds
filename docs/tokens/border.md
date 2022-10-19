@@ -13,3 +13,5 @@
   :key="index" 
   :type="type" 
 />
+
+

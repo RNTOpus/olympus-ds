@@ -11,14 +11,15 @@
 
 ## Installation
 
-<Tabs>
-  <Tab active="true" title="NPM">
-    <BlockCode lang="bash" :content="`npm install ${packageName}`" />
-  </Tab>
-  <Tab title="YARN">
-    <BlockCode lang="bash" :content="`yarn add ${packageName}`" />
-  </Tab>
-</Tabs>
+```bash
+npm install @olympus/tokens
+```
+
+or
+
+```bash
+yarn add @olympus/tokens
+```
 
 ## Usage
 
