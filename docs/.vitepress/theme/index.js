@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import './styles/main.css'
+import '../../../dist/packages/components'
 import BlockCode from './components/BlockCode.vue'
 import ColorPalette from './components/ColorPalette.vue'
 import Frameworks from './components/Frameworks.vue'

@@ -1,14 +1,3 @@
-<script setup>
-  import '../../dist/packages/components/button'
-  const version = '0.0.1'
-  const packageName = '@olympus/components'
-  const componentName = 'button'
-  const cdn = `https://cdn.jsdelivr.net/npm/${packageName}/${componentName}@${version}/index.js`
-
-</script>
-
-<RenderTabs />
-
 # Button
 
 ## Usage
@@ -402,6 +391,3 @@ In the examples above, Material Symbols was used,
 | `button` | The native button component. |
 | `label`  | The `<span>` button label.   |
 
-```
-
-```
