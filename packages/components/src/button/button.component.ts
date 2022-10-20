@@ -6,8 +6,20 @@ import type {
   OdsButtonType as Type,
   OdsButtonVariant as Variant,
   OdsRoundedButton as Rounded
-} from './button.types'
-import styles from './button.styles'
+} from './types'
+import styles from './styles/button.common.styles'
+
+/**
+ * @event ods-blur - Emitted when the button loses focus.
+ * @event ods-focus - Emitted when the button gains focus.
+ *
+ * @slot - The button's label.
+ * @slot prefix - Used to prepend an icon or similar element to the button.
+ * @slot suffix - Used to append an icon or similar element to the button.
+ *
+ * @csspart button - The component's internal wrapper.
+ * @csspart label - The button's label.
+ */
 
 @customElement('ods-button')
 export class OdsButton extends OdsBaseElement {
@@ -23,11 +35,9 @@ export class OdsButton extends OdsBaseElement {
 
   @property({ type: Boolean, reflect: true }) disabled = false
 
-  @property({ type: Boolean, reflect: true }) outlined = false
+  @property({ type: Boolean, reflect: true }) outline = false
 
   @property({ type: Boolean, reflect: true }) fully = false
-
-  @property({ type: Boolean, reflect: true }) ghost = false
 
   @property() type: Type = 'button'
 

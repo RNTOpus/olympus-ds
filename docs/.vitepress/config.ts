@@ -89,8 +89,30 @@ export default defineConfig({
           text: 'Components',
           items: [
             {
-              text: 'Button',
-              link: '/components/button'
+              text: 'Buttons',
+              link: '/components/buttons/overview',
+              items: [
+                {
+                  text: 'Basic',
+                  link: '/components/buttons/basic'
+                },
+                {
+                  text: 'Filled',
+                  link: '/components/buttons/filled-button'
+                },
+                {
+                  text: 'Outlined',
+                  link: '/components/buttons/outlined-button'
+                },
+                {
+                  text: 'Text',
+                  link: '/components/buttons/text-button'
+                },
+                {
+                  text: 'Custom',
+                  link: '/components/buttons/custom'
+                }
+              ]
             }
           ]
         }

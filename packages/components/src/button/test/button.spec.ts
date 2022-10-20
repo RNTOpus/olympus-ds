@@ -1,5 +1,5 @@
-import './.'
-import type { OdsButton, OdsButtonType } from './.'
+import '..'
+import type { OdsButton, OdsButtonType } from '..'
 import { expect, fixture, html, waitUntil } from '@open-wc/testing'
 import sinon from 'sinon'
 
@@ -31,9 +31,7 @@ describe('<ods-button>', () => {
     }
   })
 
-
   describe('when passing type attribute', () => {
-
     const types: OdsButtonType[] = ['button', 'submit', 'reset']
     types.forEach(type => {
       it(`should change type in the native <button> to "${type}"`, async () => {
@@ -42,7 +40,6 @@ describe('<ods-button>', () => {
         expect(el.shadowRoot!.querySelector(`button[type='${type}']`)).to.exist
       })
     })
-
   })
 
   describe('when disabled', () => {
@@ -93,5 +90,53 @@ describe('<ods-button>', () => {
 
       expect(clickHandler).to.have.been.calledOnce
     })
+  })
+})
+
+describe('<ods-filled-button>', () => {
+  it('should render successfully', async () => {
+    const el = await fixture<OdsButton>(html`<ods-filled-button> Label </ods-filled-button>`)
+    await expect(el).to.be.accessible()
+
+    expect(el.variant).to.equal('primary')
+    expect(el.size).to.equal('normal')
+    expect(el.rounded).to.equal('standard')
+
+    const nativeButton = el.shadowRoot!.querySelector('button')
+    if (nativeButton) {
+      expect(nativeButton.type).to.equal('button')
+    }
+  })
+})
+
+describe('<ods-outlined-button>', () => {
+  it('should render successfully', async () => {
+    const el = await fixture<OdsButton>(html`<ods-outlined-button> Label </ods-outlined-button>`)
+    await expect(el).to.be.accessible()
+
+    expect(el.variant).to.equal('primary')
+    expect(el.size).to.equal('normal')
+    expect(el.rounded).to.equal('standard')
+
+    const nativeButton = el.shadowRoot!.querySelector('button')
+    if (nativeButton) {
+      expect(nativeButton.type).to.equal('button')
+    }
+  })
+})
+
+describe('<ods-text-button>', () => {
+  it('should render successfully', async () => {
+    const el = await fixture<OdsButton>(html`<ods-text-button> Label </ods-text-button>`)
+    await expect(el).to.be.accessible()
+
+    expect(el.variant).to.equal('primary')
+    expect(el.size).to.equal('normal')
+    expect(el.rounded).to.equal('standard')
+
+    const nativeButton = el.shadowRoot!.querySelector('button')
+    if (nativeButton) {
+      expect(nativeButton.type).to.equal('button')
+    }
   })
 })
