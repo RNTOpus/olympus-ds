@@ -20,9 +20,9 @@ try {
   mkdirSync(reactDir, { recursive: true });
 
   components?.map(async component => {
-    const { componentName, componentPath, tagName, ...rest } = component
-    const componentDir = `${reactDir}/${componentPath}`
-    const componentReactName = componentName.replace('Ods', '')
+    const { componentName, componentPath, tagNameWithoutPrefix, tagName, ...rest } = component
+    const componentDir = `${reactDir}/${tagNameWithoutPrefix}`
+    const reactComponentName = componentName.replace('Ods', '')
     const events = (rest.events || []).map(event => `on${names(event.name).className}: '${event.name}'`).join(',\n')
     const source = prettier.format(
       `
@@ -40,12 +40,12 @@ try {
      `,
       { semi: false, parser: 'babel' }
     )
-    index.push(`export * from './${componentPath}'`)
+    index.push(`export * from './${tagNameWithoutPrefix}'`)
     await mkdirp(componentDir)
-    writeFileSync(`${componentDir}/${componentReactName}.ts`, source, 'utf8')
+    writeFileSync(`${componentDir}/${reactComponentName}.ts`, source, 'utf8')
     writeFileSync(
       `${componentDir}/index.ts`,
-      `export { default as ${componentName} } from './${componentReactName}'`,
+      `export { default as ${componentName} } from './${reactComponentName}'`,
       'utf8'
     )
   })

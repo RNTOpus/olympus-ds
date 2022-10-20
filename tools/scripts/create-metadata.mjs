@@ -3,10 +3,10 @@
 //
 import { execSync } from 'child_process'
 import { feedbackErrorMessage, feedbackMessage } from '../utils/feedback-message.mjs'
-const [, , outdir, globs] = process.argv;
+const [, , outdir, source] = process.argv
 
 try {
-  execSync(`cem analyze --globs "${globs}" --litelement --outdir "${outdir}"`, { stdio: 'inherit' })
+  execSync(`cem analyze --globs "${source}/**/*.component.ts" --litelement --outdir "${outdir}"`, { stdio: 'inherit' })
   feedbackMessage('Created custom element metadata successfully')
 } catch (error) {
   feedbackErrorMessage('Error creating custom element metadata', error)

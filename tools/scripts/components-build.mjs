@@ -10,14 +10,13 @@ const packagePath = `packages/${packageName}`
 const sourceRoot = `${packagePath}/src`
 const outputPath = outdir || `dist/${packagePath}`
 const tmpPath = `tmp/${packagePath}`
-const entryFiles = `${sourceRoot}/**/*.component.ts`
 
 deleteSync(outputPath);
 mkdirSync(outputPath, { recursive: true });
 
 (async () => {
   try {
-    execSync(`node tools/scripts/create-metadata.mjs ${tmpPath} ${entryFiles}`, { stdio: 'inherit' });
+    execSync(`node tools/scripts/create-metadata.mjs ${tmpPath} ${sourceRoot}`, { stdio: 'inherit' });
     execSync(`node tools/scripts/copy-files.mjs ${sourceRoot} ${tmpPath} "Components"`, { stdio: 'inherit' });
     execSync(`node tools/scripts/create-react-components.mjs ${tmpPath}`, { stdio: 'inherit' });
     execSync(`node tools/scripts/copy-files.mjs ${packagePath + '/tsconfig.json'} ${tmpPath + '/tsconfig.json'} "Typescript config file"`, { stdio: 'inherit' });
