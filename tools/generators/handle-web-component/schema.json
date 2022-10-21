@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "handle-web-component",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nome do componente",
+      "minLength": 3,
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "alias": "n",
+      "x-prompt": "Qual é o nome do componente (EN)?"
+    },
+    "shouldAddToThePlayground": {
+      "type": "boolean",
+      "description": "Se verdadeiro adiciona ao playground",
+      "default": true,
+      "alias": "p",
+      "x-prompt": "Deseja adicionar ao playground (storybook)?"
+    },
+    "attributes": {
+      "type": "array",
+      "description": "Selecionar attributos",
+      "x-prompt": {
+        "message": "Selecione atributos que possam ser útil neste componente:",
+        "type": "list",
+        "multiselect": true,
+        "items": [
+          {
+            "value": "label/string",
+            "label": "Label"
+          },
+          {
+            "value": "disabled/boolean",
+            "label": "Disabled"
+          },
+          {
+            "value": "outlined/boolean",
+            "label": "Outlined"
+          },
+          {
+            "value": "state/string",
+            "label": "State"
+          },
+          {
+            "value": "size/string",
+            "label": "Size"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name"]
+}

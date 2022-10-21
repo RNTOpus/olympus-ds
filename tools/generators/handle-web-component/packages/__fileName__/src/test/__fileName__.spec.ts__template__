@@ -1,0 +1,20 @@
+import '../<%= fileName %>';
+
+describe('<%= className %>', () => {
+
+  const ODS_<%= constantName %>_TAG = 'ods-<%= fileName %>';
+
+  const setup = (attributes?: string, slot?: string) => {
+    document.body.querySelector(ODS_<%= constantName %>_TAG)?.remove()
+    document.body.innerHTML = `<${ODS_<%= constantName %>_TAG} ${attributes}>${slot}</${ODS_<%= constantName %>_TAG}>`;
+    const host = document.querySelector(ODS_<%= constantName %>_TAG);
+    const shadowRoot = host?.shadowRoot;
+    return { shadowRoot };
+  };
+
+  it('should render `ods-<%= fileName %>` successfully', () => {
+    const { shadowRoot } = setup();
+    expect(shadowRoot).toBeTruthy();
+  });
+
+});

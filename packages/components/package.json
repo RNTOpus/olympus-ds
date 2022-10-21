@@ -1,0 +1,42 @@
+{
+  "name": "@olympus/components",
+  "version": "0.0.1",
+  "description": "Olympus Design System | Web Components",
+  "main": "./index.js",
+  "module": "./index.js",
+  "customElements": "./custom-elements.json",
+  "dependencies": {
+    "olympus-ds-design-tokens": "^0.0.8",
+    "lit": "^2.3.1",
+    "@lit-labs/react": "^1.0.8"
+  },
+  "peerDependencies": {
+    "core-js": "^3.25.1",
+    "react": "18.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/opusbr/opus-olympus-design-system.git",
+    "directory": "packages/components"
+  },
+  "files": [
+    "**",
+    "index.js",
+    "index.d.ts",
+    "index.js.map",
+    "custom-elements.json"
+  ],
+  "keywords": [
+    "opus",
+    "opus software",
+    "olympus design system",
+    "olympus ds",
+    "olympus",
+    "web components"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "types": "./index.d.ts"
+}

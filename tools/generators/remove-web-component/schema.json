@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "remove-web-component",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nome do componente",
+      "minLength": 3,
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "alias": "n",
+      "x-prompt": "Qual é o nome do componente que deseja excluir (EN)?"
+    },
+    "shouldRemoveFromThePlayground": {
+      "type": "boolean",
+      "description": "Se verdadeiro remove do playground",
+      "default": true,
+      "alias": "p",
+      "x-prompt": "Deseja remover do playground (storybook)?"
+    }
+  },
+  "required": ["name", "shouldRemoveFromThePlayground"]
+}

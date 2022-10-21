@@ -3,19 +3,29 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
+    "target": "es2019",
+    "module": "es2015",
+    "lib": ["dom", "dom.Iterable", "es2019"],
+    "declaration": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "strictFunctionTypes": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "useDefineForClassFields": false,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": true,
     "baseUrl": ".",
     "paths": {
-      "@olympus-ds/design-tokens": ["libs/design-tokens/src/index.ts"]
+      "@olympus/components": ["packages/components/src/index.ts"],
+      "@olympus/button": ["packages/button/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

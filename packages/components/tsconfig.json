@@ -1,0 +1,33 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowUmdGlobalAccess": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "inlineSources": true,
+    "lib": ["es2019", "dom", "dom.iterable"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist/packages/components",
+    "removeComments": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2019",
+    "useDefineForClassFields": false
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

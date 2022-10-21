@@ -1,0 +1,181 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Introduction" />
+
+# @olympus
+
+Biblioteca de componentes criado com [Web Components](https://developer.mozilla.org/pt-BR/docs/Web/Web_Components) para uso nas tecnologias abaixo:
+
+![Badge](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Badge](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00)
+![Badge](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
+![Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Badge](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[...](https://custom-elements-everywhere.com/)
+
+
+## Instalação
+
+Para instalar um pacote do `@olympus` no seu projeto:
+
+com [npm](https://www.npmjs.com/), rode:
+
+```bash dark
+npm install @olympus/{package-name}
+```
+
+se preferir [yarn](https://yarnpkg.com/en/), rode:
+
+```bash dark
+yarn add @olympus/{package-name}
+```
+
+### Uso:
+```js dark
+import '@olympus/{package-name}';
+```
+
+> **Importante:** Para usar os tokens do **Olympus DS** será necessário importar o arquivo **index.css**, conforme exemplo mais abaixo:
+- **OBS.:** É de responsabilidade da aplicação setar os tokens, desta forma é mais fácil para customizá-los.<br />
+[Saiba mais sobre a biblioteca de Tokens do Olympus DS]().
+```css dark
+  @import "~@olympus/tokens/index.css";
+```
+
+## Sumário
+
+- [Uso no **Angular**](#angular)
+- [Uso no **React**](#react)
+- [Uso no **Svelte**](#svelte)
+- [Uso no **Vue**](#vue)
+
+## Angular
+> Para usar **Web Components** no Angular.<br />Adicione **CUSTOM_ELEMENTS_SCHEMA** no `@NgModule.schemas`, conforme exemplo abaixo:
+
+```js dark
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+...
+@NgModule({
+  ...
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  ...
+})
+export class AppModule { }
+
+```
+> Exemplo de uso do componente `button` no **ANGULAR**:
+
+```typescript dark
+import '@olympus/button';
+
+@Component({
+  selector: 'my-component',
+  template: `
+    <ods-button
+      [state]="buttonState"
+    >
+      {{buttonText}}
+    </ods-button>
+  `,
+  styleUrls: ['./my.component.css']
+})
+export class MyComponent {
+  buttonState = "primary"
+  buttonText = "Botão no angular"
+}
+```
+
+## React
+> Não é necessário configuração para usar **Web Components** no React, mas:
+- React só pode passar tipos de dados primitivos para atributos HTML (não arrays ou objetos)
+- O React não pode escutar eventos do Web Component, então você deve anexar manualmente seus próprios handlers.<br />
+**A versão @experimental do React oferece suporte completo para web components.**
+
+## Svelte
+> Não é necessário configuração para usar **Web Components** no Svelte, veja o exemplo de uso do componente `button`:
+
+```javascript dark
+  <script>
+    import "@olympus/tokens/index.css";
+    import '@olympus/button';
+    export let label = "Botão no Svelte";
+    export let state = "primary"
+  </script>
+  <ods-button
+    state={state}
+    on:click="{() => color = 'success'}">
+      {label}
+  </ods-button>
+```
+
+## Vue
+> Para usar **Web Components** no Vue.<br />Adicione **isCustomElement** no `compilerOptions`, conforme exemplos abaixo:<br />[Documentação oficial](https://vuejs.org/guide/extras/web-components.html)
+
+**In-Browser config:**
+```js dark
+app.config.compilerOptions.isCustomElement = (tag) => tag.includes('-')
+```
+
+**Vite config:**
+```js dark
+import vue from '@vitejs/plugin-vue'
+export default {
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-')
+        }
+      }
+    })
+  ]
+}
+```
+
+**Vue Cli config:**
+```js dark
+// vue.config.js
+module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap(options => ({
+        ...options,
+        compilerOptions: {
+          // treat any tag that starts with ion- as custom elements
+          isCustomElement: tag => tag.startsWith('ion-')
+        }
+      }))
+  }
+}
+```
+
+> Exemplo de uso do componente `button` em **VUE**:
+
+```javascript dark
+<script setup>
+  import { reactive } from 'vue'
+  import '@olympus/button';
+  const button = reactive({
+    label: 'Botão no VUE',
+    state: 'primary'
+  })
+</script>
+<template>
+  <ods-button
+    :state="button.state"
+  >
+    {{button.label}}
+  </ods-button>
+</template>
+<style>
+  @import "@olympus/tokens/index.css";
+</style>
+```
+
+[**Saiba mais sobre suporte a web components em frameworks js**](https://custom-elements-everywhere.com/)
+
+
+

@@ -2,6 +2,9 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "design-tokens": "libs/design-tokens"
+    "button": "packages/button",
+    "components": "packages/components",
+    "playground": "demos/playground",
+    "tokens": "packages/tokens"
   }
 }

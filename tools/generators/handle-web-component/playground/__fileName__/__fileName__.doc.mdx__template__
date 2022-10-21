@@ -1,0 +1,120 @@
+
+# <%= className %>
+## <%= npmScope %>/<%= fileName %>
+
+**Componente _`<ods-<%= fileName %>>`_ criado com web-components**, suporte para:
+
+![Badge](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Badge](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00)
+![Badge](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
+![Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Badge](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[...](https://custom-elements-everywhere.com/)
+
+### Como usar:
+> [Instalar a biblioteca](/docs/introduction--page) e depois:
+
+#### no js/ts:
+```js dark
+import '<%= npmScope %>/<%= fileName %>';
+```
+#### no html:
+
+```html dark
+<ods-<%= fileName %>></ods-<%= fileName %>>;
+```
+[ver outros exemplos em html](#outros-exemplos-de-uso-no-html)
+
+#### no css:
+> **Importante:** Para usar os tokens do **Olympus DS** será necessário importar o arquivo **index.css**, conforme abaixo:
+- **OBS.:** É de responsabilidade da aplicação setar os tokens, desta forma é mais fácil para customizá-los.
+[Ler mais sobre os design tokens do ODS]().
+
+```css dark
+  @import "~<%= npmScope %>/design-tokens/index.css";
+```
+## Sumário
+
+- [Playground](#playground)
+- [Uso no **Angular**](#angular)
+- [Uso no **React**](#react)
+- [Uso no **Svelte**](#svelte)
+- [Uso no **Vue**](#vue)
+- [Estilo **customizado**](#estilo-customizado)
+- [Variações de **UI**](#ui)
+
+import { Story, Primary, ArgsTable, PRIMARY_STORY } from "@storybook/addon-docs";
+
+## Playground
+> Visualize o código clicando em `Show code`
+
+<Primary />
+
+> Altere os valores nos controles abaixo para interagir com o _`<ods-<%= fileName %>>`_ acima
+
+<ArgsTable story={PRIMARY_STORY} />
+
+## Outros exemplos de uso no html
+
+```html dark
+<!-- Default (color="primary" & size="normal") -->
+<ods-<%= fileName %>></ods-<%= fileName %>>
+...
+```
+
+## Angular
+> No **Angular** é necessário adicionar `schemas: [CUSTOM_ELEMENTS_SCHEMA]` no **module**, [ver mais](/docs/introduction--page#angular).
+
+```typescript dark
+import '<%= npmScope %>/<%= fileName %>';
+...
+
+export class MyComponent {
+  ...
+}
+```
+
+```html dark
+<ods-<%= fileName %>></ods-<%= fileName %>>
+```
+
+## Svelte
+> No **Svelte** não precisa de configuração prévia.
+
+```javascript dark
+  <script>
+    import "<%= npmScope %>/design-tokens/index.css";
+    import '<%= npmScope %>/<%= fileName %>';
+  </script>
+```
+
+```html dark
+  <ods-<%= fileName %>></ods-<%= fileName %>>
+```
+
+## Vue
+> No **Vue** é necessário adicionar `isCustomElement` no **compilerOptions no vite.config.js**, [ver mais](/docs/introduction--page#vue).
+
+```javascript dark
+<script setup>
+  import { reactive } from 'vue'
+  import '<%= npmScope %>/<%= fileName %>';
+</script>
+```
+
+```html dark
+<template>
+ <ods-<%= fileName %>></ods-<%= fileName %>>
+</template>
+```
+
+```css dark
+<style>
+  @import "<%= npmScope %>/design-tokens/index.css";
+</style>
+```
+
+
+
+

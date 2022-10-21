@@ -1,0 +1,57 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/button",
+  "projectType": "library",
+  "targets": {
+    "pre-build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/button",
+        "tsConfig": "packages/button/tsconfig.json",
+        "project": "packages/button/package.json",
+        "entryFile": "packages/button/src/index.ts",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "packages/button/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/react-build.mjs button"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "pre-build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/button/src/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "packages/button",
+        "commands": [
+          {
+            "command": "karma start karma.config.js"
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}
