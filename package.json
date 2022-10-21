@@ -10,9 +10,8 @@
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "test:coverage": "web-test-runner --coverage",
-    "create:component": "nx workspace-generator handle-web-component",
-    "update:component": "nx workspace-generator handle-web-component",
-    "remove:component": "nx workspace-generator remove-web-component"
+    "create:component": "nx workspace-generator create-or-update-component",
+    "update:component": "nx workspace-generator create-or-update-component"
   },
   "private": true,
   "dependencies": {

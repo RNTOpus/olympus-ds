@@ -1,0 +1,26 @@
+import { CSSResultGroup, html } from 'lit'
+import { customElement<% if (attributes.length > 0) { %>, property<% } %> } from 'lit/decorators.js'
+import { OdsBaseElement } from '../<% if (hasCategory) { %>../<% } %>shared/base-element'
+import styles from './styles/<%= fileName %>.styles'
+
+@customElement('ods-<%= fileName %>')
+export class Ods<%= className %> extends OdsBaseElement {
+  static styles: CSSResultGroup = styles
+
+  <% if (attributes.length > 0) { %>
+    <% for (let attribute of attributes) { %> @property({ type: <%= attribute.type.className %> }) <%= attribute.name.propertyName %>?: <%= attribute.type.propertyName %>;
+    <% } %>
+  <% } %>
+
+  render() {
+    return html``
+  }
+}
+
+export default Ods<%= className %>
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ods-<%= fileName %>': Ods<%= className %>
+  }
+}

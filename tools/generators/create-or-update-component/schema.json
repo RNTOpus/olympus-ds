@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "create-or-update-component",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nome do componente",
+      "minLength": 3,
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "alias": "n",
+      "x-prompt": "Qual é o nome do componente (EN)?"
+    },
+    "category": {
+      "type": "string",
+      "description": "Categoria do componente",
+      "alias": "cat",
+      "x-prompt": {
+        "message": "Qual é a categoria deste componente?",
+        "type": "list",
+        "items": [
+          {
+            "value": "none",
+            "label": "Nenhuma"
+          },
+          {
+            "value": "form",
+            "label": "Formulário"
+          },
+          {
+            "value": "typography",
+            "label": "Tipografia"
+          }
+        ]
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "description": "Selecionar attributos",
+      "x-prompt": {
+        "message": "Selecione atributos que possam ser úteis neste componente:",
+        "type": "list",
+        "multiselect": true,
+        "items": [
+          {
+            "value": "label/string",
+            "label": "Label"
+          },
+          {
+            "value": "disabled/boolean",
+            "label": "Disabled"
+          },
+          {
+            "value": "outlined/boolean",
+            "label": "Outlined"
+          },
+          {
+            "value": "state/string",
+            "label": "State"
+          },
+          {
+            "value": "variant/string",
+            "label": "Variant"
+          },
+          {
+            "value": "size/string",
+            "label": "Size"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name"]
+}

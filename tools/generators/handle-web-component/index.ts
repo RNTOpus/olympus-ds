@@ -21,7 +21,7 @@ function normalizeOptions(
 ): NormalizedOptions {
   const { libsDir, appsDir, npmScope } = getWorkspaceLayout(tree);
   const attributes = options.attributes?.map(attr => {
-    const attribute = attr.split('/')
+    const attribute = (attr as string).split('/')
     return {
       name: names(attribute[0]),
       type: names(attribute[1])

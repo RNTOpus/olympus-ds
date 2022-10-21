@@ -1,11 +1,8 @@
-import { names } from '@nrwl/devkit'
 import { readFileSync } from 'fs'
 import path from 'path'
 
-const getComponentPath = declaration => {
-  return declaration?.superclass?.name !== 'OdsBaseElement'
-    ? names(declaration?.superclass?.name.replace('Ods', '')).fileName
-    : names(declaration?.name.replace('Ods', '')).fileName
+const getComponentPath = (pathWithoutSource, tagNameWithoutPrefix) => {
+  return pathWithoutSource.substring(0, pathWithoutSource.indexOf(`/${tagNameWithoutPrefix}.component.ts`))
 }
 
 export function getAllComponents(dir) {
@@ -14,11 +11,12 @@ export function getAllComponents(dir) {
   metadata?.modules.map(module => {
     module?.declarations.map(declaration => {
       if (declaration) {
+        const tagNameWithoutPrefix = declaration?.tagName?.replace('ods-', '')
         components.push({
           ...declaration,
-          componentPath: getComponentPath(declaration),
+          componentPath: getComponentPath(module.path.replace('packages/components/src/', ''), tagNameWithoutPrefix),
           componentName: declaration?.name,
-          tagNameWithoutPrefix: declaration?.tagName?.replace('ods-', '')
+          tagNameWithoutPrefix
         })
       }
     })
