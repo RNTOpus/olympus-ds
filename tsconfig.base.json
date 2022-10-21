@@ -24,8 +24,7 @@
     "useUnknownInCatchVariables": true,
     "baseUrl": ".",
     "paths": {
-      "@olympus/components": ["packages/components/src/index.ts"],
-      "@olympus/button": ["packages/button/src/index.ts"]
+      "@olympus/components": ["packages/components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
