@@ -113,6 +113,16 @@ export default defineConfig({
                   link: '/components/buttons/custom'
                 }
               ]
+            },
+            {
+              text: 'Input',
+              link: '/components/input/overview',
+              items: [
+                {
+                  text: 'Basic',
+                  link: '/components/input/basic'
+                }
+              ]
             }
           ]
         }
