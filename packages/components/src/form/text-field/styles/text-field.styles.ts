@@ -12,6 +12,10 @@ export default css`
     outline: none;
   }
 
+  .input:disabled {
+    cursor: not-allowed;
+  }
+
   .input::placeholder {
     color: var(--ods-color-neutral-70);
   }

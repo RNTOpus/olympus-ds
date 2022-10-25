@@ -1,2 +1,2 @@
-export type OdsFieldVariant = 'default' | 'primary' | 'success' | 'neutral' | 'warning' | 'danger'
-export type OdsRoundedField = 'default' | 'none' | 'pill'
+export type OdsLabelState = 'default' | 'grow' | 'shrink'
+export type OdsFieldAppearance = 'outline' | 'fill' | 'inline'

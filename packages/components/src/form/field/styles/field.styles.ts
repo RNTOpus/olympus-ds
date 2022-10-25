@@ -1,17 +1,16 @@
 import { css } from 'lit'
 export default css`
   .field {
+    position: relative;
     width: var(--ods-field-width);
     height: var(--ods-field-height);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: var(--ods-spacing-xs) var(--ods-spacing-sm);
-    border-style: solid;
-    border-width: var(--ods-border-stroke-xxs);
-    border-color: var(--ods-field-border-color);
-    background-color: var(--ods-field-bg-color);
+    padding: 0 var(--ods-spacing-sm);
+    background-color: transparent;
     color: var(--ods-field-text-color);
+    border: none;
     border-radius: var(--ods-field-border-radius);
     font-family: var(--ods-font-family-base, 'system-ui');
     font-weight: var(--ods-font-weight-bold);
@@ -19,8 +18,7 @@ export default css`
     transition: all 0.4s ease;
   }
 
-  .field .prefix,
-  .field .suffix {
+  .field .icon {
     color: currentColor;
   }
 
@@ -28,17 +26,37 @@ export default css`
     flex: 1;
   }
 
-  :host .field .prefix slot::slotted(*),
-  :host .field .suffix slot::slotted(*) {
-    display: flex !important;
-    color: currentColor;
+  :host([appearance="outline"]) .field {
+    border: solid var(--ods-border-stroke-xxs) var(--ods-field-border-color);
   }
 
-  :host .field .prefix slot::slotted(*) {
+  :host([appearance="inline"]) .field {
+    --ods-field-border-radius: 0;
+    padding: 0;
+    border-bottom: solid var(--ods-border-stroke-xxs) var(--ods-field-border-color);
+  }
+
+  :host([appearance="fill"]) .field {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: solid var(--ods-border-stroke-xxs) var(--ods-field-border-color);
+    background-color: var(--ods-color-neutral-100)
+  }
+
+  :host .field .icon slot::slotted(*) {
+    display: flex !important;
+    color: var(--ods-field-icon-color);
+  }
+
+  :host .field .icon.-left slot::slotted(*) {
     padding-right: var(--ods-spacing-sm)
   }
 
-  :host .field .suffix slot::slotted(*) {
+  :host .field .icon.-right slot::slotted(*) {
     padding-left: var(--ods-spacing-sm)
+  }
+
+  :host([pill]) .field {
+    padding: 0 var(--ods-spacing-md);
   }
 `
