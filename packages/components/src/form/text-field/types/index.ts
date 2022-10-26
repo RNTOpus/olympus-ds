@@ -10,4 +10,4 @@ export type OdsTextFieldType =
   | 'time'
   | 'url'
 
-  export type OdsTextFieldAlias = 'input' | 'textarea'
+  export type OdsTextareaFieldResize = 'none' | 'both' | 'horizontal' | 'vertical'

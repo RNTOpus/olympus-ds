@@ -19,11 +19,16 @@ export default css`
   }
 
   .field .icon {
-    color: currentColor;
+    color: var(--ods-field-icon-color);
+    display: flex;
   }
 
   .field .middle {
     flex: 1;
+  }
+
+  :host([as="textarea"]) .field {
+    height: auto;
   }
 
   :host([appearance="outline"]) .field {

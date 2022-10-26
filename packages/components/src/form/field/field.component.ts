@@ -1,8 +1,9 @@
 import { CSSResultGroup, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { OdsBaseElement } from '../../shared/base-element'
-import { OdsLabelState as LabelState, OdsFieldAppearance as Appearance } from './types'
+import { OdsLabelState as LabelState, OdsFieldAppearance as Appearance, OdsTextFieldAlias as Alias } from './types'
 import styles from './styles/root.styles'
+import { renderIcon } from '../../shared/icon/render'
 
 @customElement('ods-field')
 export class OdsField extends OdsBaseElement {
@@ -19,11 +20,20 @@ export class OdsField extends OdsBaseElement {
   @property({ type: Boolean, reflect: true }) disabled = false
   @property({ type: Boolean, reflect: true }) required = false
   @property({ type: Boolean, reflect: true }) hasLeftIcon = false
+  @property({ type: String, attribute: 'as', reflect: true }) alias: Alias = 'input'
 
   protected renderLabel() {
     const labelText = this.label ?? ''
     const optionalAsterisk = this.required && labelText ? ' *' : ''
     return html`<span class="label" part="label">${labelText + optionalAsterisk}</span>`
+  }
+
+  protected renderRightIcon() {
+    if (!this.focused) {
+      if (this.invalid) return renderIcon('cancel')
+      if (this.valid) return renderIcon('checkCircle')
+    }
+    return html`<slot name="right-icon"></slot>`
   }
 
   protected renderField() {
@@ -35,9 +45,7 @@ export class OdsField extends OdsBaseElement {
         <span class="middle">
           <slot></slot>
         </span>
-        <span class="icon -right">
-          <slot name="right-icon"></slot>
-        </span>
+        <span class="icon -right"> ${this.renderRightIcon()} </span>
       </span>
     `
   }
@@ -57,11 +65,7 @@ export class OdsField extends OdsBaseElement {
 
   render() {
     return html`
-      <span class="container">
-        ${this.renderLabel()}
-        ${this.renderField()}
-        ${this.renderHelperText()}
-      </span>
+      <span class="container"> ${this.renderLabel()} ${this.renderField()} ${this.renderHelperText()} </span>
     `
   }
 }

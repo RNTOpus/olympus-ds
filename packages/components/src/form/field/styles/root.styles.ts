@@ -19,7 +19,7 @@ export default css`
     --ods-field-border-color: var(--ods-color-neutral-80);
     --ods-field-font-size: var(--ods-font-size-md);
     --ods-field-border-radius: var(--ods-radii-xs);
-    --ods-field-helper-text-color: var(--ods-color-primary-base);
+    --ods-field-helper-text-color: var(--ods-color-neutral-base);
     --ods-field-helper-text-font-size: var(--ods-font-size-tiny);
   }
 

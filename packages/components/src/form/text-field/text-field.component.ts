@@ -2,57 +2,84 @@ import { CSSResultGroup, html, PropertyValues } from 'lit'
 import { customElement, property, query, state } from 'lit/decorators.js'
 import { live } from 'lit/directives/live.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
+import { styleMap } from 'lit/directives/style-map.js'
 import { OdsField } from '../field'
 import styles from './styles/text-field.styles'
-import { OdsTextFieldType as Type, OdsTextFieldAlias as Alias } from './types'
+import { OdsTextareaFieldResize as Resize, OdsTextFieldType as Type } from './types'
 import { SlotController } from '../../shared/controller/SlotController'
 
 @customElement('ods-text-field')
 export class OdsTextField extends OdsField {
   static styles: CSSResultGroup = styles
 
-  @property({ type: String }) label?: string
-
+  @property() placeholder?: string
+  @property() name?: string
   @property() value = ''
-  @property() placeholder = ''
-  @property({ type: String, reflect: true }) name = ''
   @property({ type: String }) type: Type = 'text'
-  @property({ type: String }) alias: Alias = 'input'
+  @property({ type: String }) resize: Resize = 'vertical'
   @property() minlength?: number
   @property() maxlength?: number
   @property() min?: number | string
   @property() max?: number | string
   @property({ type: Boolean, reflect: true }) readonly = false
-  @property({ type: Boolean, reflect: true }) disabled = false
-  @property({ type: Boolean, reflect: true }) required = false
-  @property({ type: Boolean, reflect: true }) staticLabel = false
+  @property({ type: Boolean }) staticLabel = false
 
   @query('.input') inputElement?: HTMLInputElement
 
-  @state() hasFocus = false
+  @state() private hasFocus = false
 
-  protected handleClick() {
+  @state() private textareaAutosizeTime: NodeJS.Timeout | null = null
+
+  private handleClick() {
     if (this.disabled) return
     this.inputElement?.focus()
   }
 
-  protected handleFocus() {
+  private handleFocus() {
     this.hasFocus = true
     this.emit('ods-focus')
   }
 
-  protected handleBlur() {
+  private handleBlur() {
     this.hasFocus = false
     this.emit('ods-blur')
   }
 
-  protected renderTextarea() {
-    return html`<textarea>${this.value}</textarea>`
+  private textareaAutosize() {
+    this.textareaAutosizeTime = setTimeout(() => {
+      if (this.inputElement) {
+        this.inputElement.style.cssText = `height: auto`
+        this.inputElement.style.cssText = `height: ${this.inputElement?.scrollHeight}px`
+      }
+    }, 0)
   }
 
-  protected renderInput() {
+  private renderTextarea() {
+    return html`<textarea
+      class="input"
+      id=${this.name ? this.name + 'Field' : 'textareaField'}
+      maxlength=${ifDefined(this.maxlength)}
+      placeholder=${ifDefined(this.placeholder)}
+      name=${ifDefined(this.name)}
+      ?disabled=${this.disabled}
+      ?readonly=${this.readonly}
+      ?required=${this.required}
+      .value=${live(this.value)}
+      style=${styleMap({ resize: this.resize })}
+      @focus=${this.handleFocus}
+      @blur=${this.handleBlur}
+      @input=${this.handleInput}
+      @keydown=${this.textareaAutosize}
+    >
+      ${this.value}
+    </textarea
+    >`
+  }
+
+  private renderInput() {
     return html`<input
       class="input"
+      id=${this.name ? this.name + 'Field' : 'inputField'}
       minlength=${ifDefined(this.minlength)}
       maxlength=${ifDefined(this.maxlength)}
       min=${ifDefined(this.min)}
@@ -61,7 +88,7 @@ export class OdsTextField extends OdsField {
       ?readonly=${this.readonly}
       ?required=${this.required}
       type=${this.type}
-      placeholder=${this.placeholder}
+      placeholder=${ifDefined(this.placeholder)}
       .value=${live(this.value)}
       @focus=${this.handleFocus}
       @blur=${this.handleBlur}
@@ -69,16 +96,23 @@ export class OdsTextField extends OdsField {
     />`
   }
 
-  protected renderContent() {
+  private renderContent() {
     return this.alias === 'input' ? this.renderInput() : this.renderTextarea()
   }
 
-  protected getLabelState() {
-    return this.staticLabel
-      ? 'default'
-      : !!this.value || this.hasFocus || !!this.placeholder || this.type === 'date'
-      ? 'shrink'
-      : 'grow'
+  private shouldShrinkTheLabel() {
+    return (
+      !!this.value ||
+      !!this.placeholder ||
+      this.hasFocus ||
+      this.type === 'date' ||
+      this.type === 'time' ||
+      this.type === 'datetime-local'
+    )
+  }
+
+  private getLabelState() {
+    return this.staticLabel ? 'default' : this.shouldShrinkTheLabel() ? 'shrink' : 'grow'
   }
 
   protected firstUpdated(changedProperties: PropertyValues) {
@@ -102,6 +136,7 @@ export class OdsTextField extends OdsField {
         .label=${this.label}
         labelState=${this.getLabelState()}
         appearance=${this.appearance}
+        as=${this.alias}
         ?hasLeftIcon=${hasLeftIconSlot}
         ?disabled=${this.disabled}
         ?required=${this.required}
@@ -119,6 +154,11 @@ export class OdsTextField extends OdsField {
         <slot slot="helper-text-end" name="helper-text-end"></slot>
       </ods-field>
     `
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback()
+    this.textareaAutosizeTime && clearTimeout(this.textareaAutosizeTime)
   }
 }
 
