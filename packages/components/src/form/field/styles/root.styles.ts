@@ -39,13 +39,13 @@ export default css`
     cursor: var(--ods-field-cursor);
   }
 
-  :host([invalid]) {
+  :host(:not([focused])[invalid]) {
     --ods-field-border-color: var(--ods-color-danger-60);
     --ods-field-icon-color: var(--ods-color-danger-base);
     --ods-field-helper-text-color: var(--ods-color-danger-base);
   }
 
-  :host([valid]) {
+  :host(:not([focused])[valid]) {
     --ods-field-border-color: var(--ods-color-success-base);
     --ods-field-icon-color: var(--ods-color-success-40);
     --ods-field-helper-text-color: var(--ods-color-success-30);

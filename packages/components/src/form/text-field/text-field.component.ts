@@ -35,6 +35,15 @@ export class OdsTextField extends OdsField {
     this.inputElement?.focus()
   }
 
+  private handleEyeClick() {
+    this.passwordIsVisible = !this.passwordIsVisible
+    this.type = this.passwordIsVisible ? 'text' : 'password'
+  }
+
+  private handleEmptyClick() {
+    this.value = ''
+  }
+
   private handleFocus() {
     this.hasFocus = true
     this.emit('ods-focus')
@@ -145,7 +154,12 @@ export class OdsTextField extends OdsField {
         ?pill=${this.pill}
         ?square=${this.square}
         ?focused=${this.hasFocus}
+        ?isPasswordField=${this.isPasswordField}
+        ?passwordIsVisible=${this.passwordIsVisible}
+        ?emptyable=${this.emptyable && live(this.value)}
         @click=${this.handleClick}
+        @ods-eye-click=${this.handleEyeClick}
+        @ods-empty-click=${this.handleEmptyClick}
       >
         ${this.renderContent()}
         <slot slot="left-icon" name="left-icon"></slot>
@@ -154,6 +168,11 @@ export class OdsTextField extends OdsField {
         <slot slot="helper-text-end" name="helper-text-end"></slot>
       </ods-field>
     `
+  }
+
+  connectedCallback() {
+    super.connectedCallback()
+    this.isPasswordField = this.type === 'password';
   }
 
   disconnectedCallback() {

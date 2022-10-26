@@ -64,4 +64,15 @@ export default css`
   :host([pill]) .field {
     padding: 0 var(--ods-spacing-md);
   }
+
+  .icon-button {
+    background: none;
+    border: none;
+    display: flex;
+    color:  var(--ods-field-icon-color);
+    cursor: pointer;
+  }
+  .icon-button * {
+    cursor: pointer;
+  }
 `
