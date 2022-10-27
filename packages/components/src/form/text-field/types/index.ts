@@ -10,4 +10,6 @@ export type OdsTextFieldType =
   | 'time'
   | 'url'
 
-  export type OdsTextareaFieldResize = 'none' | 'both' | 'horizontal' | 'vertical'
+export type OdsTextFieldInputmode = 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url'
+export type OdsTextareaFieldResize = 'none' | 'both' | 'horizontal' | 'vertical'
+export type OdsFieldEnterkeyhint = 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send'

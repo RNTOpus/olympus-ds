@@ -3,7 +3,7 @@ export default css`
   :host {
     position: relative;
   }
-  .input {
+  .text-field {
     border: none;
     background: none;
     width: 100%;
@@ -16,26 +16,19 @@ export default css`
     color: var(--ods-color-neutral-30);
   }
 
-  .input:disabled {
+  .text-field:disabled {
     cursor: not-allowed;
   }
 
-  .input::placeholder,
-  .input::-webkit-datetime-edit-text {
+  .text-field::placeholder,
+  .text-field::-webkit-datetime-edit-text {
     color: var(--ods-color-neutral-70);
   }
 
-  .input::-webkit-inner-spin-button,
-  .input::-webkit-calendar-picker-indicator {
+  .text-field::-webkit-inner-spin-button,
+  .text-field::-webkit-calendar-picker-indicator {
     padding-bottom: .8rem;
     cursor: pointer;
-  }
-
-  :host([as='textarea']) .input {
-    padding: var(--ods-spacing-sm) 0;
-    height: var(--ods-size-giga);
-    overflow:hidden;
-    box-sizing: border-box;
   }
 
 `

@@ -5,6 +5,23 @@ import { OdsLabelState as LabelState, OdsFieldAppearance as Appearance, OdsTextF
 import styles from './styles/root.styles'
 import { renderIcon } from '../../shared/icon/render'
 
+/**
+ * @summary This component is used as a wrapper for other components
+ *
+ * @access protected
+ *
+ * @extends OdsBaseElement
+ *
+ * @slot left-icon - Used to prepend an icon to the field.
+ * @slot right-icon - Used to append an icon to the field.
+ * @slot helper-text - Used to insert the content below the field.
+ * @slot helper-text-end - Used to insert the content below the field on the right side.
+ *
+ * @csspart label - The field label.
+ * @csspart icon-button - The left icon button to toggle password or clear field.
+ *
+ */
+
 @customElement('ods-field')
 export class OdsField extends OdsBaseElement {
   static styles: CSSResultGroup = styles
@@ -26,7 +43,6 @@ export class OdsField extends OdsBaseElement {
   @property({ type: Boolean }) passwordIsVisible = false
   @property({ type: String, attribute: 'as', reflect: true }) alias: Alias = 'input'
 
-
   protected renderLabel() {
     const labelText = this.label ?? ''
     const optionalAsterisk = this.required && labelText ? ' *' : ''
@@ -39,7 +55,7 @@ export class OdsField extends OdsBaseElement {
   }
 
   private renderClearIconButton() {
-    return html`<button class="icon-button" @click=${this.handleClickClearIconButton}>
+    return html`<button class="icon-button" part="icon-button" @click=${this.handleClickClearIconButton}>
       ${renderIcon('close')}
     </button>`
   }
@@ -50,7 +66,7 @@ export class OdsField extends OdsBaseElement {
   }
 
   private renderEyeIconButton() {
-    return html`<button class="icon-button" @click=${this.handleClickEyeIconButton}>
+    return html`<button class="icon-button" part="icon-button" @click=${this.handleClickEyeIconButton}>
       ${renderIcon(this.passwordIsVisible ? 'visibilityOff' : 'visibility')}
     </button>`
   }
