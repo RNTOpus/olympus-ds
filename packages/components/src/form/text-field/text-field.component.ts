@@ -40,7 +40,7 @@ export class OdsTextField extends OdsField {
     this.type = this.passwordIsVisible ? 'text' : 'password'
   }
 
-  private handleEmptyClick() {
+  private handleClearClick() {
     this.value = ''
   }
 
@@ -156,10 +156,10 @@ export class OdsTextField extends OdsField {
         ?focused=${this.hasFocus}
         ?isPasswordField=${this.isPasswordField}
         ?passwordIsVisible=${this.passwordIsVisible}
-        ?emptyable=${this.emptyable && live(this.value)}
+        ?clearable=${this.clearable && live(this.value)}
         @click=${this.handleClick}
         @ods-eye-click=${this.handleEyeClick}
-        @ods-empty-click=${this.handleEmptyClick}
+        @ods-empty-click=${this.handleClearClick}
       >
         ${this.renderContent()}
         <slot slot="left-icon" name="left-icon"></slot>

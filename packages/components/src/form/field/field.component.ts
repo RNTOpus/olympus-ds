@@ -20,7 +20,7 @@ export class OdsField extends OdsBaseElement {
   @property({ type: Boolean, reflect: true }) disabled = false
   @property({ type: Boolean, reflect: true }) required = false
   @property({ type: Boolean, reflect: true }) hasLeftIcon = false
-  @property({ type: Boolean }) emptyable = false
+  @property({ type: Boolean }) clearable = false
   @property({ type: Boolean }) isPasswordField = false
   @property({ type: Boolean }) passwordIsVisible = false
   @property({ type: String, attribute: 'as', reflect: true }) alias: Alias = 'input'
@@ -32,13 +32,13 @@ export class OdsField extends OdsBaseElement {
     return html`<span class="label" part="label">${labelText + optionalAsterisk}</span>`
   }
 
-  private handleClickEmptyIconButton() {
+  private handleClickClearIconButton() {
     if (this.disabled) return
     this.emit('ods-empty-click')
   }
 
-  private renderEmptyIconButton() {
-    return html`<button class="icon-button" @click=${this.handleClickEmptyIconButton}>
+  private renderClearIconButton() {
+    return html`<button class="icon-button" @click=${this.handleClickClearIconButton}>
       ${renderIcon('close')}
     </button>`
   }
@@ -59,7 +59,7 @@ export class OdsField extends OdsBaseElement {
     if (!this.focused) {
       if (this.invalid) return renderIcon('cancel')
       if (this.valid) return renderIcon('checkCircle')
-      if (this.emptyable) return this.renderEmptyIconButton()
+      if (this.clearable) return this.renderClearIconButton()
     };
     return html`<slot name="right-icon"></slot>`
   }
