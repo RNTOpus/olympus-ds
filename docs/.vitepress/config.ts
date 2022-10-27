@@ -115,12 +115,38 @@ export default defineConfig({
               ]
             },
             {
-              text: 'Input',
-              link: '/components/input/overview',
+              text: 'Fields',
+              link: '/components/fields/overview',
               items: [
                 {
-                  text: 'Basic',
-                  link: '/components/input/basic'
+                  text: 'Text Field',
+                  link: '/components/fields/text-field/overview',
+                  items: [
+                    {
+                      text: 'Outline',
+                      link: '/components/fields/text-field/outline'
+                    },
+                    {
+                      text: 'Inline',
+                      link: '/components/fields/text-field/inline'
+                    },
+                    {
+                      text: 'Fill',
+                      link: '/components/fields/text-field/fill'
+                    },
+                    {
+                      text: 'Square',
+                      link: '/components/fields/text-field/square'
+                    },
+                    {
+                      text: 'Pill',
+                      link: '/components/fields/text-field/pill'
+                    },
+                    {
+                      text: 'Textarea',
+                      link: '/components/fields/text-field/textarea'
+                    }
+                  ]
                 }
               ]
             }
