@@ -10,7 +10,7 @@ import type { OdsTextFieldInputmode as Inputmode } from '../types'
  *
  * @extends {CommonTemplate<OdsField>}
  *
- * @csspart text-field - The input element.
+ * @csspart field - The input element.
  *
  */
 

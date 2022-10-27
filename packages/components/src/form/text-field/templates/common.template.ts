@@ -28,6 +28,14 @@ export class OdsTextFieldCommonTemplate extends OdsField {
 
   @query('.text-field') inputElement?: HTMLInputElement
 
+  focus(options?: FocusOptions): void {
+    this.inputElement?.focus(options)
+  }
+
+  blur(): void {
+    this.inputElement?.blur()
+  }
+
   protected slotControler = new SlotController(this)
 
   get hasLeftIconSlot() {

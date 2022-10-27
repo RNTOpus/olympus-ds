@@ -18,7 +18,7 @@ import { renderIcon } from '../../shared/icon/render'
  * @slot helper-text-end - Used to insert the content below the field on the right side.
  *
  * @csspart label - The field label.
- * @csspart icon-button - The left icon button to toggle password or clear field.
+ * @csspart icon-button - The right icon button to toggle password or clear field.
  *
  */
 

@@ -11,6 +11,7 @@
 `attribute` `string`
 
 <Preview is-grid="true">
+<ods-textarea-field label="Label (outline)" />
   <ods-text-field label="Label (outline)" as="textarea" />
   <ods-text-field label="Label (fill)" appearance="fill" as="textarea" />
   <ods-text-field label="Label (inline)" appearance="inline" as="textarea" />

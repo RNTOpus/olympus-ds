@@ -90,29 +90,7 @@ export default defineConfig({
           items: [
             {
               text: 'Buttons',
-              link: '/components/buttons/overview',
-              items: [
-                {
-                  text: 'Basic',
-                  link: '/components/buttons/basic'
-                },
-                {
-                  text: 'Filled',
-                  link: '/components/buttons/filled-button'
-                },
-                {
-                  text: 'Outlined',
-                  link: '/components/buttons/outlined-button'
-                },
-                {
-                  text: 'Text',
-                  link: '/components/buttons/text-button'
-                },
-                {
-                  text: 'Custom',
-                  link: '/components/buttons/custom'
-                }
-              ]
+              link: '/components/buttons/overview'
             },
             {
               text: 'Fields',
@@ -120,34 +98,12 @@ export default defineConfig({
               items: [
                 {
                   text: 'Text Field',
-                  link: '/components/fields/text-field/overview',
-                  items: [
-                    {
-                      text: 'Outline',
-                      link: '/components/fields/text-field/outline'
-                    },
-                    {
-                      text: 'Inline',
-                      link: '/components/fields/text-field/inline'
-                    },
-                    {
-                      text: 'Fill',
-                      link: '/components/fields/text-field/fill'
-                    },
-                    {
-                      text: 'Square',
-                      link: '/components/fields/text-field/square'
-                    },
-                    {
-                      text: 'Pill',
-                      link: '/components/fields/text-field/pill'
-                    },
-                    {
-                      text: 'Textarea',
-                      link: '/components/fields/text-field/textarea'
-                    }
-                  ]
-                }
+                  link: '/components/fields/text-field/overview'
+                },
+                {
+                  text: 'Textarea Field',
+                  link: '/components/fields/textarea-field/overview'
+                },
               ]
             }
           ]

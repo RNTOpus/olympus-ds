@@ -11,7 +11,7 @@ import { OdsTextFieldCommonTemplate as CommonTemplate } from './common.template'
  *
  * @extends {CommonTemplate<OdsField>}
  *
- * @csspart text-field - The textarea element.
+ * @csspart field - The textarea element.
  *
  */
 
