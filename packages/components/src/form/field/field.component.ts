@@ -11,6 +11,7 @@ export class OdsField extends OdsBaseElement {
 
   @property({ type: String }) label?: string
   @property({ type: String }) labelState?: LabelState = 'default'
+  @property({ type: Boolean }) staticLabel = false
   @property({ type: String }) appearance?: Appearance = 'outline'
   @property({ type: Boolean, reflect: true }) square = false
   @property({ type: Boolean, reflect: true }) pill = false

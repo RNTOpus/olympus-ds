@@ -12,17 +12,30 @@ import { SlotController } from '../../shared/controller/SlotController'
 export class OdsTextField extends OdsField {
   static styles: CSSResultGroup = styles
 
-  @property() placeholder?: string
+  /** Common native attributes */
+  @property() autocomplete?: 'off' | 'on'
+  @property({ type: Boolean, reflect: true }) autofocus = false
+  @property() enterkeyhint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  @property() form?: string
+  @property({ type: Number }) maxlength?: number
+  @property({ type: Number }) minlength?: number
   @property() name?: string
-  @property() value = ''
-  @property({ type: String }) type: Type = 'text'
-  @property({ type: String }) resize: Resize = 'vertical'
-  @property() minlength?: number
-  @property() maxlength?: number
-  @property() min?: number | string
-  @property() max?: number | string
+  @property() placeholder?: string
   @property({ type: Boolean, reflect: true }) readonly = false
-  @property({ type: Boolean }) staticLabel = false
+  @property({ type: Boolean, reflect: true }) spellcheck = false
+  @property() value = ''
+
+  /** Native input attributes */
+  @property() autocorrect?: 'off' | 'on'
+  @property() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url'
+  @property() pattern?: string
+  @property() max?: number | string
+  @property() min?: number | string
+  @property() step?: number | 'any'
+  @property({ type: String }) type: Type = 'text'
+
+  /** Native textarea attributes */
+  @property({ type: String }) resize: Resize = 'vertical'
 
   @query('.input') inputElement?: HTMLInputElement
 
@@ -65,16 +78,22 @@ export class OdsTextField extends OdsField {
 
   private renderTextarea() {
     return html`<textarea
-      class="input"
+      class="input -textarea"
       id=${this.name ? this.name + 'Field' : 'textareaField'}
-      maxlength=${ifDefined(this.maxlength)}
-      placeholder=${ifDefined(this.placeholder)}
-      name=${ifDefined(this.name)}
+      style=${styleMap({ resize: this.resize })}
+      autocomplete=${ifDefined(this.type === 'password' ? 'off' : this.autocomplete)}
+      ?autofocus=${this.autofocus}
       ?disabled=${this.disabled}
+      enterkeyhint=${ifDefined(this.enterkeyhint)}
+      form=${ifDefined(this.form)}
+      maxlength=${ifDefined(this.maxlength)}
+      minlength=${ifDefined(this.minlength)}
+      name=${ifDefined(this.name)}
+      placeholder=${ifDefined(this.placeholder)}
       ?readonly=${this.readonly}
       ?required=${this.required}
+      ?spellcheck=${this.spellcheck}
       .value=${live(this.value)}
-      style=${styleMap({ resize: this.resize })}
       @focus=${this.handleFocus}
       @blur=${this.handleBlur}
       @input=${this.handleInput}
@@ -86,18 +105,28 @@ export class OdsTextField extends OdsField {
   }
 
   private renderInput() {
-    return html`<input
+    return html` <input
       class="input"
       id=${this.name ? this.name + 'Field' : 'inputField'}
-      minlength=${ifDefined(this.minlength)}
+      autocomplete=${ifDefined(this.type === 'password' ? 'off' : this.autocomplete)}
+      autocorrect=${ifDefined(this.type === 'password' ? 'off' : this.autocorrect)}
+      ?autofocus=${this.autofocus}
+      ?disabled=${this.disabled}
+      enterkeyhint=${ifDefined(this.enterkeyhint)}
+      form=${ifDefined(this.form)}
+      inputmode=${ifDefined(this.inputmode)}
+      max=${ifDefined(this.max)}
       maxlength=${ifDefined(this.maxlength)}
       min=${ifDefined(this.min)}
-      max=${ifDefined(this.max)}
-      ?disabled=${this.disabled}
+      minlength=${ifDefined(this.minlength)}
+      name=${ifDefined(this.name)}
+      pattern=${ifDefined(this.pattern)}
+      placeholder=${ifDefined(this.placeholder)}
       ?readonly=${this.readonly}
       ?required=${this.required}
+      ?spellcheck=${this.spellcheck}
+      step=${ifDefined(this.step as number)}
       type=${this.type}
-      placeholder=${ifDefined(this.placeholder)}
       .value=${live(this.value)}
       @focus=${this.handleFocus}
       @blur=${this.handleBlur}
@@ -172,7 +201,7 @@ export class OdsTextField extends OdsField {
 
   connectedCallback() {
     super.connectedCallback()
-    this.isPasswordField = this.type === 'password';
+    this.isPasswordField = this.type === 'password'
   }
 
   disconnectedCallback() {
