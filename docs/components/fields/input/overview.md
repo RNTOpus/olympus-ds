@@ -1,20 +1,20 @@
-# Text Field
+# Input
 
 ## Usage
 
 ```js
-import '@olympus/components/text-field'
+import '@olympus/components/input'
 ```
 
 ```html
-<ods-text-field label="name" />
+<ods-input label="name" />
 ```
 
 > React
 
 ```jsx
-import { OdsTextField } from '@olympus/components/react/text-field'
-const App = () => <OdsTextField label="Name" />
+import { OdsInput } from '@olympus/components/react/input'
+const App = () => <OdsInput label="Name" />
 ```
 
 ## Examples
@@ -33,16 +33,16 @@ const App = () => <OdsTextField label="Name" />
 
 ### Below other attributes:
 
-| Name         | Description                                                            | Type                                                                                                                                                                      | Default     |
-| ------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `appearance` | Field appearance. <br /> <sub>Type: `OdsFieldAppearance`</sub>         | `'outline'` <br /> `'fill'` <br /> `'inline'`                                                                                                                             | `'outline'` |
-| `type`       | Some types of native input. <br /> <sub>Type: `OdsTextFieldType`</sub> | `'date'` <br /> `'datetime-local'` <br /> `'email'` <br /> `'number'` <br /> `'password'` <br /> `'search'` <br /> `'tel'` <br /> `'text'` <br /> `'time'` <br /> `'url'` | `'text'`    |
-| `label`      | The field label.                                                       | `string`                                                                                                                                                                  | -           |
-| `labelState` | Remove field label animation                                           | `boolean`                                                                                                                                                                 | `false`     |
-| `pill`       | Render the field in pill format.                                       | `boolean`                                                                                                                                                                 | `false`     |
-| `square`     | Render the field with straight edges.                                  | `boolean`                                                                                                                                                                 | `false`     |
-| `valid`      | Render the field with success colors.                                  | `boolean`                                                                                                                                                                 | `false`     |
-| `invalid`    | Render the field with danger colors.                                   | `boolean`                                                                                                                                                                 | `false`     |
+| Name         | Description                                                        | Type                                                                                                                                                                      | Default     |
+| ------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `appearance` | Field appearance. <br /> <sub>Type: `OdsFieldAppearance`</sub>     | `'outline'` <br /> `'fill'` <br /> `'inline'`                                                                                                                             | `'outline'` |
+| `type`       | Some types of native input. <br /> <sub>Type: `OdsInputType`</sub> | `'date'` <br /> `'datetime-local'` <br /> `'email'` <br /> `'number'` <br /> `'password'` <br /> `'search'` <br /> `'tel'` <br /> `'text'` <br /> `'time'` <br /> `'url'` | `'text'`    |
+| `label`      | The field label.                                                   | `string`                                                                                                                                                                  | -           |
+| `labelState` | Remove field label animation                                       | `boolean`                                                                                                                                                                 | `false`     |
+| `pill`       | Render the field in pill format.                                   | `boolean`                                                                                                                                                                 | `false`     |
+| `square`     | Render the field with straight edges.                              | `boolean`                                                                                                                                                                 | `false`     |
+| `valid`      | Render the field with success colors.                              | `boolean`                                                                                                                                                                 | `false`     |
+| `invalid`    | Render the field with danger colors.                               | `boolean`                                                                                                                                                                 | `false`     |
 
 ## Events
 

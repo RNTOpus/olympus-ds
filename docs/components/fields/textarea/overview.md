@@ -1,20 +1,20 @@
-# Textarea Field
+# Textarea
 
 ## Usage
 
 ```js
-import '@olympus/components/textarea-field'
+import '@olympus/components/textarea'
 ```
 
 ```html
-<ods-textarea-field label="name" />
+<ods-textarea label="name" />
 ```
 
 > React
 
 ```jsx
-import { OdsTextField } from '@olympus/components/react/textarea-field '
-const App = () => <OdsTextareaField label="Name" />
+import { OdsInput } from '@olympus/components/react/textarea '
+const App = () => <OdsTextarea label="Name" />
 ```
 
 ## Examples

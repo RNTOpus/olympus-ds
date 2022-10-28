@@ -1,8 +1,10 @@
 import { CSSResultGroup, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { live } from 'lit/directives/live.js'
-import styles from './styles/text-field.styles'
-import { OdsInputTemplate } from './templates'
+import { OdsTextareaTemplate } from './templates'
+
+import textFieldStyles from './styles/text-field.styles'
+import styles from './styles/textarea-field.styles'
 
 /**
  * @dependency ods-field
@@ -21,9 +23,10 @@ import { OdsInputTemplate } from './templates'
  * @csspart wrapper - Access the ods-field component.
  *
  */
-@customElement('ods-text-field')
-export class OdsTextField extends OdsInputTemplate {
-  static styles: CSSResultGroup = styles
+
+@customElement('ods-textarea')
+export class OdsTextareaField extends OdsTextareaTemplate {
+  static styles: CSSResultGroup[] = [textFieldStyles, styles]
   render() {
     return html`
       <ods-field
@@ -31,6 +34,7 @@ export class OdsTextField extends OdsInputTemplate {
         .label=${this.label}
         labelState=${this.getLabelState()}
         appearance=${this.appearance}
+        as="textarea"
         ?hasLeftIcon=${this.hasLeftIconSlot}
         ?disabled=${this.disabled}
         ?required=${this.required}
@@ -39,14 +43,11 @@ export class OdsTextField extends OdsInputTemplate {
         ?pill=${this.pill}
         ?square=${this.square}
         ?focused=${this.hasFocus}
-        ?isPasswordField=${this.isPasswordField}
-        ?passwordIsVisible=${this.passwordIsVisible}
         ?clearable=${this.clearable && live(this.value)}
         @click=${this.handleClick}
-        @ods-eye-click=${this.handleEyeClick}
         @ods-empty-click=${this.handleClearClick}
       >
-        ${this.renderInput()}
+        ${this.renderTextarea()}
         <slot slot="left-icon" name="left-icon"></slot>
         <slot slot="right-icon" name="right-icon"></slot>
         <slot slot="helper-text" name="helper-text"></slot>
@@ -54,17 +55,12 @@ export class OdsTextField extends OdsInputTemplate {
       </ods-field>
     `
   }
-
-  connectedCallback() {
-    super.connectedCallback()
-    this.isPasswordField = this.type === 'password'
-  }
 }
 
-export default OdsTextField
+export default OdsTextareaField
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ods-text-field': OdsTextField
+    'ods-textarea': OdsTextareaField
   }
 }

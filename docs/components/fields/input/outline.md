@@ -1,4 +1,4 @@
-# Text Field (outline)
+# Input (outline)
 
 :::tip Attribute
 **name**: `appearance`<br />
@@ -11,17 +11,17 @@
 `attribute` `string`
 
 <Preview is-grid="true">
-  <ods-text-field label="Label" />
+  <ods-input label="Label" />
 </Preview>
 
 ```html
-<ods-text-field label="Label" />
+<ods-input label="Label" />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Label" />
+const App = () => <OdsInput label="Label" />
 ```
 
 ## Static Label
@@ -31,35 +31,35 @@ const App = () => <OdsTextField label="Label" />
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-text-field label="Static Label" staticLabel />
+  <ods-input label="Static Label" staticLabel />
 </Preview>
 
 ```html
-<ods-text-field label="Static Label" staticLabel />
+<ods-input label="Static Label" staticLabel />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Static Label" staticLabel />
+const App = () => <OdsInput label="Static Label" staticLabel />
 ```
 
 ## Placeholder
 `attribute` `string`
 
 <Preview is-grid="true">
-  <ods-text-field label="Search" placeholder="find a product by name" />
+  <ods-input label="Search" placeholder="find a product by name" />
 </Preview>
 
 ```html
-<ods-text-field label="Search" placeholder="find a product by name" />
+<ods-input label="Search" placeholder="find a product by name" />
 ```
 
 > React
 
 ```jsx
 const App = () => 
-  <OdsTextField label="Search" placeholder="find a product by name" />
+  <OdsInput label="Search" placeholder="find a product by name" />
 ```
 
 ## Disabled
@@ -68,34 +68,34 @@ const App = () =>
 > Use the `disabled` attribute to disable a input.
 
 <Preview is-grid="true">
-  <ods-text-field label="Disabled" disabled />
+  <ods-input label="Disabled" disabled />
 </Preview>
 
 ```html
-<ods-text-field label="Disabled" disabled />
+<ods-input label="Disabled" disabled />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Disabled" disabled />
+const App = () => <OdsInput label="Disabled" disabled />
 ```
 
 ## Required
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-text-field label="Required" required />
+  <ods-input label="Required" required />
 </Preview>
 
 ```html
-<ods-text-field label="Required" required />
+<ods-input label="Required" required />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Disabled" disabled />
+const App = () => <OdsInput label="Disabled" disabled />
 ```
 
 ## Clearable
@@ -105,18 +105,18 @@ const App = () => <OdsTextField label="Disabled" disabled />
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" value="John Doe" clearable />
+  <ods-input label="Name" value="John Doe" clearable />
 </Preview>
 
 ```html
-<ods-text-field label="Name" value="John Doe" clearable />
+<ods-input label="Name" value="John Doe" clearable />
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" value="John Doe" clearable />
+  <OdsInput label="Name" value="John Doe" clearable />
 )
 ```
 
@@ -129,29 +129,29 @@ const App = () => (
 `attribute` `string` `text`
 
 <Preview is-grid="true">
-  <ods-text-field label="Text" />
-  <ods-text-field label="Number" type="number" />
-  <ods-text-field label="Password" type="password" invalid />
-  <ods-text-field label="E-mail" type="email" />
-  <ods-text-field label="Search" type="search" />
-  <ods-text-field label="Tel" type="tel" />
-  <ods-text-field label="Url" type="url" />
-  <ods-text-field label="Date" type="date" />
-  <ods-text-field label="Time" type="time" />
-  <ods-text-field label="Datetime Local" type="datetime-local" />
+  <ods-input label="Text" />
+  <ods-input label="Number" type="number" />
+  <ods-input label="Password" type="password" invalid />
+  <ods-input label="E-mail" type="email" />
+  <ods-input label="Search" type="search" />
+  <ods-input label="Tel" type="tel" />
+  <ods-input label="Url" type="url" />
+  <ods-input label="Date" type="date" />
+  <ods-input label="Time" type="time" />
+  <ods-input label="Datetime Local" type="datetime-local" />
 </Preview>
 
 ```html
-<ods-text-field label="Text" />
-<ods-text-field label="Number" type="number" />
-<ods-text-field label="Password" type="password" />
-<ods-text-field label="E-mail" type="email" />
-<ods-text-field label="Search" type="search" />
-<ods-text-field label="Tel" type="tel" />
-<ods-text-field label="Url" type="url" />
-<ods-text-field label="Date" type="date" />
-<ods-text-field label="Time" type="time" />
-<ods-text-field label="Datetime Local" type="datetime-local" />
+<ods-input label="Text" />
+<ods-input label="Number" type="number" />
+<ods-input label="Password" type="password" />
+<ods-input label="E-mail" type="email" />
+<ods-input label="Search" type="search" />
+<ods-input label="Tel" type="tel" />
+<ods-input label="Url" type="url" />
+<ods-input label="Date" type="date" />
+<ods-input label="Time" type="time" />
+<ods-input label="Datetime Local" type="datetime-local" />
 ```
 
 > React
@@ -159,16 +159,16 @@ const App = () => (
 ```jsx
 const App = () => (
   <>
-    <OdsTextField label="Text" />
-    <OdsTextField label="Number" type="number" />
-    <OdsTextField label="Password" type="password" />
-    <OdsTextField label="E-mail" type="email" />
-    <OdsTextField label="Search" type="search" />
-    <OdsTextField label="Tel" type="tel" />
-    <OdsTextField label="Url" type="url" />
-    <OdsTextField label="Date" type="date" />
-    <OdsTextField label="Time" type="time" />
-    <OdsTextField label="Datetime Local" type="datetime-local" />
+    <OdsInput label="Text" />
+    <OdsInput label="Number" type="number" />
+    <OdsInput label="Password" type="password" />
+    <OdsInput label="E-mail" type="email" />
+    <OdsInput label="Search" type="search" />
+    <OdsInput label="Tel" type="tel" />
+    <OdsInput label="Url" type="url" />
+    <OdsInput label="Date" type="date" />
+    <OdsInput label="Time" type="time" />
+    <OdsInput label="Datetime Local" type="datetime-local" />
   </>
 )
 ```
@@ -179,17 +179,17 @@ const App = () => (
 > Use the `valid` attribute to render the input with success colors.
 
 <Preview is-grid="true">
-  <ods-text-field label="Valid" valid />
+  <ods-input label="Valid" valid />
 </Preview>
 
 ```html
-<ods-text-field label="Valid" valid />
+<ods-input label="Valid" valid />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Valid" valid />
+const App = () => <OdsInput label="Valid" valid />
 ```
 
 ## Invalid
@@ -198,17 +198,17 @@ const App = () => <OdsTextField label="Valid" valid />
 > Use the `invalid` attribute to render the input with danger colors.
 
 <Preview is-grid="true">
-  <ods-text-field label="Invalid" invalid />
+  <ods-input label="Invalid" invalid />
 </Preview>
 
 ```html
-<ods-text-field label="Invalid" invalid />
+<ods-input label="Invalid" invalid />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Invalid" invalid />
+const App = () => <OdsInput label="Invalid" invalid />
 ```
 
 
@@ -217,18 +217,18 @@ const App = () => <OdsTextField label="Invalid" invalid />
 `attribute` `input | textarea` `input`
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" as="textarea" />
+  <ods-input label="Name" as="textarea" />
 </Preview>
 
 ```html
-<ods-text-field label="Name" as="textarea" />
+<ods-input label="Name" as="textarea" />
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" as="textarea" />
+  <OdsInput label="Name" as="textarea" />
 )
 ```
 
@@ -243,17 +243,17 @@ Only works in outline appearance
 :::
 
 <Preview is-grid="true">
-  <ods-text-field label="Pill format" pill />
+  <ods-input label="Pill format" pill />
 </Preview>
 
 ```html
-<ods-text-field label="Pill format" pill />
+<ods-input label="Pill format" pill />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Pill format" pill />
+const App = () => <OdsInput label="Pill format" pill />
 ```
 
 ## Square
@@ -266,17 +266,17 @@ Only works in outline appearance
 :::
 
 <Preview is-grid="true">
-  <ods-text-field label="Square format" square />
+  <ods-input label="Square format" square />
 </Preview>
 
 ```html
-<ods-text-field label="Square" square />
+<ods-input label="Square" square />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Square" square />
+const App = () => <OdsInput label="Square" square />
 ```
 
 ## Left Icon
@@ -286,26 +286,26 @@ const App = () => <OdsTextField label="Square" square />
 > Use the `left-icon` slot to insert the icon on the left.
 
 <Preview is-grid="true">
-  <ods-text-field label="Left Icon">
+  <ods-input label="Left Icon">
     <span class="material-symbols-outlined" slot="left-icon"> alternate_email </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Left Icon">
+<ods-input label="Left Icon">
   <span class="icon" slot="left-icon"> email </span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Left Icon">
+  <OdsInput label="Left Icon">
     <span class="icon" slot="left-icon">
       email
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -316,26 +316,26 @@ const App = () => (
 > Use the `right-icon` slot to insert the icon on the right.
 
 <Preview is-grid="true">
-  <ods-text-field label="Right Icon">
+  <ods-input label="Right Icon">
     <span class="material-symbols-outlined" slot="right-icon"> person </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Right Icon">
+<ods-input label="Right Icon">
   <span class="icon" slot="right-icon"> person </span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Right Icon">
+  <OdsInput label="Right Icon">
     <span class="icon" slot="right-icon">
       person
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -343,31 +343,31 @@ const App = () => (
 `slots`
 
 <Preview is-grid="true">
-  <ods-text-field label="Person e-mail">
+  <ods-input label="Person e-mail">
     <span class="material-symbols-outlined" slot="left-icon"> alternate_email </span>
     <span class="material-symbols-outlined" slot="right-icon"> person </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Person e-mail">
+<ods-input label="Person e-mail">
   <span class="icon" slot="left-icon"> email </span>
   <span class="icon" slot="right-icon"> person </span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Person e-mail">
+  <OdsInput label="Person e-mail">
     <span class="icon" slot="left-icon">
       email
     </span>
     <span class="icon" slot="right-icon">
       person
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -377,26 +377,26 @@ const App = () => (
 > Use the `helper-text` slot to insert the content below the field.
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" required>
+  <ods-input label="Name" required>
     <span class="ht" slot="helper-text"> * Required </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Name" required>
+<ods-input label="Name" required>
   <span class="ht" slot="helper-text">* Required</span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" required>
+  <OdsInput label="Name" required>
     <span class="ht" slot="helper-text">
       * Required
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -406,26 +406,26 @@ const App = () => (
 > Use the `helper-text-end` slot to insert the content below the field on the right side.
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" required>
+  <ods-input label="Name" required>
     <span class="ht" slot="helper-text-end"> * Required </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Name" required>
+<ods-input label="Name" required>
   <span class="ht" slot="helper-text-end">* Required</span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" required>
+  <OdsInput label="Name" required>
     <span class="ht" slot="helper-text-end">
       * Required
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -433,31 +433,31 @@ const App = () => (
 `slots`
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" required>
+  <ods-input label="Name" required>
     <span class="ht" slot="helper-text">10 character limit</span>
     <span class="ht" slot="helper-text-end">0/10</span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Name" required>
+<ods-input label="Name" required>
   <span class="ht" slot="helper-text">10 character limit</span>
   <span class="ht" slot="helper-text-end">0/10</span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" required>
+  <OdsInput label="Name" required>
     <span class="ht" slot="helper-text">
       10 character limit
     </span>
     <span class="ht" slot="helper-text-end">
       0/10
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 

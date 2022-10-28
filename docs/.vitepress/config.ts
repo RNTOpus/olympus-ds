@@ -97,12 +97,12 @@ export default defineConfig({
               link: '/components/fields/overview',
               items: [
                 {
-                  text: 'Text Field',
-                  link: '/components/fields/text-field/overview'
+                  text: 'Input',
+                  link: '/components/fields/input/overview'
                 },
                 {
-                  text: 'Textarea Field',
-                  link: '/components/fields/textarea-field/overview'
+                  text: 'Textarea',
+                  link: '/components/fields/textarea/overview'
                 },
               ]
             }

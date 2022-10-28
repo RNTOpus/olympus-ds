@@ -1,7 +1,7 @@
-# Text Field (pill)
+# Input (square)
 
 :::tip Attribute
-**name**: `pill`<br />
+**name**: `square`<br />
 **type**: `boolean` <br />
 **default:** `false`
 :::
@@ -15,17 +15,17 @@ Only works in outline appearance
 `attribute` `string`
 
 <Preview is-grid="true">
-  <ods-text-field label="Label" pill />
+  <ods-input label="Label" square />
 </Preview>
 
 ```html
-<ods-text-field label="Label" pill />
+<ods-input label="Label" square />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Label" pill />
+const App = () => <OdsInput label="Label" square />
 ```
 
 ## Static Label
@@ -35,35 +35,35 @@ const App = () => <OdsTextField label="Label" pill />
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-text-field label="Static Label" staticLabel pill />
+  <ods-input label="Static Label" staticLabel square />
 </Preview>
 
 ```html
-<ods-text-field label="Static Label" staticLabel pill />
+<ods-input label="Static Label" staticLabel square />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Static Label" staticLabel pill />
+const App = () => <OdsInput label="Static Label" staticLabel square />
 ```
 
 ## Placeholder
 `attribute` `string`
 
 <Preview is-grid="true">
-  <ods-text-field label="Search" placeholder="find a product by name" pill />
+  <ods-input label="Search" placeholder="find a product by name" square />
 </Preview>
 
 ```html
-<ods-text-field label="Search" placeholder="find a product by name" pill />
+<ods-input label="Search" placeholder="find a product by name" square />
 ```
 
 > React
 
 ```jsx
 const App = () => 
-  <OdsTextField label="Search" placeholder="find a product by name" pill />
+  <OdsInput label="Search" placeholder="find a product by name" square />
 ```
 
 ## Disabled
@@ -72,34 +72,34 @@ const App = () =>
 > Use the `disabled` attribute to disable a input.
 
 <Preview is-grid="true">
-  <ods-text-field label="Disabled" disabled pill />
+  <ods-input label="Disabled" disabled square />
 </Preview>
 
 ```html
-<ods-text-field label="Disabled" disabled pill />
+<ods-input label="Disabled" disabled square />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Disabled" disabled pill />
+const App = () => <OdsInput label="Disabled" disabled square />
 ```
 
 ## Required
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-text-field label="Required" required pill />
+  <ods-input label="Required" required square />
 </Preview>
 
 ```html
-<ods-text-field label="Required" required pill />
+<ods-input label="Required" required square />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Disabled" disabled pill />
+const App = () => <OdsInput label="Disabled" disabled square />
 ```
 
 ## Clearable
@@ -109,18 +109,18 @@ const App = () => <OdsTextField label="Disabled" disabled pill />
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" value="John Doe" clearable pill />
+  <ods-input label="Name" value="John Doe" clearable square />
 </Preview>
 
 ```html
-<ods-text-field label="Name" value="John Doe" clearable pill />
+<ods-input label="Name" value="John Doe" clearable square />
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" value="John Doe" clearable pill />
+  <OdsInput label="Name" value="John Doe" clearable square />
 )
 ```
 
@@ -133,29 +133,29 @@ const App = () => (
 `attribute` `string` `text`
 
 <Preview is-grid="true">
-  <ods-text-field label="Text" pill />
-  <ods-text-field label="Number" type="number" pill />
-  <ods-text-field label="Password" type="password" invalid pill />
-  <ods-text-field label="E-mail" type="email" pill />
-  <ods-text-field label="Search" type="search" pill />
-  <ods-text-field label="Tel" type="tel" pill />
-  <ods-text-field label="Url" type="url" pill />
-  <ods-text-field label="Date" type="date" pill />
-  <ods-text-field label="Time" type="time" pill />
-  <ods-text-field label="Datetime Local" type="datetime-local" pill />
+  <ods-input label="Text" square />
+  <ods-input label="Number" type="number" square />
+  <ods-input label="Password" type="password" invalid square />
+  <ods-input label="E-mail" type="email" square />
+  <ods-input label="Search" type="search" square />
+  <ods-input label="Tel" type="tel" square />
+  <ods-input label="Url" type="url" square />
+  <ods-input label="Date" type="date" square />
+  <ods-input label="Time" type="time" square />
+  <ods-input label="Datetime Local" type="datetime-local" square />
 </Preview>
 
 ```html
-<ods-text-field label="Text" pill />
-<ods-text-field label="Number" type="number" pill />
-<ods-text-field label="Password" type="password" pill />
-<ods-text-field label="E-mail" type="email" pill />
-<ods-text-field label="Search" type="search" pill />
-<ods-text-field label="Tel" type="tel" pill />
-<ods-text-field label="Url" type="url" pill />
-<ods-text-field label="Date" type="date" pill />
-<ods-text-field label="Time" type="time" pill />
-<ods-text-field label="Datetime Local" type="datetime-local" pill />
+<ods-input label="Text" square />
+<ods-input label="Number" type="number" square />
+<ods-input label="Password" type="password" square />
+<ods-input label="E-mail" type="email" square />
+<ods-input label="Search" type="search" square />
+<ods-input label="Tel" type="tel" square />
+<ods-input label="Url" type="url" square />
+<ods-input label="Date" type="date" square />
+<ods-input label="Time" type="time" square />
+<ods-input label="Datetime Local" type="datetime-local" square />
 ```
 
 > React
@@ -163,16 +163,16 @@ const App = () => (
 ```jsx
 const App = () => (
   <>
-    <OdsTextField label="Text" pill />
-    <OdsTextField label="Number" type="number" pill />
-    <OdsTextField label="Password" type="password" pill />
-    <OdsTextField label="E-mail" type="email" pill />
-    <OdsTextField label="Search" type="search" pill />
-    <OdsTextField label="Tel" type="tel" pill />
-    <OdsTextField label="Url" type="url" pill />
-    <OdsTextField label="Date" type="date" pill />
-    <OdsTextField label="Time" type="time" pill />
-    <OdsTextField label="Datetime Local" type="datetime-local" pill />
+    <OdsInput label="Text" square />
+    <OdsInput label="Number" type="number" square />
+    <OdsInput label="Password" type="password" square />
+    <OdsInput label="E-mail" type="email" square />
+    <OdsInput label="Search" type="search" square />
+    <OdsInput label="Tel" type="tel" square />
+    <OdsInput label="Url" type="url" square />
+    <OdsInput label="Date" type="date" square />
+    <OdsInput label="Time" type="time" square />
+    <OdsInput label="Datetime Local" type="datetime-local" square />
   </>
 )
 ```
@@ -183,17 +183,17 @@ const App = () => (
 > Use the `valid` attribute to render the input with success colors.
 
 <Preview is-grid="true">
-  <ods-text-field label="Valid" valid pill />
+  <ods-input label="Valid" valid square />
 </Preview>
 
 ```html
-<ods-text-field label="Valid" valid pill />
+<ods-input label="Valid" valid square />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Valid" valid pill />
+const App = () => <OdsInput label="Valid" valid square />
 ```
 
 ## Invalid
@@ -202,17 +202,17 @@ const App = () => <OdsTextField label="Valid" valid pill />
 > Use the `invalid` attribute to render the input with danger colors.
 
 <Preview is-grid="true">
-  <ods-text-field label="Invalid" invalid pill />
+  <ods-input label="Invalid" invalid square />
 </Preview>
 
 ```html
-<ods-text-field label="Invalid" invalid pill />
+<ods-input label="Invalid" invalid square />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextField label="Invalid" invalid pill />
+const App = () => <OdsInput label="Invalid" invalid square />
 ```
 
 ## Left Icon
@@ -222,26 +222,26 @@ const App = () => <OdsTextField label="Invalid" invalid pill />
 > Use the `left-icon` slot to insert the icon on the left.
 
 <Preview is-grid="true">
-  <ods-text-field label="Left Icon" pill>
+  <ods-input label="Left Icon" square>
     <span class="material-symbols-outlined" slot="left-icon"> alternate_email </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Left Icon" pill>
+<ods-input label="Left Icon" square>
   <span class="icon" slot="left-icon"> email </span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Left Icon" pill>
+  <OdsInput label="Left Icon" square>
     <span class="icon" slot="left-icon">
       email
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -252,26 +252,26 @@ const App = () => (
 > Use the `right-icon` slot to insert the icon on the right.
 
 <Preview is-grid="true">
-  <ods-text-field label="Right Icon" pill>
+  <ods-input label="Right Icon" square>
     <span class="material-symbols-outlined" slot="right-icon"> person </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Right Icon" pill>
+<ods-input label="Right Icon" square>
   <span class="icon" slot="right-icon"> person </span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Right Icon" pill>
+  <OdsInput label="Right Icon" square>
     <span class="icon" slot="right-icon">
       person
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -279,31 +279,31 @@ const App = () => (
 `slots`
 
 <Preview is-grid="true">
-  <ods-text-field label="Person e-mail" pill>
+  <ods-input label="Person e-mail" square>
     <span class="material-symbols-outlined" slot="left-icon"> alternate_email </span>
     <span class="material-symbols-outlined" slot="right-icon"> person </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Person e-mail" pill>
+<ods-input label="Person e-mail" square>
   <span class="icon" slot="left-icon"> email </span>
   <span class="icon" slot="right-icon"> person </span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Person e-mail" pill>
+  <OdsInput label="Person e-mail" square>
     <span class="icon" slot="left-icon">
       email
     </span>
     <span class="icon" slot="right-icon">
       person
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -313,26 +313,26 @@ const App = () => (
 > Use the `helper-text` slot to insert the content below the field.
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" required pill>
+  <ods-input label="Name" required square>
     <span class="ht" slot="helper-text"> * Required </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Name" required pill>
+<ods-input label="Name" required square>
   <span class="ht" slot="helper-text">* Required</span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" required pill>
+  <OdsInput label="Name" required square>
     <span class="ht" slot="helper-text">
       * Required
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -342,26 +342,26 @@ const App = () => (
 > Use the `helper-text-end` slot to insert the content below the field on the right side.
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" required pill>
+  <ods-input label="Name" required square>
     <span class="ht" slot="helper-text-end"> * Required </span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Name" required pill>
+<ods-input label="Name" required square>
   <span class="ht" slot="helper-text-end">* Required</span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" required pill>
+  <OdsInput label="Name" required square>
     <span class="ht" slot="helper-text-end">
       * Required
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```
 
@@ -369,30 +369,30 @@ const App = () => (
 `slots`
 
 <Preview is-grid="true">
-  <ods-text-field label="Name" required pill>
+  <ods-input label="Name" required square>
     <span class="ht" slot="helper-text">10 character limit</span>
     <span class="ht" slot="helper-text-end">0/10</span>
-  </ods-text-field>
+  </ods-input>
 </Preview>
 
 ```html
-<ods-text-field label="Name" required pill>
+<ods-input label="Name" required square>
   <span class="ht" slot="helper-text">10 character limit</span>
   <span class="ht" slot="helper-text-end">0/10</span>
-</ods-text-field>
+</ods-input>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextField label="Name" required pill>
+  <OdsInput label="Name" required square>
     <span class="ht" slot="helper-text">
       10 character limit
     </span>
     <span class="ht" slot="helper-text-end">
       0/10
     </span>
-  </OdsTextField>
+  </OdsInput>
 )
 ```

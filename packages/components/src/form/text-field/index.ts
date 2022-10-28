@@ -1,2 +1,2 @@
-export * from './text-field.component'
-export * from './textarea-field.component'
+export * from './input.component'
+export * from './textarea.component'

@@ -1,4 +1,4 @@
-# Textarea Field (outline)
+# Textarea (outline)
 
 :::tip Attribute
 **name**: `appearance`<br />
@@ -11,17 +11,17 @@
 `attribute` `string`
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Label" />
+  <ods-textarea label="Label" />
 </Preview>
 
 ```html
-<ods-textarea-field label="Label" />
+<ods-textarea label="Label" />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextareaField label="Label" />
+const App = () => <OdsTextarea label="Label" />
 ```
 
 ## Static Label
@@ -31,35 +31,35 @@ const App = () => <OdsTextareaField label="Label" />
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Static Label" staticLabel />
+  <ods-textarea label="Static Label" staticLabel />
 </Preview>
 
 ```html
-<ods-textarea-field label="Static Label" staticLabel />
+<ods-textarea label="Static Label" staticLabel />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextareaField label="Static Label" staticLabel />
+const App = () => <OdsTextarea label="Static Label" staticLabel />
 ```
 
 ## Placeholder
 `attribute` `string`
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Search" placeholder="find a product by name" />
+  <ods-textarea label="Search" placeholder="find a product by name" />
 </Preview>
 
 ```html
-<ods-textarea-field label="Search" placeholder="find a product by name" />
+<ods-textarea label="Search" placeholder="find a product by name" />
 ```
 
 > React
 
 ```jsx
 const App = () => 
-  <OdsTextareaField label="Search" placeholder="find a product by name" />
+  <OdsTextarea label="Search" placeholder="find a product by name" />
 ```
 
 ## Disabled
@@ -68,34 +68,34 @@ const App = () =>
 > Use the `disabled` attribute to disable a input.
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Disabled" disabled />
+  <ods-textarea label="Disabled" disabled />
 </Preview>
 
 ```html
-<ods-textarea-field label="Disabled" disabled />
+<ods-textarea label="Disabled" disabled />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextareaField label="Disabled" disabled />
+const App = () => <OdsTextarea label="Disabled" disabled />
 ```
 
 ## Required
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Required" required />
+  <ods-textarea label="Required" required />
 </Preview>
 
 ```html
-<ods-textarea-field label="Required" required />
+<ods-textarea label="Required" required />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextareaField label="Disabled" disabled />
+const App = () => <OdsTextarea label="Disabled" disabled />
 ```
 
 ## Clearable
@@ -105,18 +105,18 @@ const App = () => <OdsTextareaField label="Disabled" disabled />
 `attribute` `boolean` `false`
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Name" value="John Doe" clearable />
+  <ods-textarea label="Name" value="John Doe" clearable />
 </Preview>
 
 ```html
-<ods-textarea-field label="Name" value="John Doe" clearable />
+<ods-textarea label="Name" value="John Doe" clearable />
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextareaField label="Name" value="John Doe" clearable />
+  <OdsTextarea label="Name" value="John Doe" clearable />
 )
 ```
 
@@ -126,17 +126,17 @@ const App = () => (
 > Use the `valid` attribute to render the input with success colors.
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Valid" valid />
+  <ods-textarea label="Valid" valid />
 </Preview>
 
 ```html
-<ods-textarea-field label="Valid" valid />
+<ods-textarea label="Valid" valid />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextareaField label="Valid" valid />
+const App = () => <OdsTextarea label="Valid" valid />
 ```
 
 ## Invalid
@@ -145,17 +145,17 @@ const App = () => <OdsTextareaField label="Valid" valid />
 > Use the `invalid` attribute to render the input with danger colors.
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Invalid" invalid />
+  <ods-textarea label="Invalid" invalid />
 </Preview>
 
 ```html
-<ods-textarea-field label="Invalid" invalid />
+<ods-textarea label="Invalid" invalid />
 ```
 
 > React
 
 ```jsx
-const App = () => <OdsTextareaField label="Invalid" invalid />
+const App = () => <OdsTextarea label="Invalid" invalid />
 ```
 
 ## Left Icon
@@ -165,26 +165,26 @@ const App = () => <OdsTextareaField label="Invalid" invalid />
 > Use the `left-icon` slot to insert the icon on the left.
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Left Icon">
+  <ods-textarea label="Left Icon">
     <span class="material-symbols-outlined" slot="left-icon"> alternate_email </span>
-  </ods-textarea-field>
+  </ods-textarea>
 </Preview>
 
 ```html
-<ods-textarea-field label="Left Icon">
+<ods-textarea label="Left Icon">
   <span class="icon" slot="left-icon"> email </span>
-</ods-textarea-field>
+</ods-textarea>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextareaField label="Left Icon">
+  <OdsTextarea label="Left Icon">
     <span class="icon" slot="left-icon">
       email
     </span>
-  </OdsTextareaField>
+  </OdsTextarea>
 )
 ```
 
@@ -195,26 +195,26 @@ const App = () => (
 > Use the `right-icon` slot to insert the icon on the right.
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Right Icon">
+  <ods-textarea label="Right Icon">
     <span class="material-symbols-outlined" slot="right-icon"> person </span>
-  </ods-textarea-field>
+  </ods-textarea>
 </Preview>
 
 ```html
-<ods-textarea-field label="Right Icon">
+<ods-textarea label="Right Icon">
   <span class="icon" slot="right-icon"> person </span>
-</ods-textarea-field>
+</ods-textarea>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextareaField label="Right Icon">
+  <OdsTextarea label="Right Icon">
     <span class="icon" slot="right-icon">
       person
     </span>
-  </OdsTextareaField>
+  </OdsTextarea>
 )
 ```
 
@@ -222,31 +222,31 @@ const App = () => (
 `slots`
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Person e-mail">
+  <ods-textarea label="Person e-mail">
     <span class="material-symbols-outlined" slot="left-icon"> alternate_email </span>
     <span class="material-symbols-outlined" slot="right-icon"> person </span>
-  </ods-textarea-field>
+  </ods-textarea>
 </Preview>
 
 ```html
-<ods-textarea-field label="Person e-mail">
+<ods-textarea label="Person e-mail">
   <span class="icon" slot="left-icon"> email </span>
   <span class="icon" slot="right-icon"> person </span>
-</ods-textarea-field>
+</ods-textarea>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextareaField label="Person e-mail">
+  <OdsTextarea label="Person e-mail">
     <span class="icon" slot="left-icon">
       email
     </span>
     <span class="icon" slot="right-icon">
       person
     </span>
-  </OdsTextareaField>
+  </OdsTextarea>
 )
 ```
 
@@ -256,26 +256,26 @@ const App = () => (
 > Use the `helper-text` slot to insert the content below the field.
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Name" required>
+  <ods-textarea label="Name" required>
     <span class="ht" slot="helper-text"> * Required </span>
-  </ods-textarea-field>
+  </ods-textarea>
 </Preview>
 
 ```html
-<ods-textarea-field label="Name" required>
+<ods-textarea label="Name" required>
   <span class="ht" slot="helper-text">* Required</span>
-</ods-textarea-field>
+</ods-textarea>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextareaField label="Name" required>
+  <OdsTextarea label="Name" required>
     <span class="ht" slot="helper-text">
       * Required
     </span>
-  </OdsTextareaField>
+  </OdsTextarea>
 )
 ```
 
@@ -285,26 +285,26 @@ const App = () => (
 > Use the `helper-text-end` slot to insert the content below the field on the right side.
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Name" required>
+  <ods-textarea label="Name" required>
     <span class="ht" slot="helper-text-end"> * Required </span>
-  </ods-textarea-field>
+  </ods-textarea>
 </Preview>
 
 ```html
-<ods-textarea-field label="Name" required>
+<ods-textarea label="Name" required>
   <span class="ht" slot="helper-text-end">* Required</span>
-</ods-textarea-field>
+</ods-textarea>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextareaField label="Name" required>
+  <OdsTextarea label="Name" required>
     <span class="ht" slot="helper-text-end">
       * Required
     </span>
-  </OdsTextareaField>
+  </OdsTextarea>
 )
 ```
 
@@ -312,31 +312,31 @@ const App = () => (
 `slots`
 
 <Preview is-grid="true">
-  <ods-textarea-field label="Name" required>
+  <ods-textarea label="Name" required>
     <span class="ht" slot="helper-text">10 character limit</span>
     <span class="ht" slot="helper-text-end">0/10</span>
-  </ods-textarea-field>
+  </ods-textarea>
 </Preview>
 
 ```html
-<ods-textarea-field label="Name" required>
+<ods-textarea label="Name" required>
   <span class="ht" slot="helper-text">10 character limit</span>
   <span class="ht" slot="helper-text-end">0/10</span>
-</ods-textarea-field>
+</ods-textarea>
 ```
 
 > React
 
 ```jsx
 const App = () => (
-  <OdsTextareaField label="Name" required>
+  <OdsTextarea label="Name" required>
     <span class="ht" slot="helper-text">
       10 character limit
     </span>
     <span class="ht" slot="helper-text-end">
       0/10
     </span>
-  </OdsTextareaField>
+  </OdsTextarea>
 )
 ```
 
