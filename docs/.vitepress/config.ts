@@ -1,9 +1,11 @@
 import { defineConfig } from 'vitepress'
+import path from 'path'
 
 const ogDescription = 'OlymPUS Design System'
 const ogImage = 'https://olympus.dev/og-image.png'
 const ogTitle = 'OlymPUS'
 const ogUrl = 'https://olympus.dev'
+
 
 export default defineConfig({
   title: `OlymPUS`,
@@ -23,6 +25,17 @@ export default defineConfig({
 
   vue: {
     reactivityTransform: true
+  },
+
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: '@package/components',
+          replacement: path.resolve(__dirname, '../../dist/packages/components')
+        }
+      ]
+    }
   },
 
   themeConfig: {
@@ -103,7 +116,7 @@ export default defineConfig({
                 {
                   text: 'Textarea',
                   link: '/components/fields/textarea/overview'
-                },
+                }
               ]
             }
           ]
