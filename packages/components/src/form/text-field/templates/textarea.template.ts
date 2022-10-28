@@ -55,6 +55,7 @@ export class OdsTextareaTemplate extends CommonTemplate {
       .value=${live(this.value)}
       @focus=${this.handleFocus}
       @blur=${this.handleBlur}
+      @change=${this.handleChange}
       @input=${this.handleInput}
       @keydown=${this.textareaAutosize}
     >

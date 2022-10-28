@@ -26,22 +26,22 @@ import { renderIcon } from '../../shared/icon/render'
 export class OdsField extends OdsBaseElement {
   static styles: CSSResultGroup = styles
 
-  @property({ type: String }) label?: string
-  @property({ type: String }) labelState?: LabelState = 'default'
-  @property({ type: Boolean }) staticLabel = false
   @property({ type: String }) appearance?: Appearance = 'outline'
+  @property({ type: String }) label?: string
+  @property({ type: Boolean }) staticLabel = false
   @property({ type: Boolean, reflect: true }) square = false
   @property({ type: Boolean, reflect: true }) pill = false
   @property({ type: Boolean, reflect: true }) invalid = false
   @property({ type: Boolean, reflect: true }) valid = false
-  @property({ type: Boolean, reflect: true }) focused = false
   @property({ type: Boolean, reflect: true }) disabled = false
   @property({ type: Boolean, reflect: true }) required = false
-  @property({ type: Boolean, reflect: true }) hasLeftIcon = false
-  @property({ type: Boolean }) clearable = false
-  @property({ type: Boolean }) isPasswordField = false
-  @property({ type: Boolean }) passwordIsVisible = false
-  @property({ type: String, attribute: 'as', reflect: true }) alias: Alias = 'input'
+  @property({ type: Boolean, reflect: true }) clearable = false
+  @property({ type: String, reflect: true }) protected labelState?: LabelState = 'default'
+  @property({ type: Boolean, reflect: true }) protected focused = false
+  @property({ type: Boolean }) protected hasLeftIcon = false
+  @property({ type: Boolean }) protected isPasswordField = false
+  @property({ type: Boolean }) protected passwordIsVisible = false
+  @property({ type: String, attribute: 'as', reflect: true }) protected alias: Alias = 'input'
 
   protected renderLabel() {
     const labelText = this.label ?? ''
@@ -51,7 +51,7 @@ export class OdsField extends OdsBaseElement {
 
   private handleClickClearIconButton() {
     if (this.disabled) return
-    this.emit('ods-empty-click')
+    this.emit('ods-clear-click', { composed: false })
   }
 
   private renderClearIconButton() {
@@ -62,7 +62,7 @@ export class OdsField extends OdsBaseElement {
 
   private handleClickEyeIconButton() {
     if (this.disabled) return
-    this.emit('ods-eye-click')
+    this.emit('ods-eye-click', { composed: false })
   }
 
   private renderEyeIconButton() {
@@ -72,12 +72,12 @@ export class OdsField extends OdsBaseElement {
   }
 
   protected renderRightIcon() {
-    if (this.isPasswordField) return this.renderEyeIconButton();
+    if (this.isPasswordField) return this.renderEyeIconButton()
     if (!this.focused) {
       if (this.invalid) return renderIcon('cancel')
       if (this.valid) return renderIcon('checkCircle')
       if (this.clearable) return this.renderClearIconButton()
-    };
+    }
     return html`<slot name="right-icon"></slot>`
   }
 

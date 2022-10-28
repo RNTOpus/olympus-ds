@@ -9,9 +9,9 @@ import { OdsInputTemplate } from './templates'
  *
  * @event ods-blur - Emitted when the field loses focus.
  * @event ods-focus - Emitted when the field gains focus.
- * @event ods-change - Emitted when the field value is being changed.
- * @event ods-empty-click - Emitted when the clear field button is clicked
- * @event ods-eye-click - Emitted when the password view toggle button is clicked
+ * @event ods-change - Emitted when the field value is changed by the user.
+ * @event ods-input - Emitted when the field receives input and its value changes.
+ * @event ods-clear - Emitted when the clear button is activated.
  *
  * @slot left-icon - Used to prepend an icon to the field.
  * @slot right-icon - Used to append an icon to the field.
@@ -19,6 +19,9 @@ import { OdsInputTemplate } from './templates'
  * @slot helper-text-end - Used to insert the content below the field on the right side.
  *
  * @csspart wrapper - Access the ods-field component.
+ * @csspart label - The field label.
+ * @csspart icon-button - The right icon button to toggle password or clear field.
+ * @csspart field - The input element.
  *
  */
 @customElement('ods-input')
@@ -44,7 +47,7 @@ export class OdsTextField extends OdsInputTemplate {
         ?clearable=${this.clearable && live(this.value)}
         @click=${this.handleClick}
         @ods-eye-click=${this.handleEyeClick}
-        @ods-empty-click=${this.handleClearClick}
+        @ods-clear-click=${this.handleClearClick}
       >
         ${this.renderInput()}
         <slot slot="left-icon" name="left-icon"></slot>

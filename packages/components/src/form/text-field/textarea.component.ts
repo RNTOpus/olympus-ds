@@ -11,9 +11,9 @@ import styles from './styles/textarea-field.styles'
  *
  * @event ods-blur - Emitted when the field loses focus.
  * @event ods-focus - Emitted when the field gains focus.
- * @event ods-change - Emitted when the field value is being changed.
- * @event ods-empty-click - Emitted when the clear field button is clicked
- * @event ods-eye-click - Emitted when the password view toggle button is clicked
+ * @event ods-change - Emitted when the field value is changed by the user.
+ * @event ods-input - Emitted when the field receives input and its value changes.
+ * @event ods-clear - Emitted when the clear button is activated.
  *
  * @slot left-icon - Used to prepend an icon to the field.
  * @slot right-icon - Used to append an icon to the field.
@@ -21,6 +21,8 @@ import styles from './styles/textarea-field.styles'
  * @slot helper-text-end - Used to insert the content below the field on the right side.
  *
  * @csspart wrapper - Access the ods-field component.
+ * @csspart label - The field label.
+ * @csspart field - The textarea element.
  *
  */
 
@@ -40,12 +42,11 @@ export class OdsTextareaField extends OdsTextareaTemplate {
         ?required=${this.required}
         ?invalid=${this.invalid}
         ?valid=${this.valid}
-        ?pill=${this.pill}
         ?square=${this.square}
         ?focused=${this.hasFocus}
         ?clearable=${this.clearable && live(this.value)}
         @click=${this.handleClick}
-        @ods-empty-click=${this.handleClearClick}
+        @ods-clear-click=${this.handleClearClick}
       >
         ${this.renderTextarea()}
         <slot slot="left-icon" name="left-icon"></slot>

@@ -2,7 +2,7 @@
 
 ## Configuration
 
-::: info
+::: tip
 Add `isCustomElement` in `compilerOptions`, as example below:
 :::
 
@@ -21,7 +21,7 @@ export default {
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.includes('-'),
+          isCustomElement: (tag) => tag.includes('-'), // [!code focus]
         },
       },
     }),
@@ -42,7 +42,7 @@ module.exports = {
         ...options,
         compilerOptions: {
           // treat any tag that starts with ion- as custom elements
-          isCustomElement: (tag) => tag.startsWith('ion-'),
+          isCustomElement: (tag) => tag.startsWith('ion-'), // [!code focus]
         },
       }));
   },
@@ -60,13 +60,13 @@ Button component
 
 ```vue
 <script setup>
-  import '@olympus/components/button';
+  import '@olympus/components/button'; // [!code ++]
 </script>
 <template>
-  <ods-button />
+  <ods-button /> // [!code ++]
 </template>
 <style>
-  @import "@olympus/tokens/index.css";
+  @import "@olympus/tokens/index.css"; // [!code ++]
 </style>
 ```
 

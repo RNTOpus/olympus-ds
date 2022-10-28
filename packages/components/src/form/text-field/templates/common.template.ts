@@ -8,6 +8,12 @@ import type { OdsFieldEnterkeyhint as Enterkeyhint, OdsTextFieldType as Type } f
  *
  * @extends OdsField
  *
+ * @event ods-blur - Emitted when the field loses focus.
+ * @event ods-focus - Emitted when the field gains focus.
+ * @event ods-change - Emitted when the field value is changed by the user.
+ * @event ods-input - Emitted when the field receives input and its value changes.
+ * @event ods-clear - Emitted when the clear button is activated.
+ *
  */
 
 export class OdsTextFieldCommonTemplate extends OdsField {
@@ -21,7 +27,7 @@ export class OdsTextFieldCommonTemplate extends OdsField {
   @property() placeholder?: string
   @property({ type: Boolean, reflect: true }) readonly = false
   @property({ type: Boolean, reflect: true }) spellcheck = false
-  @property({ type: String }) type: Type = 'text'
+  @property({ reflect: true }) type: Type = 'text'
   @property() value = ''
 
   @state() protected hasFocus = false
@@ -36,25 +42,14 @@ export class OdsTextFieldCommonTemplate extends OdsField {
     this.inputElement?.blur()
   }
 
+  clear(event: MouseEvent): void {
+    this.handleClearClick(event)
+  }
+
   protected slotControler = new SlotController(this)
 
   get hasLeftIconSlot() {
     return this.slotControler.check('left-icon')
-  }
-
-  protected handleFocus() {
-    this.hasFocus = true
-    this.emit('ods-focus')
-  }
-
-  protected handleBlur() {
-    this.hasFocus = false
-    this.emit('ods-blur')
-  }
-
-  protected handleInput() {
-    this.value = this.inputElement?.value || ''
-    this.emit('ods-change', { detail: this.value })
   }
 
   private shouldShrinkTheLabel() {
@@ -82,7 +77,33 @@ export class OdsTextFieldCommonTemplate extends OdsField {
     this.type = this.passwordIsVisible ? 'text' : 'password'
   }
 
-  protected handleClearClick() {
+  protected handleClearClick(event: MouseEvent) {
     this.value = ''
+    this.emit('ods-clear')
+    this.emit('ods-input')
+    this.emit('ods-change')
+    this.inputElement?.focus()
+
+    event.stopPropagation()
+  }
+
+  protected handleFocus() {
+    this.hasFocus = true
+    this.emit('ods-focus')
+  }
+
+  protected handleBlur() {
+    this.hasFocus = false
+    this.emit('ods-blur')
+  }
+
+  protected handleInput() {
+    this.value = this.inputElement?.value || ''
+    this.emit('ods-input', { detail: this.value })
+  }
+
+  protected handleChange() {
+    this.value = this.inputElement?.value || ''
+    this.emit('ods-change', { detail: this.value })
   }
 }

@@ -2,13 +2,13 @@
 
 ## Configuration
 
-::: info
+::: tip
 Add `CUSTOM_ELEMENTS_SCHEMA` in `@NgModule.schemas`, as example below:
 :::
 
-```ts{2,10}
+```ts
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core'; // [!code ++]
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // [!code ++]
 })
 export class AppModule { }
 
@@ -28,12 +28,12 @@ export class AppModule { }
 Button component
 :::
 
-```ts{1,5}
-import '@olympus/components/button';
+```ts
+import '@olympus/components/button'; // [!code ++]
 
 @Component({
   selector: 'my-component',
-  template: `<ods-button />`,
+  template: `<ods-button />`, // [!code ++]
   styleUrls: ['./my.component.css'],
 })
 export class MyComponent {}
