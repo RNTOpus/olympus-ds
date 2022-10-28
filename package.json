@@ -7,12 +7,12 @@
     "docs:dev": "npm run build:components && vitepress dev docs",
     "docs:build": "npm run build:components && vitepress build docs",
     "docs:serve": "vitepress serve docs",
+    "create:component": "nx workspace-generator create-or-update-component",
+    "update:component": "nx workspace-generator create-or-update-component",
     "build:components": "nx run components:build",
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
-    "test:coverage": "web-test-runner --coverage",
-    "create:component": "nx workspace-generator create-or-update-component",
-    "update:component": "nx workspace-generator create-or-update-component"
+    "test:coverage": "web-test-runner --coverage"
   },
   "private": true,
   "dependencies": {
