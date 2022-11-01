@@ -19,7 +19,7 @@ export default css`
     padding: 0 var(--ods-spacing-xxs);
   }
 
-  :host([labelState="default"]) .label {
+  :host([labelState="static"]) .label {
     position: static;
   }
 

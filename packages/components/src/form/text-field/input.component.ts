@@ -25,7 +25,7 @@ import { OdsInputTemplate } from './templates'
  *
  */
 @customElement('ods-input')
-export class OdsTextField extends OdsInputTemplate {
+export class OdsInputField extends OdsInputTemplate {
   static styles: CSSResultGroup = styles
   render() {
     return html`
@@ -41,7 +41,7 @@ export class OdsTextField extends OdsInputTemplate {
         ?valid=${this.valid}
         ?pill=${this.pill}
         ?square=${this.square}
-        ?focused=${this.hasFocus}
+        ?focused=${this.focused}
         ?isPasswordField=${this.isPasswordField}
         ?passwordIsVisible=${this.passwordIsVisible}
         ?clearable=${this.clearable && live(this.value)}
@@ -64,10 +64,10 @@ export class OdsTextField extends OdsInputTemplate {
   }
 }
 
-export default OdsTextField
+export default OdsInputField
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ods-input': OdsTextField
+    'ods-input': OdsInputField
   }
 }

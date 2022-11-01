@@ -43,7 +43,7 @@ export class OdsTextareaField extends OdsTextareaTemplate {
         ?invalid=${this.invalid}
         ?valid=${this.valid}
         ?square=${this.square}
-        ?focused=${this.hasFocus}
+        ?focused=${this.focused}
         ?clearable=${this.clearable && live(this.value)}
         @click=${this.handleClick}
         @ods-clear-click=${this.handleClearClick}

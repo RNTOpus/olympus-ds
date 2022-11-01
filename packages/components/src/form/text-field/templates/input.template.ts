@@ -23,10 +23,12 @@ export class OdsInputTemplate extends CommonTemplate {
   @property() step?: number | 'any'
 
   protected renderInput() {
-    return html` <input
+    return html`<input
       part="field"
       class="text-field"
       id=${this.name ? this.name + 'Field' : 'inputField'}
+      aria-label=${ifDefined(this.label)}
+      .aria-describedby=${ifDefined(this.helperText)}
       autocomplete=${ifDefined(this.type === 'password' ? 'off' : this.autocomplete)}
       autocorrect=${ifDefined(this.type === 'password' ? 'off' : this.autocorrect)}
       ?autofocus=${this.autofocus}
@@ -45,12 +47,11 @@ export class OdsInputTemplate extends CommonTemplate {
       ?required=${this.required}
       ?spellcheck=${this.spellcheck}
       step=${ifDefined(this.step as number)}
-      type=${this.type}
+      type=${this.type || 'text'}
       .value=${live(this.value)}
-      @focus=${this.handleFocus}
-      @blur=${this.handleBlur}
-      @change=${this.handleChange}
-      @input=${this.handleInput}
+      @focus=${this.onFieldFocus}
+      @blur=${this.onFieldBlur}
+      @input=${this.handleInputChange}
     />`
   }
 }

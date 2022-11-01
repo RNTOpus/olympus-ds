@@ -22,9 +22,9 @@ export class OdsTextareaTemplate extends CommonTemplate {
 
   private textareaAutosize() {
     this.textareaAutosizeTime = setTimeout(() => {
-      if (this.inputElement) {
-        this.inputElement.style.cssText = `height: auto`
-        this.inputElement.style.cssText = `height: ${this.inputElement?.scrollHeight}px`
+      if (this.nativeElement) {
+        this.nativeElement.style.cssText = `height: auto`
+        this.nativeElement.style.cssText = `height: ${this.nativeElement?.scrollHeight}px`
       }
     }, 0)
   }
@@ -40,6 +40,8 @@ export class OdsTextareaTemplate extends CommonTemplate {
       class="text-field"
       id=${this.name ? this.name + 'Field' : 'textareaField'}
       style=${styleMap({ resize: this.resize })}
+      aria-label=${ifDefined(this.label)}
+      .aria-describedby=${ifDefined(this.helperText)}
       autocomplete=${ifDefined(this.autocomplete)}
       ?autofocus=${this.autofocus}
       ?disabled=${this.disabled}
@@ -53,14 +55,12 @@ export class OdsTextareaTemplate extends CommonTemplate {
       ?required=${this.required}
       ?spellcheck=${this.spellcheck}
       .value=${live(this.value)}
-      @focus=${this.handleFocus}
-      @blur=${this.handleBlur}
-      @change=${this.handleChange}
-      @input=${this.handleInput}
+      @focus=${this.onFieldFocus}
+      @blur=${this.onFieldBlur}
+      @input=${this.handleInputChange}
       @keydown=${this.textareaAutosize}
     >
       ${this.value}
-    </textarea
-    >`
+    </textarea>`
   }
 }

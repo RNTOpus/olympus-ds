@@ -1,5 +1,5 @@
 import { OdsField } from '../../field'
-import { property, query, state } from 'lit/decorators.js'
+import { eventOptions, property, query, state } from 'lit/decorators.js'
 import { SlotController } from '../../../shared/controller/SlotController'
 import type { OdsFieldEnterkeyhint as Enterkeyhint, OdsTextFieldType as Type } from '../types'
 
@@ -27,22 +27,24 @@ export class OdsTextFieldCommonTemplate extends OdsField {
   @property() placeholder?: string
   @property({ type: Boolean, reflect: true }) readonly = false
   @property({ type: Boolean, reflect: true }) spellcheck = false
-  @property({ reflect: true }) type: Type = 'text'
+  @property({ reflect: true }) type?: Type
   @property() value = ''
 
-  @state() protected hasFocus = false
-
-  @query('.text-field') inputElement?: HTMLInputElement
+  @query('.text-field') nativeElement?: HTMLInputElement | HTMLTextAreaElement
 
   focus(options?: FocusOptions): void {
-    this.inputElement?.focus(options)
+    this.nativeElement?.focus(options)
+  }
+
+  click(): void {
+    this.nativeElement?.focus()
   }
 
   blur(): void {
-    this.inputElement?.blur()
+    this.nativeElement?.blur()
   }
 
-  clear(event: MouseEvent): void {
+  clear(event?: MouseEvent): void {
     this.handleClearClick(event)
   }
 
@@ -56,7 +58,7 @@ export class OdsTextFieldCommonTemplate extends OdsField {
     return (
       !!this.value ||
       !!this.placeholder ||
-      this.hasFocus ||
+      this.focused ||
       this.type === 'date' ||
       this.type === 'time' ||
       this.type === 'datetime-local'
@@ -64,12 +66,12 @@ export class OdsTextFieldCommonTemplate extends OdsField {
   }
 
   protected getLabelState() {
-    return this.staticLabel ? 'default' : this.shouldShrinkTheLabel() ? 'shrink' : 'grow'
+    return this.staticLabel ? 'static' : this.shouldShrinkTheLabel() ? 'shrink' : 'grow'
   }
 
   protected handleClick() {
     if (this.disabled) return
-    this.inputElement?.focus()
+    this.nativeElement?.focus()
   }
 
   protected handleEyeClick() {
@@ -77,33 +79,26 @@ export class OdsTextFieldCommonTemplate extends OdsField {
     this.type = this.passwordIsVisible ? 'text' : 'password'
   }
 
-  protected handleClearClick(event: MouseEvent) {
+  protected handleClearClick(event?: MouseEvent) {
     this.value = ''
     this.emit('ods-clear')
-    this.emit('ods-input')
-    this.emit('ods-change')
-    this.inputElement?.focus()
+    this.nativeElement?.focus()
 
-    event.stopPropagation()
+    event?.stopPropagation()
   }
 
-  protected handleFocus() {
-    this.hasFocus = true
+  protected onFieldFocus() {
+    this.focused = true
     this.emit('ods-focus')
   }
 
-  protected handleBlur() {
-    this.hasFocus = false
+  protected onFieldBlur() {
+    this.focused = false
     this.emit('ods-blur')
   }
 
-  protected handleInput() {
-    this.value = this.inputElement?.value || ''
-    this.emit('ods-input', { detail: this.value })
-  }
-
-  protected handleChange() {
-    this.value = this.inputElement?.value || ''
-    this.emit('ods-change', { detail: this.value })
+  @eventOptions({ passive: true })
+  protected handleInputChange() {
+    this.value = this.nativeElement?.value || ''
   }
 }
