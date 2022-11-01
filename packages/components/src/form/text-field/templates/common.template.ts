@@ -1,5 +1,5 @@
 import { OdsField } from '../../field'
-import { eventOptions, property, query, state } from 'lit/decorators.js'
+import { eventOptions, property, query } from 'lit/decorators.js'
 import { SlotController } from '../../../shared/controller/SlotController'
 import type { OdsFieldEnterkeyhint as Enterkeyhint, OdsTextFieldType as Type } from '../types'
 
