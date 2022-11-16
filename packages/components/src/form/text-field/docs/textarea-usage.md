@@ -12,9 +12,5 @@ import '@olympus/components/textarea'
 
 ```jsx
 import { OdsTextarea } from '@olympus/components/react/textarea'
-const App = () => (
-  <>
-    <OdsTextarea label="Description" />
-  </>
-)
+const App = () => <OdsTextarea label="Description" />
 ```

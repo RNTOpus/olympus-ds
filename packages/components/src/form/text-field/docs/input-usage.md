@@ -12,9 +12,5 @@ import '@olympus/components/input'
 
 ```jsx
 import { OdsInput } from '@olympus/components/react/input'
-const App = () => (
-  <>
-    <OdsInput label="Title" />
-  </>
-)
+const App = () => <OdsInput label="Title" />
 ```

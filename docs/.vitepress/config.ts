@@ -111,11 +111,59 @@ export default defineConfig({
               items: [
                 {
                   text: 'Input',
-                  link: '/components/fields/input/overview'
+                  link: '/components/fields/input/overview',
+                  items: [
+                    {
+                      text: 'Overview',
+                      link: '/components/fields/input/overview'
+                    },
+                    {
+                      text: 'Outline',
+                      link: '/components/fields/input/outline'
+                    },
+                    {
+                      text: 'Fill',
+                      link: '/components/fields/input/fill'
+                    },
+                    {
+                      text: 'Inline',
+                      link: '/components/fields/input/inline'
+                    },
+                    {
+                      text: 'Square',
+                      link: '/components/fields/input/square'
+                    },
+                    {
+                      text: 'Pill',
+                      link: '/components/fields/input/pill'
+                    }
+                  ]
                 },
                 {
                   text: 'Textarea',
-                  link: '/components/fields/textarea/overview'
+                  link: '/components/fields/textarea/overview',
+                  items: [
+                    {
+                      text: 'Overview',
+                      link: '/components/fields/textarea/overview'
+                    },
+                    {
+                      text: 'Outline',
+                      link: '/components/fields/textarea/outline'
+                    },
+                    {
+                      text: 'Fill',
+                      link: '/components/fields/textarea/fill'
+                    },
+                    {
+                      text: 'Inline',
+                      link: '/components/fields/textarea/inline'
+                    },
+                    {
+                      text: 'Square',
+                      link: '/components/fields/textarea/square'
+                    }
+                  ]
                 }
               ]
             }

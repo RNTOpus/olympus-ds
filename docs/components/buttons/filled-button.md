@@ -17,9 +17,7 @@ import { OdsFilledButton } from '@olympus/components/react/filled-button'
 const App = () => <OdsFilledButton> Label </OdsFilledButton>
 ```
 
-## Examples
-
-### Variants
+## Variants
 
 > Use the `variant` attribute to change a button's color.<br />**Default:** Primary<br />
 
@@ -51,7 +49,7 @@ const App = () => (
 )
 ```
 
-### Size
+## Size
 
 > Use the `size` attribute to change a button's size<br />**Default:** Normal<br />
 
@@ -80,7 +78,7 @@ const App = () => (
 )
 ```
 
-### Rounded
+## Rounded
 
 > Use the `rounded` attribute to change the rounded shape of the button<br />**Default:** Standard
 
@@ -112,7 +110,7 @@ const App = () => (
 )
 ```
 
-### Disabled
+## Disabled
 
 > Use the `disabled` attribute to disable a button.
 
@@ -150,7 +148,7 @@ const App = () => (
 )
 ```
 
-### Fully
+## Fully
 
 > Use the `fully` attribute to apply 100% width to the button.
 
@@ -188,7 +186,7 @@ const App = () => (
 )
 ```
 
-### Slots
+## Slots
 
 > To add a label to the button, just define the filled or some html element. <br />Use the `prefix` and `suffix` slots to add icons.
 
