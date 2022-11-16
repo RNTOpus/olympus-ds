@@ -33,6 +33,8 @@ export class OdsButton extends OdsBaseElement {
 
   @property({ reflect: true }) rounded: Rounded = 'standard'
 
+  @property() form?: string
+
   @property({ type: Boolean, reflect: true }) disabled = false
 
   @property({ type: Boolean, reflect: true }) outline = false
@@ -66,6 +68,19 @@ export class OdsButton extends OdsBaseElement {
       event.preventDefault()
       event.stopPropagation()
       return
+    }
+
+    const formId = this.form
+    const formElement = formId
+      ? (document.getElementById(formId) as HTMLFormElement | null)
+      : (this.closest('form') as HTMLFormElement | null)
+
+    if (this.type === 'submit') {
+      formElement?.requestSubmit()
+    }
+
+    if (this.type === 'reset') {
+      formElement?.reset()
     }
   }
 

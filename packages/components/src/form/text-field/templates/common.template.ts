@@ -1,6 +1,7 @@
 import { OdsField } from '../../field'
 import { eventOptions, property, query } from 'lit/decorators.js'
 import { SlotController } from '../../../shared/controller/SlotController'
+import { defaultValue } from '../../../shared/decorator/default-value'
 import type { OdsFieldEnterkeyhint as Enterkeyhint, OdsTextFieldType as Type } from '../types'
 
 /**
@@ -29,6 +30,9 @@ export class OdsTextFieldCommonTemplate extends OdsField {
   @property({ type: Boolean, reflect: true }) spellcheck = false
   @property({ reflect: true }) type?: Type
   @property() value = ''
+
+  @defaultValue()
+  defaultValue = '';
 
   @query('.text-field') nativeElement?: HTMLInputElement | HTMLTextAreaElement
 

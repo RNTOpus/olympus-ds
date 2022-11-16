@@ -55,7 +55,14 @@ export class OdsField extends OdsBaseElement {
   }
 
   private renderClearIconButton() {
-    return html`<button class="icon-button" part="clear-icon-button" @click=${this.handleClickClearIconButton}>
+    return html`<button
+      class="icon-button"
+      type="button"
+      part="clear-icon-button"
+      tabindex="-1"
+      aria-label="Clear entry"
+      @click=${this.handleClickClearIconButton}
+    >
       ${renderIcon('close')}
     </button>`
   }
@@ -65,7 +72,14 @@ export class OdsField extends OdsBaseElement {
   }
 
   private renderEyeIconButton() {
-    return html`<button class="icon-button" part="eye-icon-button" @click=${this.handleClickEyeIconButton}>
+    return html`<button
+      class="icon-button"
+      part="eye-icon-button"
+      type="button"
+      tabindex="-1"
+      aria-label=${this.passwordIsVisible ? 'Hide password' : 'Show password'}
+      @click=${this.handleClickEyeIconButton}
+    >
       ${renderIcon(this.passwordIsVisible ? 'visibilityOff' : 'visibility')}
     </button>`
   }
