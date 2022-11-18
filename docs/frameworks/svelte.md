@@ -12,8 +12,8 @@ Button component
 
 ```html
 <script>
-  import "@olympus/tokens/index.css";
-  import '@olympus/components/button';
+  import "@olympus/tokens/index.css";// [!code ++]
+  import '@olympus/components/button';// [!code ++]
 </script>
-<ods-button />
+<ods-button />// [!code ++]
 ```

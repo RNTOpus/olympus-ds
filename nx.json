@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "@olympus",
+  "npmScope": "olympus",
   "affected": {
     "defaultBase": "master"
   },

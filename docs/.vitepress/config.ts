@@ -1,9 +1,11 @@
 import { defineConfig } from 'vitepress'
+import path from 'path'
 
 const ogDescription = 'OlymPUS Design System'
 const ogImage = 'https://olympus.dev/og-image.png'
 const ogTitle = 'OlymPUS'
 const ogUrl = 'https://olympus.dev'
+
 
 export default defineConfig({
   title: `OlymPUS`,
@@ -23,6 +25,17 @@ export default defineConfig({
 
   vue: {
     reactivityTransform: true
+  },
+
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: '@package/components',
+          replacement: path.resolve(__dirname, '../../dist/packages/components')
+        }
+      ]
+    }
   },
 
   themeConfig: {
@@ -90,27 +103,67 @@ export default defineConfig({
           items: [
             {
               text: 'Buttons',
-              link: '/components/buttons/overview',
+              link: '/components/buttons/overview'
+            },
+            {
+              text: 'Fields',
+              link: '/components/fields/overview',
               items: [
                 {
-                  text: 'Basic',
-                  link: '/components/buttons/basic'
+                  text: 'Input',
+                  link: '/components/fields/input/overview',
+                  items: [
+                    {
+                      text: 'Overview',
+                      link: '/components/fields/input/overview'
+                    },
+                    {
+                      text: 'Outline',
+                      link: '/components/fields/input/outline'
+                    },
+                    {
+                      text: 'Fill',
+                      link: '/components/fields/input/fill'
+                    },
+                    {
+                      text: 'Inline',
+                      link: '/components/fields/input/inline'
+                    },
+                    {
+                      text: 'Square',
+                      link: '/components/fields/input/square'
+                    },
+                    {
+                      text: 'Pill',
+                      link: '/components/fields/input/pill'
+                    }
+                  ]
                 },
                 {
-                  text: 'Filled',
-                  link: '/components/buttons/filled-button'
-                },
-                {
-                  text: 'Outlined',
-                  link: '/components/buttons/outlined-button'
-                },
-                {
-                  text: 'Text',
-                  link: '/components/buttons/text-button'
-                },
-                {
-                  text: 'Custom',
-                  link: '/components/buttons/custom'
+                  text: 'Textarea',
+                  link: '/components/fields/textarea/overview',
+                  items: [
+                    {
+                      text: 'Overview',
+                      link: '/components/fields/textarea/overview'
+                    },
+                    {
+                      text: 'Outline',
+                      link: '/components/fields/textarea/outline'
+                    },
+                    {
+                      text: 'Fill',
+                      link: '/components/fields/textarea/fill'
+                    },
+                    {
+                      text: 'Inline',
+                      link: '/components/fields/textarea/inline'
+                    },
+                    {
+                      text: 'Square',
+                      link: '/components/fields/textarea/square'
+                    }
+                  ]
                 }
               ]
             }

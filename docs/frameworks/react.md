@@ -7,11 +7,13 @@ Button component
 :::
 
 ```jsx
-import { OdsButton } from '@olympus/components/react/button';
+import { OdsButton } from '@olympus/components/react/button' // [!code ++]
 
-const MyComponent = () => <OdsButton>Click me</OdsButton>;
+const MyComponent = () => (
+  <OdsButton>Click me</OdsButton> // [!code ++]
+)
 
-export default MyComponent;
+export default MyComponent
 ```
 
 ## Tokens
@@ -21,7 +23,5 @@ Import **Olympus** tokens or rewrite tokens with your own values
 :::
 
 ```css
-@import "@olympus/tokens/index.css";
+@import '@olympus/tokens/index.css';
 ```
-
-
