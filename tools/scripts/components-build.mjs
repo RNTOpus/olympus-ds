@@ -21,6 +21,7 @@ mkdirSync(outputPath, { recursive: true });
     execSync(`node tools/scripts/create-react-components.mjs ${tmpPath}`, { stdio: 'inherit' });
     execSync(`node tools/scripts/copy-files.mjs ${packagePath + '/tsconfig.json'} ${tmpPath + '/tsconfig.json'} "Typescript config file"`, { stdio: 'inherit' });
     execSync(`node tools/scripts/ts-compiler.mjs ${outputPath} ${tmpPath}`, { stdio: 'inherit' });
+    execSync(`node tools/scripts/create-umd-library.mjs ${outputPath} "olympusComponents" ${tmpPath}`, { stdio: 'inherit' });
     execSync(`node tools/scripts/copy-files.mjs ${tmpPath + '/custom-elements.json'} ${outputPath + '/custom-elements.json'} "Custom elements file"`, { stdio: 'inherit' });
     execSync(`node tools/scripts/delete-files.mjs ${tmpPath} "Temporary folder"`, { stdio: 'inherit' });
     execSync(`node tools/scripts/copy-files.mjs ${packagePath + '/package.json'} ${outputPath + '/package.json'} "Package file"`, { stdio: 'inherit' });
