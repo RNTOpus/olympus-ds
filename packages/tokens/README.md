@@ -1,18 +1,14 @@
-# @olympus/tokens
+# Tokens
 
-> Design tokens for using the Olympus Design System
+![Badge](https://img.shields.io/static/v1?label=@olympus/tokens&message=0.0.1&color=f42550&style=flat-square)
 
-## Getting started
-
-To install `@olympus/tokens` in your project, you will need to run the following
-command using [npm](https://www.npmjs.com/):
+## Installation
 
 ```bash
 npm install @olympus/tokens
 ```
 
-If you prefer [Yarn](https://yarnpkg.com/en/), use the following command
-instead:
+or
 
 ```bash
 yarn add @olympus/tokens
@@ -91,7 +87,7 @@ import { colorNeutral50 } from '@olympus/tokens/lib/color';
 const { colorNeutral50 } = require('@olympus/tokens/lib/color');
 ```
 
-### Design Tokens
+## Tokens
 
 | Category | Types | Variations |
 | :--- | :--- | :--- | 
@@ -108,10 +104,3 @@ const { colorNeutral50 } = require('@olympus/tokens/lib/color');
 | time | transition | short / base / long / xl
 | time | delay <br /> duration | short / base / long
 | zIndex | - | min / 1-9 / overlay / max
-
-
-
-
-
-
-

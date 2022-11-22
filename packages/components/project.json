@@ -5,8 +5,20 @@
   "targets": {
     "build": {
       "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "command": "node tools/scripts/components-build.mjs"
+        "outputPath": "dist/packages/components",
+        "commands": [
+          {
+            "command": "rimraf dist/packages/components"
+          },
+          {
+            "command": "rimraf tmp/packages/components"
+          },
+          {
+            "command": "node tools/scripts/components-build.mjs"
+          }
+        ]
       }
     },
     "lint": {
@@ -27,6 +39,18 @@
           }
         ]
       }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs components {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
     }
   },
   "tags": []

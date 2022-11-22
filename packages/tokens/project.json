@@ -7,13 +7,13 @@
       "executor": "nx:run-commands",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "packages/tokens/dist",
+        "outputPath": "dist/packages/tokens",
         "commands": [
           {
-            "command": "rimraf packages/tokens/dist"
+            "command": "rimraf dist/packages/tokens"
           },
           {
-            "command": "node packages/tokens/src/tasks/build"
+            "command": "node tools/scripts/tokens-build.mjs"
           }
         ]
       }

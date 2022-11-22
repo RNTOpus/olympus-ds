@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /getting-started
+      link: /getting-started/
     - theme: alt
       text: View on Bitbucket
       link: https://bitbucket.org/opusbr/opus-olympus-design-system
@@ -26,7 +26,13 @@ features:
   - icon: 🎨
     title: Customizable with CSS
     details: Use parts and properties to customize a component.
+  - icon: 🧑‍💻
+    title: Playground in stackblitz
+    details: Examples in angular, react, vue and svelte.
 ---
+
+
+
 
 
 

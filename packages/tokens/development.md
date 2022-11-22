@@ -1,6 +1,6 @@
-# @olympus/tokens
+# Development
 
-> *for developers*
+![Badge](https://img.shields.io/static/v1?label=@olympus/tokens&message=0.0.1&color=f42550&style=flat-square)
 
 This library uses [style-dictionary](https://amzn.github.io/style-dictionary/#/) to generate the tokens.
 
@@ -32,30 +32,20 @@ To update or create new tokens, follow the pattern below:
 }
 ```
 
-This library was generated with [Nx](https://nx.dev).
-
 ## Building
 
-At the root of the monorepo, run `nx build tokens` or `nx run tokens:build` to build the library.
-
-> after the build, the **dist** folder will be generated inside the library directory.
+```bash
+yarn tokens:build
+```
 
 ## Publishing
 
 > You might need to authenticate with NPM before running this script.
 
-At the root of the monorepo:
-
-### Building and publish the library, run:
 ```bash
-  nx publish tokens --ver={version} --tag={tag}
+yarn tokens:publish -- --ver={version} --tag={tag}
 ```
-or `nx run tokens:publish`
 
-### Just publish the library, run:
-```bash
- node tools/scripts/publish.mjs tokens {version} {tag}
-```
 > Semantic Versioning, expected: #.#.#-tag.# or #.#.#
 
 > Default "tag" to "next" so we won't publish the "latest" tag by accident.
