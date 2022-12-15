@@ -3,6 +3,16 @@
   "sourceRoot": "packages/components/src",
   "projectType": "library",
   "targets": {
+    "watch": {
+      "executor": "./tools/executors/watch:watch",
+      "options": {
+        "sources": ["packages/components/src"],
+        "commands": [
+          "nx run components:build",
+          "echo Successfully rebuilt components"
+        ]
+      }
+    },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": ["{options.outputPath}"],
