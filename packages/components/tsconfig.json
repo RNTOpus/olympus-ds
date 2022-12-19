@@ -25,10 +25,5 @@
     "useDefineForClassFields": false
   },
   "include": ["**/*.ts"],
-  "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.stories.js"],
-  "references": [
-    {
-      "path": "./.storybook/tsconfig.json"
-    }
-  ]
+  "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.stories.js"]
 }
