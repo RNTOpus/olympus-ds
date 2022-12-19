@@ -24,10 +24,11 @@
     "target": "es2019",
     "useDefineForClassFields": false
   },
-  "include": [
-    "**/*.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts"
+  "include": ["**/*.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.stories.js"],
+  "references": [
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
   ]
 }

@@ -1,0 +1,9 @@
+import { html } from 'lit-html'
+import 'reflect-metadata'
+import './button.component'
+
+export default {
+  title: 'Button'
+}
+
+export const Primary = () => html`<ods-button outline>Teste</ods-button>`

@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "components": "packages/components",
+    "components-e2e": "demos/components-e2e",
     "tokens": "packages/tokens"
   }
 }
