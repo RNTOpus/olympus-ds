@@ -1,9 +1,14 @@
 import { html } from 'lit-html'
-import 'reflect-metadata'
+import { Story } from '@storybook/web-components'
 import '../button.component'
 
 export default {
   title: 'Button'
 }
 
-export const Primary = () => html`<ods-button>Teste</ods-button>`
+const Template: Story = ({ label }) => html`<ods-button>${label}</ods-button>`
+
+export const Basic = Template.bind({})
+Basic.args = {
+  label: 'Button'
+}

@@ -3,7 +3,12 @@ const rootMain = require('../../../.storybook/main')
 module.exports = {
   ...rootMain,
 
-  stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../public/introduction.stories.ts',
+    ...rootMain.stories,
+    '../src/**/*.stories.mdx',
+    '../src/**/*.stories.@(js|jsx|ts|tsx)'
+  ],
   addons: [...rootMain.addons],
   staticDirs: ['../public'],
   webpackFinal: async (config, { configType }) => {
