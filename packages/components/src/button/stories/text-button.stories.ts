@@ -1,7 +1,7 @@
 import { Story } from '@storybook/web-components'
 import { html } from 'lit-html'
 
-import '../filled-button.component'
+import '../text-button.component'
 
 export default {
   title: 'Button',
@@ -18,33 +18,24 @@ export default {
       options: ['small', 'medium', 'normal'],
       control: { type: 'select' }
     },
-    rounded: {
-      options: ['standard', 'none', 'pill', 'circle'],
-      control: { type: 'select' }
-    },
-    disabled: { control: 'boolean' },
-    fully: { control: 'boolean' }
+    disabled: { control: 'boolean' }
   }
 }
 
-const Template: Story = ({ label, variant, size, rounded, disabled, fully }) => html` <ods-filled-button
+const Template: Story = ({ label, variant, size, disabled }) => html` <ods-text-button
   variant=${variant}
   size=${size}
-  rounded=${rounded}
   ?disabled=${disabled}
-  ?fully=${fully}
 >
   <span class="mso" slot="prefix">🐙</span>
   ${label}
   <span class="mso" slot="suffix">🚀</span>
-</ods-filled-button>`
+</ods-text-button>`
 
-export const Filled = Template.bind({})
-Filled.args = {
-  label: 'Button Filled',
+export const Text = Template.bind({})
+Text.args = {
+  label: 'Button Outlined',
   variant: 'primary',
   size: 'normal',
-  rounded: 'standard',
-  disabled: false,
-  fully: false
+  disabled: false
 }
