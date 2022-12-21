@@ -1,0 +1,14 @@
+import { html } from 'lit-html'
+import { Story } from '@storybook/web-components'
+import '../<%= fileName %>.component'
+
+export default {
+  title: '<%= className %>'
+}
+
+const Template: Story = ({ label }) => html`<ods-<%= fileName %>>${label}</ods-<%= fileName %>>`
+
+export const Primary = Template.bind({})
+Primary.args = {
+  label: '<%= className %>'
+}
