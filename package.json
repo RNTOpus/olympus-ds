@@ -15,7 +15,8 @@
     "test:watch": "web-test-runner --watch",
     "test:coverage": "web-test-runner --coverage",
     "publish:components": "nx run components:publish",
-    "publish:tokens": "nx run tokens:publish"
+    "publish:tokens": "nx run tokens:publish",
+    "storybook": "nx run components:storybook"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,7 @@
     "vite": "^3.1.4"
   },
   "devDependencies": {
+    "reflect-metadata": "^0.1.13",
     "@babel/core": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
     "@custom-elements-manifest/analyzer": "^0.6.4",
