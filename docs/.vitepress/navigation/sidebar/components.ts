@@ -86,5 +86,17 @@ export const ODS_DOC_SIDEBAR_COMPONENTS = [
         link: '/components/textarea/square'
       }
     ]
+  },
+  {
+    text: 'Toast',
+    link: '/components/toast/index',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      {
+        text: 'Overview',
+        link: '/components/toast/overview'
+      }
+    ]
   }
 ]

@@ -1,5 +1,5 @@
-import { CSSResultGroup, html } from 'lit'
-import { customElement, property, query } from 'lit/decorators.js'
+import { CSSResultGroup, html, PropertyValues } from 'lit'
+import { customElement, property } from 'lit/decorators.js'
 import { OdsBaseElement } from '../shared/base-element'
 import styles from './styles/toast.styles'
 import type { OdsToastVariant as Variant } from './types'
@@ -8,16 +8,44 @@ import type { OdsToastVariant as Variant } from './types'
 export class OdsToast extends OdsBaseElement {
   static styles: CSSResultGroup = styles
 
-  @query('.button') buttonElement?: HTMLButtonElement
+  @property({ type: Boolean, reflect: true }) open = false
 
   @property({ reflect: true }) variant: Variant = 'primary'
 
+  @property({ reflect: true }) title = ''
+
+  handleClose() {
+    this.close()
+  }
+
+  public close(): void {
+    this.open = false
+  }
+
   render() {
     return html`
-      <div>
-        <h1>Toast</h1>
+      <div class="body">
+        <slot name="icon" class="icon"></slot>
+        <div class="content">
+          <h1 class="content-title">${this.title}</h1>
+          <slot></slot>
+        </div>
+      </div>
+      <div class="close">
+        <button class="close-button" @click=${this.handleClose}>X</button>
       </div>
     `
+  }
+
+  updated(changes: PropertyValues): void {
+    console.log('changes', changes)
+
+    if (changes.has('open')) {
+      console.log('Changes in open', this.open)
+    }
+    if (changes.has('timeout')) {
+      console.log('asdasd')
+    }
   }
 }
 
