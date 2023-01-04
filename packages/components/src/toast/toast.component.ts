@@ -18,6 +18,8 @@ export class OdsToast extends OdsBaseElement {
 
   @property({ type: Number, reflect: true }) timeout = 6000
 
+  @property({ type: Boolean, reflect: true }) outline = false
+
   @state() private showingTime: NodeJS.Timeout | null = null
 
   handleClose() {
@@ -40,7 +42,7 @@ export class OdsToast extends OdsBaseElement {
           </div>
         </div>
         <div class="close">
-          <button class="close-button" @click=${this.handleClose}>X</button>
+          <button class="close-button" @click=${this.handleClose}>x</button>
         </div>
       </div>
     `

@@ -57,6 +57,27 @@ export default css`
     --ods-toast-text-color: var(--ods-color-success-10);
   }
 
+  :host([variant='primary'][outline]) {
+    --ods-toast-bg-color: var(--ods-color-primary-100);
+    --ods-toast-text-color: var(--ods-color-primary-base);
+    --ods-toast-border-color: var(--ods-color-primary-base);
+  }
+  :host([variant='danger'][outline]) {
+    --ods-toast-bg-color: var(--ods-color-danger-100);
+    --ods-toast-text-color: var(--ods-color-danger-base);
+    --ods-toast-border-color: var(--ods-color-danger-base);
+  }
+  :host([variant='warning'][outline]) {
+    --ods-toast-bg-color: var(--ods-color-warning-100);
+    --ods-toast-text-color: var(--ods-color-warning-30);
+    --ods-toast-border-color: var(--ods-color-warning-base);
+  }
+  :host([variant='success'][outline]) {
+    --ods-toast-bg-color: var(--ods-color-success-100);
+    --ods-toast-text-color: var(--ods-color-success-30);
+    --ods-toast-border-color: var(--ods-color-success-base);
+  }
+
   :host([position='relative']) {
     position: relative;
   }
