@@ -1,6 +1,6 @@
 module.exports = {
   stories: [],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-postcss'],
+  addons: ['@storybook/addon-essentials'],
   core: {
     builder: 'webpack5'
   },
