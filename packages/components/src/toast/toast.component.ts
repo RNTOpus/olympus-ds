@@ -1,8 +1,8 @@
 import { CSSResultGroup, html, PropertyValues } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { customElement, property, state } from 'lit/decorators.js'
 import { OdsBaseElement } from '../shared/base-element'
 import styles from './styles/toast.styles'
-import type { OdsToastVariant as Variant } from './types'
+import type { OdsToastVariant as Variant, OdsToastPosition as Position } from './types'
 
 @customElement('ods-toast')
 export class OdsToast extends OdsBaseElement {
@@ -12,39 +12,49 @@ export class OdsToast extends OdsBaseElement {
 
   @property({ reflect: true }) variant: Variant = 'primary'
 
+  @property({ reflect: true }) position: Position = 'relative'
+
   @property({ reflect: true }) title = ''
+
+  @property({ type: Number, reflect: true }) timeout = 6000
+
+  @state() private showingTime: NodeJS.Timeout | null = null
 
   handleClose() {
     this.close()
   }
 
   public close(): void {
+    this.showingTime && clearTimeout(this.showingTime)
     this.open = false
   }
 
   render() {
     return html`
-      <div class="body">
-        <slot name="icon" class="icon"></slot>
-        <div class="content">
-          <h1 class="content-title">${this.title}</h1>
-          <slot></slot>
+      <div class="component" role="status">
+        <div class="body">
+          <slot name="icon" class="icon"></slot>
+          <div class="content">
+            <h1 class="content-title">${this.title}</h1>
+            <slot></slot>
+          </div>
         </div>
-      </div>
-      <div class="close">
-        <button class="close-button" @click=${this.handleClose}>X</button>
+        <div class="close">
+          <button class="close-button" @click=${this.handleClose}>X</button>
+        </div>
       </div>
     `
   }
 
   updated(changes: PropertyValues): void {
-    console.log('changes', changes)
-
     if (changes.has('open')) {
-      console.log('Changes in open', this.open)
+      this.startTimeout()
     }
-    if (changes.has('timeout')) {
-      console.log('asdasd')
+  }
+
+  startTimeout() {
+    if (this.open && this.timeout > 0) {
+      this.showingTime = setTimeout(() => this.close(), this.timeout)
     }
   }
 }

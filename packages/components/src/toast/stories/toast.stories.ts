@@ -11,13 +11,18 @@ export default {
       options: ['primary', 'danger', 'warning', 'success'],
       control: { type: 'select' }
     },
-    open: { control: 'boolean' }
+    position: {
+      options: ['relative', 'topRight', 'topLeft', 'topCenter', 'bottomRight', 'bottomLeft', 'bottomCenter'],
+      control: { type: 'select' }
+    },
+    open: { control: 'boolean' },
+    timeout: { control: 'number' }
   }
 }
 
-const Template: Story = ({ message, variant, title, open }) =>
+const Template: Story = ({ message, variant, title, open, timeout, position }) =>
   html`
-    <ods-toast variant=${variant} title=${title} ?open=${open}>
+    <ods-toast variant=${variant} title=${title} ?open=${open} timeout=${timeout} position=${position}>
       <span class="mso" slot="icon">🐙</span>
       ${message}
     </ods-toast>
@@ -28,5 +33,7 @@ Primary.args = {
   title: 'Toast Title',
   message: 'Toast',
   variant: 'primary',
-  open: true
+  open: true,
+  timeout: 0,
+  position: 'relative'
 }

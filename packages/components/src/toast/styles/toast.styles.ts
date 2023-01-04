@@ -2,9 +2,6 @@ import { css } from 'lit'
 export default css`
   :host {
     display: flex;
-    position: relative;
-    justify-content: space-between;
-    padding: var(--ods-spacing-sm);
     width: 350px;
 
     --ods-toast-width: max-content;
@@ -58,6 +55,55 @@ export default css`
   :host([variant='success']) {
     --ods-toast-bg-color: var(--ods-color-success-base);
     --ods-toast-text-color: var(--ods-color-success-10);
+  }
+
+  :host([position='relative']) {
+    position: relative;
+  }
+
+  :host([position='topRight']) {
+    position: fixed;
+    top: var(--ods-spacing-sm);
+    right: var(--ods-spacing-sm);
+  }
+
+  :host([position='topLeft']) {
+    position: fixed;
+    top: var(--ods-spacing-sm);
+    left: var(--ods-spacing-sm);
+  }
+
+  :host([position='topCenter']) {
+    position: fixed;
+    top: var(--ods-spacing-sm);
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  :host([position='bottomRight']) {
+    position: fixed;
+    bottom: var(--ods-spacing-sm);
+    right: var(--ods-spacing-sm);
+  }
+
+  :host([position='bottomLeft']) {
+    position: fixed;
+    bottom: var(--ods-spacing-sm);
+    left: var(--ods-spacing-sm);
+  }
+
+  :host([position='bottomCenter']) {
+    position: fixed;
+    bottom: var(--ods-spacing-sm);
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .component {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: var(--ods-spacing-sm);
   }
 
   .body {
