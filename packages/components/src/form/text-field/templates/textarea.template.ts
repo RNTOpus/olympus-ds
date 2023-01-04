@@ -18,8 +18,7 @@ import { OdsTextFieldCommonTemplate as CommonTemplate } from './common.template'
 export class OdsTextareaTemplate extends CommonTemplate {
   @property({ type: String }) resize: Resize = 'vertical'
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @state() private textareaAutosizeTime: any = null
+  @state() private textareaAutosizeTime: NodeJS.Timeout | null = null
 
   private textareaAutosize() {
     this.textareaAutosizeTime = setTimeout(() => {
