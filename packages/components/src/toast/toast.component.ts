@@ -12,7 +12,7 @@ export class OdsToast extends OdsBaseElement {
 
   @property({ reflect: true }) variant: Variant = 'primary'
 
-  @property({ reflect: true }) position: Position = 'relative'
+  @property({ reflect: true }) position: Position = 'topRight'
 
   @property({ reflect: true }) title = ''
 

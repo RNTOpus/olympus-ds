@@ -1,28 +1,14 @@
 # Toast
 
-## Usage
-
-```html
-<ods-toast title="Title"> Label </ods-toast>
-```
-
-```js
-import '@olympus/components/toast'
-```
-
-> React
-
-```jsx
-import { OdsToast } from '@olympus/components/react/toast'
-const App = () => <OdsToast> Label </OdsToast>
-```
+<!--@include: ../../../packages/components/src/toast/docs/usage.md-->
 
 ## Examples
 
-<Preview>
-  <ods-toast title="Title" open> Label </ods-toast>
-</Preview>
+| Name                    | Description                           |
+| :---------------------- | :------------------------------------ |
+| [`Basic`](basic.md)     | Rendering with solid background color |
+| [`Outline`](outline.md) | Rendering with outline style          |
 
-```html
-<ods-button>Filled</ods-button> <ods-button outline>Outline</ods-button>
-```
+## Properties
+
+<!--@include: ../../../packages/components/src/toast/docs/public-props.md-->

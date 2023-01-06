@@ -96,6 +96,14 @@ export const ODS_DOC_SIDEBAR_COMPONENTS = [
       {
         text: 'Overview',
         link: '/components/toast/overview'
+      },
+      {
+        text: 'Basic',
+        link: '/components/toast/basic'
+      },
+      {
+        text: 'Outline',
+        link: '/components/toast/outline'
       }
     ]
   }
