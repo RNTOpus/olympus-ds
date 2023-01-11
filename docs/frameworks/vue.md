@@ -42,7 +42,7 @@ module.exports = {
         ...options,
         compilerOptions: {
           // treat any tag that starts with ion- as custom elements
-          isCustomElement: (tag) => tag.startsWith('ion-'), // [!code focus]
+          isCustomElement: (tag) => tag.startsWith('ods-'), // [!code focus]
         },
       }));
   },

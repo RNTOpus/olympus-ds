@@ -55,9 +55,8 @@ import "@olympus/{packageName}"
 
 > React
 ```jsx
-import * as OdsReactComponents from "@olympus/{packageName}/react"
+import * as OdsReactComponents from "@olympus/components/react"
 ```
 
-[Discover our packages](./packages.md)
 
 

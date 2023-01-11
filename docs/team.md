@@ -26,10 +26,10 @@ const members = [
 <VPTeamPage>
   <VPTeamPageTitle>
     <template #title>
-      We are Opus
+      We are Opus 
     </template>
     <template #lead>
-      The development of Olympus is guided by the frontend team at Opus Software.
+      Come contribute to this amazing project. 🎉
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers

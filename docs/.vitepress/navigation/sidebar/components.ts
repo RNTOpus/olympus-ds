@@ -86,5 +86,29 @@ export const ODS_DOC_SIDEBAR_COMPONENTS = [
         link: '/components/textarea/square'
       }
     ]
-  }
+  },
+  {
+    text: 'Menu',
+    link: '/components/menu/overview',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      {
+        text: 'Overview',
+        link: '/components/menu/overview'
+      },
+      {
+        text: 'Navigation',
+        link: '/components/menu/navigation'
+      },
+      {
+        text: 'Single Selection',
+        link: '/components/menu/single-selection'
+      },
+      {
+        text: 'Multiple Selection',
+        link: '/components/menu/multiple-selection'
+      }
+    ]
+  },
 ]
