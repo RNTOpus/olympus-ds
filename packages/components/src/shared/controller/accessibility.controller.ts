@@ -12,7 +12,7 @@ export class AccessibilityController {
     if (!this.host.hasAttribute('role')) {
       this.host.setAttribute('role', this.host.ownRole || '')
     }
-    this.host.setAttribute('aria-orientation', `${this.host.horizontal ? 'horizontal' : 'vertical'}`)
+    this.host.setAttribute('aria-orientation', `${this.host.orientation}`)
     this.host.label && this.host.setAttribute('aria-label', this.host.label)
     this.host.setAttribute('dir', 'ltr')
   }
@@ -28,5 +28,4 @@ export class AccessibilityController {
   setAriaActivedescendant(focusedItemId: string) {
     this.host.setAttribute('aria-activedescendant', focusedItemId)
   }
-
 }

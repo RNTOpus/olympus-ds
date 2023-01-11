@@ -3,7 +3,7 @@ import { customElement, property, queryAssignedElements, state } from 'lit/decor
 import type { OdsMenuItem } from './menu-item.component'
 import { OdsMenuAppearance } from './types'
 import { OdsBaseElement } from '../shared/base-element'
-import { ListHost, ListItem, SelectionElement, SelectionType } from '../shared/types'
+import { ListHost, ListItem, ListOrientation, SelectionElement, SelectionType } from '../shared/types'
 import { ListController } from '../shared/controller'
 
 import baseStyles from '../shared/styles/base-list.styles'
@@ -24,7 +24,7 @@ export class OdsMenu extends OdsBaseElement {
 
   static override shadowRootOptions: ShadowRootInit = { mode: 'open', delegatesFocus: true }
 
-  @property({ type: Boolean, reflect: true }) horizontal = false
+  @property({ reflect: true }) orientation: ListOrientation = 'vertical'
 
   @property({ reflect: true }) appearance: OdsMenuAppearance = 'default'
 
@@ -34,7 +34,7 @@ export class OdsMenu extends OdsBaseElement {
 
   @property({ attribute: 'value-separator' }) valueSeparator = ','
 
-  @property({ reflect: false }) selectionType: SelectionType = 'none'
+  @property({ reflect: false, attribute: 'selection-type' }) selectionType: SelectionType = 'none'
 
   @property({ attribute: false }) selected: string[] = []
 

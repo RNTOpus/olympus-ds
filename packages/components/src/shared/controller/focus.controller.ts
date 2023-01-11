@@ -60,16 +60,16 @@ export class FocusController {
       if (this.mainController.hasChildItems) {
         switch (code) {
           case 'ArrowDown':
-            !this.host.horizontal && index++
+            this.host.orientation === 'vertical' && index++
             break
           case 'ArrowUp':
-            !this.host.horizontal && index--
+            this.host.orientation === 'vertical' && index--
             break
           case 'ArrowRight':
-            this.host.horizontal && index++
+            this.host.orientation === 'horizontal' && index++
             break
           case 'ArrowLeft':
-            this.host.horizontal && index--
+            this.host.orientation === 'horizontal' && index--
             break
           case 'Home':
             index = 0

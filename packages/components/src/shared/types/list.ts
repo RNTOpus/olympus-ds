@@ -9,7 +9,7 @@ export type List = HTMLElement &
     label?: string
     childItems: ListItem[]
     ownRole?: string
-    horizontal: boolean
+    orientation: ListOrientation
     selectable: boolean
     controller: ListController
   }
@@ -21,5 +21,15 @@ export type ListItem = HTMLElement &
     active: boolean
   }
 
-export type ListHost = ReactiveControllerHost & HTMLElement & List
+export type ListEventDetails = {
+  targetItem: ListItem
+  selectedItems?: ListItem[]
+  selected?: string[]
+  value?: string
+  label?: string
+}
 
+
+export type ListOrientation = 'vertical' | 'horizontal'
+
+export type ListHost = ReactiveControllerHost & HTMLElement & List

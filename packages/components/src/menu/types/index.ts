@@ -1,1 +1,1 @@
-export type OdsMenuAppearance = 'default' | 'outlined' | 'shaded';
+export type OdsMenuAppearance = 'default' | 'outlined' | 'shaded'

@@ -11,16 +11,16 @@ export default css`
     z-index: var(--ods-z-index-9);
   }
 
-  :host([variant='outlined']) {
+  :host([appearance='outlined']) {
     border: thin solid var(--ods-color-neutral-90);
   }
 
-  :host([variant='shaded']) {
+  :host([appearance='shaded']) {
     border: thin solid var(--ods-color-neutral-90);
     box-shadow: 0 12px 32px var(--ods-color-neutral-90), 0 2px 6px var(--ods-color-neutral-80);
   }
 
-  :host([horizontal]) {
+  :host([orientation='horizontal']) {
     flex-direction: row;
   }
 

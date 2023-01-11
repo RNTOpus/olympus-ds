@@ -1,4 +1,4 @@
-import type { AccessibilityHost, List, ListHost, ListItem, SelectionElement, SelectionHost } from '../types'
+import type { AccessibilityHost, List, ListEventDetails, ListHost, ListItem, SelectionElement, SelectionHost } from '../types'
 import { AccessibilityController } from './accessibility.controller'
 import { FocusController } from './focus.controller'
 import { SelectionController } from './selection.controller'
@@ -82,7 +82,7 @@ export class ListController {
     }
   }
 
-  private getEventDetails(targetItem: ListItem) {
+  private getEventDetails(targetItem: ListItem): ListEventDetails {
     return {
       targetItem,
       ...(this.selectable
