@@ -61,6 +61,7 @@ export class OdsTextareaTemplate extends CommonTemplate {
       @keydown=${this.textareaAutosize}
     >
       ${this.value}
-    </textarea>`
+    </textarea
+    >`
   }
 }
