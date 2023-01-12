@@ -53,10 +53,10 @@ export class OdsMenuItem extends OdsBaseElement {
 
     this.setAttribute('tabindex', '-1')
     this.setAttribute('dir', this.parentMenu?.dir || 'ltr')
+    this.setAttribute('role', this.parentMenu?.itemRole || this.defaultRole)
 
-    this.disabled
-      ? this.setAttribute('aria-disabled', 'true')
-      : this.setAttribute('role', this.parentMenu?.itemRole || this.defaultRole)
+    this.disabled && this.setAttribute('aria-disabled', 'true')
+
   }
 
   protected firstUpdated(changes: PropertyValues) {

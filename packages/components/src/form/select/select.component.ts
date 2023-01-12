@@ -10,7 +10,7 @@ export class OdsSelect extends OdsField {
 
   @property({ type: Boolean, reflect: true }) autofocus = false
   @property() form?: string
-  @property({ type: Boolean, reflect: true }) multiple = false;
+  @property({ type: Boolean, reflect: true }) multiple = false
   @property() name?: string
   @property() value = ''
 
@@ -63,33 +63,7 @@ export class OdsSelect extends OdsField {
   }
 
   render() {
-    return html`
-      <ods-field
-        part="wrapper"
-        .label=${this.label}
-        labelState=${this.getLabelState()}
-        appearance=${this.appearance}
-        ?hasLeftIcon=${this.hasLeftIconSlot}
-        ?disabled=${this.disabled}
-        ?required=${this.required}
-        ?invalid=${this.invalid}
-        ?valid=${this.valid}
-        ?pill=${this.pill}
-        ?square=${this.square}
-        ?focused=${this.focused}
-        @click=${this.handleClick}
-      >
-        <select>
-          <slot name="options"></slot>
-        </select>
-        <slot slot="left-icon" name="left-icon"></slot>
-        <span slot="right-icon">
-
-        </span>
-        <slot slot="helper-text" name="helper-text"></slot>
-        <slot slot="helper-text-end" name="helper-text-end"></slot>
-      </ods-field>
-    `
+    return html``
   }
 }
 

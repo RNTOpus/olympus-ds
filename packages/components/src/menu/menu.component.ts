@@ -62,6 +62,10 @@ export class OdsMenu extends OdsBaseElement {
     this.controller = new ListController(this as unknown as ListHost, this.menuItems as ListItem[])
   }
 
+  focus() {
+    this.controller?.handleFocus()
+  }
+
   render() {
     return html`<slot></slot>`
   }

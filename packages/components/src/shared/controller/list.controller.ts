@@ -31,7 +31,6 @@ export class ListController {
     this.selectable && this.selectionControler?.normalizeChildState()
 
     this.host.addEventListener('click', this.handleClick)
-    this.host.addEventListener('focus', this.handleFocus)
     this.host.addEventListener('slotchange', this.focusController.resetFocusable)
     this.host.addEventListener('keydown', this.focusController.handleKeyDown)
   }
@@ -44,7 +43,6 @@ export class ListController {
 
   hostDisconnected() {
     this.host.removeEventListener('click', this.handleClick)
-    this.host.removeEventListener('focus', this.handleFocus)
     if (this.focusController) {
       this.host.removeEventListener('keydown', this.focusController.handleKeyDown)
       this.host.removeEventListener('slotchange', this.focusController.resetFocusable)
