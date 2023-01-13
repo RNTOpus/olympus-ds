@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /**/**/dist
+/docs/.vitepress/cache
 /tmp
 /out-tsc
 
