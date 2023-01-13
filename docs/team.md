@@ -16,8 +16,16 @@ const members = [
     title: 'Developer',
     links: [
       { icon: 'github', link: 'https://github.com/RNTOpus' },
-      { icon: 'twitter', link: 'https://twitter.com/rnt_dev' },
-      { icon: 'linkedin', link: 'https://twitter.com/rnt_dev' }
+      { icon: 'linkedin', link: 'https://www.linkedin.com/in/rntdesign/' }
+    ]
+  },
+  {
+    avatar: 'https://github.com/PauloRTesJr.png',
+    name: 'Paulo Roberto Tessarolli Jr',
+    title: 'Developer',
+    links: [
+      { icon: 'github', link: 'https://github.com/PauloRTesJr' },
+      { icon: 'linkedin', link: 'https://www.linkedin.com/in/paulortesjr/' }
     ]
   }
 ]
