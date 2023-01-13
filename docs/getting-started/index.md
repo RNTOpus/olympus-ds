@@ -58,6 +58,4 @@ import "@olympus/{packageName}"
 import * as OdsReactComponents from "@olympus/{packageName}/react"
 ```
 
-[Discover our packages](./packages.md)
-
 
