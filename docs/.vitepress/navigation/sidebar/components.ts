@@ -28,6 +28,46 @@ export const ODS_DOC_SIDEBAR_COMPONENTS = [
     ]
   },
   {
+    text: 'Divider',
+    link: '/components/divider/overview',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      {
+        text: 'Overview',
+        link: '/components/divider/overview'
+      },
+      {
+        text: 'Basic',
+        link: '/components/divider/basic'
+      },
+    ]
+  },
+  {
+    text: 'Menu',
+    link: '/components/menu/overview',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      {
+        text: 'Overview',
+        link: '/components/menu/overview'
+      },
+      {
+        text: 'Navigation',
+        link: '/components/menu/navigation'
+      },
+      {
+        text: 'Single Selection',
+        link: '/components/menu/single-selection'
+      },
+      {
+        text: 'Multiple Selection',
+        link: '/components/menu/multiple-selection'
+      }
+    ]
+  },
+  {
     text: 'Input',
     link: '/components/input/overview',
     collapsible: true,
@@ -87,28 +127,5 @@ export const ODS_DOC_SIDEBAR_COMPONENTS = [
       }
     ]
   },
-  {
-    text: 'Menu',
-    link: '/components/menu/overview',
-    collapsible: true,
-    collapsed: true,
-    items: [
-      {
-        text: 'Overview',
-        link: '/components/menu/overview'
-      },
-      {
-        text: 'Navigation',
-        link: '/components/menu/navigation'
-      },
-      {
-        text: 'Single Selection',
-        link: '/components/menu/single-selection'
-      },
-      {
-        text: 'Multiple Selection',
-        link: '/components/menu/multiple-selection'
-      }
-    ]
-  },
+
 ]

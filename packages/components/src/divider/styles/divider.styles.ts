@@ -7,6 +7,7 @@ export default css`
   }
   :host(:not([vertical])) {
     display: block;
+    width: 100%;
     border-top: solid var(--ods-divider-width) var(--ods-divider-color);
     margin: var(--ods-divider-spacing) 0;
   }
