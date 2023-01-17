@@ -5,7 +5,8 @@ pipeline {
   environment {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
     BASE_SHA = 'HEAD~1';
-    NPMJS_TOKEN = credentials('jenkins-npmjs-token')
+    NPMJS_TOKEN = credentials('jenkins-npmjs-token');
+    NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
   }
   stages {
     stage('Prepare') {
