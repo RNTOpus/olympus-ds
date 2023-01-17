@@ -82,6 +82,7 @@ pipeline {
       }
       steps {
         script {
+          sh "npm ci"
           sh "npm run docs:build"
         }
       }
