@@ -10,7 +10,7 @@
     "docs:serve": "vitepress serve docs",
     "create:component": "nx workspace-generator create-or-update-component",
     "update:component": "nx workspace-generator create-or-update-component",
-    "build:components": "nx run components:build",
+    "build:components": "npx nx run components:build",
     "build:components:watch": "nx run components:watch",
     "build:tokens": "nx run tokens:build",
     "test": "web-test-runner",
