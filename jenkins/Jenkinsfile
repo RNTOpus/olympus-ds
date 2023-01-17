@@ -10,7 +10,7 @@ pipeline {
   }
   stages {
     stage('Prepare') {
-      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch 'deploy-docs'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -82,7 +82,6 @@ pipeline {
       }
       steps {
         script {
-          sh "npm ci"
           sh "npm run docs:build"
         }
       }
