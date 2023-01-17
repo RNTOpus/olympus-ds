@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+		label 'docker-build'
+	}
   environment {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
     BASE_SHA = 'HEAD~1';
@@ -79,7 +81,7 @@ pipeline {
       }
       steps {
         script {
-          sh "npx run docs:build"
+          sh "npm run docs:build"
         }
       }
     }
