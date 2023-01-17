@@ -3,4 +3,4 @@ RUN apk add -U \
         python3\
         make\
         alpine-sdk
-RUN chown -R node:node /.cache
+RUN chown -R $(whoami) /usr/local/lib/node_modules/
