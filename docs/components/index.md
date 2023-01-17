@@ -43,3 +43,5 @@ const App = () => <OdsReactComponents.OdsButton> Label </OdsReactComponents.OdsB
 | [`Text Button`](button/text-button.md)         | `<ods-text-button>`     | `OdsTextButton`     |
 | [`Input`](input/overview.md)                   | `<ods-input>`           | `OdsInput`          |
 | [`Textarea`](textarea/overview.md)             | `<ods-textarea>`        | `OdsTextarea`       |
+| [`Menu`](menu/overview.md)                     | `<ods-menu>`            | `OdsMenu`           |
+| [`Menu Item`](menu/overview.md)                | `<ods-menu-item>`       | `OdsMenuItem`       |
