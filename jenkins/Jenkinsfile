@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-		label 'docker-build'
-	}
+  agent any
   environment {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
     BASE_SHA = 'HEAD~1';
