@@ -70,6 +70,21 @@ pipeline {
         }
       }
     }
+    stage('Deploy - Docs') {
+      when { anyOf { branch 'deploy-docs' } }
+      agent {
+        dockerfile {
+          filename 'Dockerfile.build'
+          dir 'jenkins'
+          reuseNode true
+        }
+      }
+      steps {
+        script {
+          sh "npx run docs:build"
+        }
+      }
+    }
     stage('Publish - Lib'){
       when { anyOf { branch pattern: "^(publish_.*)", comparator: 'REGEXP' } }
       agent {
