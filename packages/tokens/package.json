@@ -1,10 +1,10 @@
 {
   "name": "@olympus/tokens",
   "description": "Design tokens for using the Olympus Design System",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "type":"module",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/opusbr/opus-olympus-design-system.git",
@@ -25,7 +25,9 @@
   ],
   "publishConfig": {
     "registry": "https://nexus.dev.opus-software.com.br/repository/npm-opus-private/",
-    "ignore": [".npmrc"]
+    "ignore": [
+      ".npmrc"
+    ]
   },
   "sideEffects": false
 }
