@@ -64,7 +64,7 @@ function getTokenPlatforms(buildPath, source) {
     return {
       ...prevPlatform,
       [platformName]: {
-        ...(platformName !== 'js' ? { PREFIX } : {}),
+        ...(platformName !== 'js' ? { prefix: PREFIX } : {}),
         buildPath: `${buildPath}/`,
         transformGroup: platformName,
         files: getPlatformFiles(currentPlatform, source)
