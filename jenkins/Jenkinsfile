@@ -5,7 +5,7 @@ pipeline {
   environment {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
     BASE_SHA = 'HEAD~1';
-    NPMJS_TOKEN = credentials('jenkins-npmjs-token')
+    NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
   }
   stages {
     stage('Prepare') {
@@ -70,7 +70,7 @@ pipeline {
         }
       }
     }
-    stage('Publish - Lib'){
+    stage('Publish NPM package'){
       when { anyOf { branch pattern: "^(publish_.*)", comparator: 'REGEXP' } }
       agent {
         dockerfile {
@@ -84,7 +84,7 @@ pipeline {
           branchName = "${BRANCH_NAME}"
           version = branchName.substring(branchName.indexOf("_"))
           version = version.replace("_", "")
-          sh 'echo "//registry.npmjs.org/:_authToken=${NPMJS_TOKEN}" >> ~/.npmrc'
+          sh 'echo "registry=https://nexus.dev.opus-software.com.br/repository/npm-opus-private/_auth=${NPMJS_TOKEN}" >> ~/.npmrc'
           sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --tag=latest --parallel=3"
         }
       }
