@@ -1,5 +1,5 @@
 <script setup>
-  import * as tokens from 'olympus-ds-design-tokens/lib/opacity.js'
+  import * as tokens from '@package/tokens/lib/opacity.js'
   const types = ['Level'];
 </script>
 

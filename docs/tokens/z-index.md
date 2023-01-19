@@ -1,5 +1,5 @@
 <script setup>
-  import * as tokens from 'olympus-ds-design-tokens/lib/zIndex.js'
+  import * as tokens from '@package/tokens/lib/zIndex.js'
   const types = [''];
 </script>
 

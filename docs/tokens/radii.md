@@ -1,5 +1,5 @@
 <script setup>
-  import * as tokens from 'olympus-ds-design-tokens/lib/radii.js'
+  import * as tokens from '@package/tokens/lib/radii.js'
   const types = [''];
 </script>
 

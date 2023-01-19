@@ -1,5 +1,5 @@
 <script setup>
-  import * as tokens from 'olympus-ds-design-tokens/lib/size.js'
+  import * as tokens from '@package/tokens/lib/size.js'
   const types = [''];
 </script>
 

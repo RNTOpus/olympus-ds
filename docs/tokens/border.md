@@ -1,5 +1,5 @@
 <script setup>
-  import * as tokens from 'olympus-ds-design-tokens/lib/border.js'
+  import * as tokens from '@package/tokens/lib/border.js'
   const types = ['Stroke'];
 </script>
 

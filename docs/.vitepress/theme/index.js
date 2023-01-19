@@ -1,4 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
+import '@package/tokens/index.css'
 import './styles/main.css'
 import '@package/components'
 import ColorPalette from './components/ColorPalette.vue'

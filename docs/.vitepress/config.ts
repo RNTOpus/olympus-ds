@@ -35,6 +35,10 @@ export default defineConfig({
         {
           find: '@package/components',
           replacement: path.resolve(__dirname, '../../dist/packages/components')
+        },
+        {
+          find: '@package/tokens',
+          replacement: path.resolve(__dirname, '../../dist/packages/tokens')
         }
       ]
     }

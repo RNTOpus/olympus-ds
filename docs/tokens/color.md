@@ -1,5 +1,5 @@
 <script setup>
-  import * as tokens from 'olympus-ds-design-tokens/lib/color.js'
+  import * as tokens from '@package/tokens/lib/color.js'
   const types = ['Primary', 'Success', 'Warning', 'Danger', 'Neutral']
 </script>
 
