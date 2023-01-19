@@ -114,3 +114,28 @@ yarn commit
 ```bash
   yarn test:coverage
 ```
+
+## Publish
+
+- [Nexus Repository Manager](https://nexus.dev.opus-software.com.br/) is used to store our npm packages.
+
+## Install package
+
+To install an ods package, create a `.npmrc` file in the root of the project:
+
+```
+  registry=https://nexus.dev.opus-software.com.br/repository/npm-opus-group/
+  _auth={AUTH_TOKEN}
+```
+**Get `{AUTH_TOKEN}` with our team.**
+
+> after run:
+
+```bash
+  npm install @olympus/{package}
+```
+or
+```bash
+  yarn add @olympus/{package}
+```
+

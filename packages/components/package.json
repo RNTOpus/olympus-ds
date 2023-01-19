@@ -36,7 +36,8 @@
     "web components"
   ],
   "publishConfig": {
-    "access": "public"
+    "registry": "https://nexus.dev.opus-software.com.br/repository/npm-opus-private/",
+    "ignore": [".npmrc"]
   },
   "type": "module",
   "types": "./index.d.ts"
