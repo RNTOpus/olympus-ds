@@ -50,12 +50,26 @@
         ]
       }
     },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "changelogHeader": "# Changelog @olympus/components \n",
+        "baseBranch": "release",
+        "syncVersions": false,
+        "commitMessageFormat": "chore(${projectName}): release: v${version}",
+        "push": true
+      }
+    },
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs components {args.ver} {args.tag}"
       },
       "dependsOn": [
+        {
+          "projects": "self",
+          "target": "version"
+        },
         {
           "projects": "self",
           "target": "build"
