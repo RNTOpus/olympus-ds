@@ -6,6 +6,8 @@ pipeline {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1
+    PLAYWRIGHT_BROWSERS_PATH = env.WORKSPACE + '/playwright'
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
     // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
     // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
@@ -28,6 +30,9 @@ pipeline {
         }
       }
     }
+    // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/node_modules/@web/test-runner-playwright/node_modules/playwright-core/.local-browsers/chromium-1028/chrome-linux/chrome
+    // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/node_modules/@web/test-runner-playwright/node_modules/playwright-core/.local-browsers/firefox-1357/firefox/firefox
+
     stage('Lint') {
       when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
