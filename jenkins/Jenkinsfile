@@ -6,6 +6,7 @@ pipeline {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
+    PLAYWRIGHT_BROWSERS_PATH='/home/jenkins/playwright'
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
     // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
     // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
