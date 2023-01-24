@@ -1,7 +1,7 @@
 {
   "border": {
     "stroke": {
-      "none": { "value": 0 },
+      "none": { "value": "0" },
       "xxs": { "value": "0.063rem" },
       "xs": { "value": "0.125rem" },
       "sm": { "value": "0.25rem" },
