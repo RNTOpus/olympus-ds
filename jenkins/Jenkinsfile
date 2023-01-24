@@ -6,7 +6,6 @@ pipeline {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
-    PLAYWRIGHT_BROWSERS_PATH='/home/jenkins/playwright'
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
     // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
     // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
@@ -24,13 +23,6 @@ pipeline {
       steps {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
-          //chromium
-          sh 'yarn add playwright-chromium@1.22.2'
-          // webkit
-          sh 'yarn add playwright-webkit@1.22.2'
-          // firefox
-          sh 'yarn add playwright-firefox@1.22.2'
-          env.PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1
           sh 'yarn install --frozen-lockfile'
         }
       }
