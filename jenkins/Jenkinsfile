@@ -7,11 +7,12 @@ pipeline {
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
     PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1
-    PLAYWRIGHT_BROWSERS_PATH = '${env.WORKSPACE}/playwright'
+    PLAYWRIGHT_BROWSERS_PATH = '/playwright'
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
     // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
     // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
   }
+  // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/${env.WORKSPACE}/playwright/chromium-1028/chrome-linux/chrome
   stages {
     stage('Prepare') {
       when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
@@ -27,6 +28,7 @@ pipeline {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
           sh 'yarn install --frozen-lockfile'
           sh 'npx playwright install'
+          sh 'yarn add playwright-chromium@1.22.2'
         }
       }
     }
