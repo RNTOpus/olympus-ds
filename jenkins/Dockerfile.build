@@ -4,5 +4,5 @@ RUN apk add -U \
     python3\
     make\
     alpine-sdk\
-    mkdir playwright
+    && mkdir playwright
 
