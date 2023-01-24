@@ -25,7 +25,6 @@ pipeline {
       steps {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
-          sh 'npx playwright install-deps'
           sh 'yarn install --frozen-lockfile'
           sh 'npx playwright install'
         }
