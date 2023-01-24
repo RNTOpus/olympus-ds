@@ -3,5 +3,4 @@ RUN apk add -U \
         python3\
         make\
         alpine-sdk
-RUN python3 -m playwright install
 
