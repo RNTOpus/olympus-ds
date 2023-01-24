@@ -6,6 +6,8 @@ pipeline {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1
+    PLAYWRIGHT_BROWSERS_PATH = 0
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
     // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
     // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
@@ -23,7 +25,9 @@ pipeline {
       steps {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
+          sh 'npx playwright install-deps'
           sh 'yarn install --frozen-lockfile'
+          sh 'npx playwright install'
         }
       }
     }
@@ -54,6 +58,7 @@ pipeline {
       }
       steps {
         script {
+          sh 'ls /home/node/.cache/ms-playwright/'
           sh 'npx nx run components:test'
         }
       }
