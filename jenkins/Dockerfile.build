@@ -4,5 +4,5 @@ RUN apk add -U \
     python3\
     make\
     alpine-sdk\
-    npx playwright install --with-deps
+    && npx playwright install --with-deps
 
