@@ -1,15 +1,18 @@
 pipeline {
   agent {
-		label 'docker-build'
-	}
+    label 'docker-build'
+  }
   environment {
-    NX_BRANCH = env.BRANCH_NAME.replace('PR-', '');
-    BASE_SHA = 'HEAD~1';
+    NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
+    BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
+    // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
+    // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
+    // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
   }
   stages {
     stage('Prepare') {
-      when { anyOf { branch 'master'; branch 'develop'; branch 'test-jenkins'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -20,12 +23,12 @@ pipeline {
       steps {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
-          sh "yarn install --frozen-lockfile"
+          sh 'yarn install --frozen-lockfile'
         }
       }
     }
     stage('Lint') {
-      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -35,13 +38,13 @@ pipeline {
       }
       steps {
         script {
-          sh "npx nx workspace-lint"
+          sh 'npx nx workspace-lint'
           sh "npx nx affected --base=${BASE_SHA} --target=lint --parallel=3"
         }
       }
     }
     stage('Test') {
-      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*|publish_.*)", comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -55,8 +58,8 @@ pipeline {
         }
       }
     }
-    stage('Build') {
-      when { anyOf { branch 'master'; branch 'develop'; branch pattern: "^(hotfix/.*|release/.*)", comparator: 'REGEXP' } }
+    stage('Build package') {
+      when { anyOf { branch 'master' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -70,8 +73,8 @@ pipeline {
         }
       }
     }
-    stage('Publish NPM package'){
-      when { anyOf { branch pattern: "^(publish_.*)", comparator: 'REGEXP' } }
+    stage('Publish package') {
+      when { anyOf { branch 'master' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -79,15 +82,45 @@ pipeline {
           reuseNode true
         }
       }
-      steps{
+      steps {
         script {
-          branchName = "${BRANCH_NAME}"
-          version = branchName.substring(branchName.indexOf("_"))
-          version = version.replace("_", "")
           sh 'echo "registry=https://nexus.dev.opus-software.com.br/repository/npm-opus-private/_auth=${NPMJS_TOKEN}" >> ~/.npmrc'
-          sh "npx nx affected --base=HEAD~1 --target=publish --ver=${version} --tag=latest --parallel=3"
+          sh 'npx nx affected --base=HEAD~1 --target=publish --parallel=3'
         }
       }
     }
+    stage('Build documentation') {
+      when { anyOf { branch 'master' } }
+      agent {
+        dockerfile {
+          filename 'Dockerfile.build'
+          dir 'jenkins'
+          reuseNode true
+        }
+      }
+      steps {
+        script {
+          sh 'npm run docs:build'
+        }
+      }
+    }
+    // stage('Deploy documentation') {
+    //   when { anyOf { branch 'master' } }
+    //   agent {
+    //     dockerfile {
+    //       filename 'Dockerfile.build'
+    //       dir 'jenkins'
+    //       reuseNode true
+    //     }
+    //   }
+    //   steps {
+    //     script {
+    //       sh "aws configure set region ${AWS_DEFAULT_REGION}"
+    //       sh "aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}"
+    //       sh "aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}"
+    //       sh 'aws s3 sync ../docs/.vitepress/dist s3://olympus-ds'
+    //     }
+    //   }
+    // }
   }
 }
