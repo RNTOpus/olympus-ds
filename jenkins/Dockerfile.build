@@ -7,6 +7,9 @@ RUN apk add -U \
 
 RUN adduser --gecos "" --disabled-password jenkins \
     && echo "jenkins:jenkins" | chpasswd \
-    && chown jenkins:jenkins /home/jenkins
+    && chown jenkins:jenkins /home/jenkins \
+    && mkdir /home/jenkins/playwright \
+    && chown jenkins:jenkins /home/jenkins/playwright
+
 USER jenkins
 
