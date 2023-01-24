@@ -24,7 +24,6 @@ pipeline {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
           sh 'yarn install --frozen-lockfile'
-          sh 'npx playwright install'
         }
       }
     }
@@ -40,7 +39,7 @@ pipeline {
       steps {
         script {
           sh 'npx nx workspace-lint'
-          sh "npx nx affected --base=${BASE_SHA} --target=lint --parallel=3"
+          sh 'npx nx run-many --target=lint --projects=components,tokens'
         }
       }
     }
@@ -55,7 +54,7 @@ pipeline {
       }
       steps {
         script {
-          sh "npx nx affected --base=${BASE_SHA} --target=test --parallel=3"
+          sh 'npx nx run components:test'
         }
       }
     }
@@ -101,7 +100,7 @@ pipeline {
       }
       steps {
         script {
-          sh 'npm run docs:build'
+          sh 'yarn docs:build'
         }
       }
     }
