@@ -81,7 +81,7 @@
     "@web/dev-server-esbuild": "^0.3.2",
     "@web/dev-server-legacy": "^1.0.1",
     "@web/test-runner": "^0.14.0",
-    "@web/test-runner-playwright": "^0.8.10",
+    "@web/test-runner-playwright": "0.8.10",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "babel-jest": "28.1.1",
     "babel-loader": "8.1.0",
