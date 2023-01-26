@@ -8,10 +8,9 @@ export default {
   concurrentBrowsers: 3,
   nodeResolve: true,
   playwright: true,
-  setTimeout: 50000,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'firefox' }),
+    playwrightLauncher({ product: 'firefox', launchOptions: { timeout: 50000 } }),
     playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
