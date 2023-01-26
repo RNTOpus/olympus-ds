@@ -19,7 +19,14 @@ export default {
         executablePath: `/usr/bin/chromium-browser`
       }
     }),
-    // playwrightLauncher({ product: 'firefox' }),
+    playwrightLauncher({
+      product: 'firefox',
+      launchOptions: {
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        executablePath: `/usr/bin/firefox-browser`
+      }
+    })
     // playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
