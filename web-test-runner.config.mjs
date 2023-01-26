@@ -7,8 +7,11 @@ export default {
   files: ['packages/components/src/**/*.spec.ts'],
   concurrentBrowsers: 3,
   nodeResolve: true,
+  playwright: true,
   browsers: [
-    playwrightLauncher({ product: 'chromium' }),
+    playwrightLauncher({ product: 'chromium', launchOptions: {
+      executablePath: './node_modules/playwright-core/.local-browsers/chromium-1005'
+    } }),
     playwrightLauncher({ product: 'firefox' }),
     playwrightLauncher({ product: 'webkit' })
   ],
