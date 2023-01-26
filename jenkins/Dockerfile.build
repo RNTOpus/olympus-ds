@@ -16,11 +16,11 @@ COPY . /app/
 RUN apt-get update && apt-get -y install libnss3 libatk-bridge2.0-0 libdrm-dev libxkbcommon-dev libgbm-dev libasound-dev libatspi2.0-0 libxshmfence-dev
 
 
-# ENV RUNASUSER jenkins
-# ENV USERHOME /home/${RUNASUSER}
-# RUN groupadd -g 1001 -r ${RUNASUSER} && useradd --no-log-init -m -r -g ${RUNASUSER} -u 1001 ${RUNASUSER}
-# USER ${RUNASUSER}
-# WORKDIR ${USERHOME}
+ENV RUNASUSER jenkins
+ENV USERHOME /home/${RUNASUSER}
+RUN groupadd -g 1001 -r ${RUNASUSER} && useradd --no-log-init -m -r -g ${RUNASUSER} -u 1001 ${RUNASUSER}
+USER ${RUNASUSER}
+WORKDIR ${USERHOME}
 
 # RUN apk add -U \
 #   python3\
