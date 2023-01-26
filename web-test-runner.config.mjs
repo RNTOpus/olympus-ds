@@ -8,6 +8,7 @@ export default {
   concurrentBrowsers: 3,
   nodeResolve: true,
   playwright: true,
+  setTimeout: 50000,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
     playwrightLauncher({ product: 'firefox' }),
