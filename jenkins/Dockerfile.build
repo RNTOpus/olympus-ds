@@ -6,7 +6,8 @@ RUN groupadd -g 1001 -r ${RUNASUSER} && useradd --no-log-init -m -r -g ${RUNASUS
 USER ${RUNASUSER}
 WORKDIR ${USERHOME}
 
-RUN apk add --no-cache yarn
+RUN apt install curl
+RUN apt install yarn
 
 # RUN apk add -U \
 #   python3\
