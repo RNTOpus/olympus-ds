@@ -1,9 +1,9 @@
-FROM playwright/base
+FROM mcr.microsoft.com/playwright:v1.30.0-focal
 
-RUN apk add -U \
-  python3\
-  make\
-  alpine-sdk
+# RUN apk add -U \
+#   python3\
+#   make\
+#   alpine-sdk
 
 # RUN apk add --no-cache \
 #   chromium \
