@@ -10,7 +10,7 @@ export default {
   playwright: true,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'firefox', launchOptions: { headless: true, args: ['--no-sandbox',] } }),
+    playwrightLauncher({ product: 'firefox', launchOptions: { headless: true, args: ['--no-sandbox'], timeout: 50000 } }),
     playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
