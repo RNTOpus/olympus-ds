@@ -15,19 +15,23 @@ export default {
       product: 'chromium',
       launchOptions: {
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: `/usr/bin/chromium-browser`
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
       }
     }),
     playwrightLauncher({
       product: 'firefox',
       launchOptions: {
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: `/usr/bin/firefox-browser`
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      }
+    }),
+    playwrightLauncher({
+      product: 'webkit',
+      launchOptions: {
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
       }
     })
-    // playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
     esbuildPlugin({
