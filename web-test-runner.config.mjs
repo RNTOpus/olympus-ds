@@ -14,6 +14,7 @@ export default {
     playwrightLauncher({
       product: 'chromium',
       launchOptions: {
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
         executablePath: `${jenkins_path}/node_modules/playwright-core/.local-browsers/chromium-1005/chrome-linux/chrome`
       }
