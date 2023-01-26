@@ -16,7 +16,7 @@ pipeline {
   // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/${env.WORKSPACE}/playwright/chromium-1028/chrome-linux/chrome
   stages {
     stage('Prepare') {
-      when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch 'test-jenkins-gh'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -36,7 +36,7 @@ pipeline {
     // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/node_modules/@web/test-runner-playwright/node_modules/playwright-core/.local-browsers/firefox-1357/firefox/firefox
 
     stage('Lint') {
-      when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch 'test-jenkins-gh'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -52,7 +52,7 @@ pipeline {
       }
     }
     stage('Test') {
-      when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch 'test-jenkins-gh'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
