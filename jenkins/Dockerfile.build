@@ -6,4 +6,4 @@ RUN apk add -U \
     alpine-sdk
 
 RUN apk add --no-cache  chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.16/main
-RUN apk -L info chromium
+RUN google-chrome --version
