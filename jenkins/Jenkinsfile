@@ -7,12 +7,10 @@ pipeline {
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
     NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
-    //PLAYWRIGHT_BROWSERS_PATH=0
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
     // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
     // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
   }
-  // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/${env.WORKSPACE}/playwright/chromium-1028/chrome-linux/chrome
   stages {
     stage('Prepare') {
       when { anyOf { branch 'master'; branch 'develop'; branch 'test-jenkins-gh'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
@@ -28,13 +26,9 @@ pipeline {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
           sh 'yarn install --frozen-lockfile'
-          sh 'npx playwright install'
         }
       }
     }
-    // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/node_modules/@web/test-runner-playwright/node_modules/playwright-core/.local-browsers/chromium-1028/chrome-linux/chrome
-    // /home/opus/jenkins_slave/workspace/us-Olympus-Design-System_develop/node_modules/@web/test-runner-playwright/node_modules/playwright-core/.local-browsers/firefox-1357/firefox/firefox
-
     stage('Lint') {
       when { anyOf { branch 'master'; branch 'develop'; branch 'test-jenkins-gh'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
@@ -62,7 +56,7 @@ pipeline {
       }
       steps {
         script {
-          sh 'npx nx run components:test'
+          sh 'npx nx run components:test --skip-nx-cache'
         }
       }
     }
