@@ -6,6 +6,7 @@ pipeline {
     NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
+    NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1
     PLAYWRIGHT_BROWSERS_PATH = '${WORKSPACE}/playwright'
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
