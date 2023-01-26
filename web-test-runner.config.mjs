@@ -2,8 +2,6 @@ import { playwrightLauncher } from '@web/test-runner-playwright'
 import { esbuildPlugin } from '@web/dev-server-esbuild'
 import { fileURLToPath } from 'url'
 
-const jenkins_path = process.env.WORKSPACE
-
 export default {
   rootDir: 'packages/components/src',
   files: ['packages/components/src/**/*.spec.ts'],
@@ -12,25 +10,13 @@ export default {
   playwright: true,
   browsers: [
     playwrightLauncher({
-      product: 'chromium',
-      launchOptions: {
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-      }
+      product: 'chromium'
     }),
     playwrightLauncher({
-      product: 'firefox',
-      launchOptions: {
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-      }
+      product: 'firefox'
     }),
     playwrightLauncher({
-      product: 'webkit',
-      launchOptions: {
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-      }
+      product: 'webkit'
     })
   ],
   plugins: [
