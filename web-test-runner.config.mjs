@@ -19,8 +19,8 @@ export default {
         executablePath: `/usr/bin/chromium-browser`
       }
     }),
-    playwrightLauncher({ product: 'firefox' }),
-    playwrightLauncher({ product: 'webkit' })
+    // playwrightLauncher({ product: 'firefox' }),
+    // playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
     esbuildPlugin({
