@@ -16,7 +16,7 @@ export default {
       launchOptions: {
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: `${jenkins_path}/node_modules/playwright-core/.local-browsers/chromium-1005/chrome-linux/chrome`
+        executablePath: `/usr/bin/chromium-browser`
       }
     }),
     playwrightLauncher({ product: 'firefox' }),

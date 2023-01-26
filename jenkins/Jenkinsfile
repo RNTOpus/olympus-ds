@@ -7,7 +7,7 @@ pipeline {
     BASE_SHA = 'HEAD~1'
     NPMJS_TOKEN = credentials('opus-nexus-npm-auth')
     NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
-    PLAYWRIGHT_BROWSERS_PATH=0
+    //PLAYWRIGHT_BROWSERS_PATH=0
     // AWS_DEFAULT_REGION = credentials('opus-olympus-ds-s3-bucket-default-region')
     // AWS_SECRET_ACCESS_KEY = credentials('opus-olympus-ds-s3-bucket-secret-access-key')
     // AWS_ACCESS_KEY_ID = credentials('opus-olympus-ds-s3-bucket-access-key')
@@ -28,7 +28,7 @@ pipeline {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
           sh 'yarn install --frozen-lockfile'
-          sh 'npx playwright install'
+          //sh 'npx playwright install'
         }
       }
     }
