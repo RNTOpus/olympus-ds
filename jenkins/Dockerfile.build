@@ -1,11 +1,5 @@
 FROM mcr.microsoft.com/playwright:v1.30.0-focal
 
-ENV RUNASUSER jenkins
-ENV USERHOME /home/${RUNASUSER}
-RUN groupadd -g 1001 -r ${RUNASUSER} && useradd --no-log-init -m -r -g ${RUNASUSER} -u 1001 ${RUNASUSER}
-USER ${RUNASUSER}
-WORKDIR ${USERHOME}
-
 # RUN apk add -U \
 #   python3\
 #   make\

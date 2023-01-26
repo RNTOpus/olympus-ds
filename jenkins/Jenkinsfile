@@ -58,6 +58,7 @@ pipeline {
           filename 'Dockerfile.build'
           dir 'jenkins'
           reuseNode true
+          args '-u root'
         }
       }
       steps {
