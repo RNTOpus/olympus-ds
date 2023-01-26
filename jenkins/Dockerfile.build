@@ -3,8 +3,8 @@ FROM node:18-alpine3.16
 RUN apk add -U \
     python3\
     make\
-    alpine-sdk\
-    gconf-service\
+    alpine-sdk
+RUN apk update && apk add gconf-service\
     libasound2\
     libatk1.0-0\
     libc6\
