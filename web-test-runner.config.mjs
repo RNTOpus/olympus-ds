@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 export default {
   rootDir: 'packages/components/src',
   files: ['packages/components/src/**/*.spec.ts'],
-  concurrentBrowsers: 3,
+  concurrentBrowsers: 1,
   nodeResolve: true,
   playwright: true,
   browserStartTimeout: 50000,
