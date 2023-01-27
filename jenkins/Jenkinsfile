@@ -26,6 +26,7 @@ pipeline {
         script {
           env.BASE_SHA = env.CHANGE_ID ? 'origin/${env.CHANGE_TARGET}' : 'HEAD~1'
           sh 'yarn install --frozen-lockfile'
+          sh 'npx playwright install firefox'
         }
       }
     }
@@ -56,7 +57,7 @@ pipeline {
       }
       steps {
         script {
-          sh 'npx nx run components:test --skip-nx-cache'
+          sh 'npx nx run components:test -- --skip-nx-cache'
         }
       }
     }
