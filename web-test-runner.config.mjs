@@ -12,10 +12,7 @@ export default {
     playwrightLauncher({ product: 'chromium' }),
     playwrightLauncher({
       product: 'firefox',
-      launchOptions: {
-        headless: false,
-        args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--disable-setuid-sandbox']
-      }
+      launchOptions: {}
     }),
     playwrightLauncher({ product: 'webkit' })
   ],
