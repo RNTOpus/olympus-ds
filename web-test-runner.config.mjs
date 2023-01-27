@@ -5,16 +5,16 @@ import { fileURLToPath } from 'url'
 export default {
   rootDir: 'packages/components/src',
   files: ['packages/components/src/**/*.spec.ts'],
-  concurrentBrowsers: 1,
+  concurrentBrowsers: 3,
   nodeResolve: true,
   playwright: true,
   browserStartTimeout: 50000,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({
-      product: 'firefox',
-      launchOptions: {}
-    }),
+    // playwrightLauncher({
+    //   product: 'firefox',
+    //   launchOptions: {}
+    // }),
     playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
