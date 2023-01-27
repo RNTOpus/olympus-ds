@@ -10,7 +10,7 @@ export default {
   playwright: true,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'firefox', launchOptions: { timeout: 3 * 60 * 1000 } }),
+    playwrightLauncher({ product: 'firefox', launchOptions: { headless: false } }),
     playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
