@@ -13,7 +13,7 @@ export default {
     playwrightLauncher({
       product: 'firefox',
       launchOptions: {
-        headless: true,
+        headless: false,
         args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--disable-setuid-sandbox']
       }
     }),
