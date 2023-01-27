@@ -1,6 +1,6 @@
 import { playwrightLauncher } from '@web/test-runner-playwright'
-import { esbuildPlugin } from '@web/dev-server-esbuild';
-import { fileURLToPath } from 'url';
+import { esbuildPlugin } from '@web/dev-server-esbuild'
+import { fileURLToPath } from 'url'
 
 export default {
   rootDir: 'packages/components/src',
@@ -10,14 +10,20 @@ export default {
   playwright: true,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'firefox', launchOptions: { executablePath: '/ms-playwright/firefox-1357/firefox/firefox' } }),
+    playwrightLauncher({
+      product: 'firefox',
+      launchOptions: {
+        headless: true,
+        args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--disable-setuid-sandbox']
+      }
+    }),
     playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
     esbuildPlugin({
       ts: true,
       target: 'auto',
-      tsconfig:  fileURLToPath(new URL('./packages/components/tsconfig.json', import.meta.url)),
+      tsconfig: fileURLToPath(new URL('./packages/components/tsconfig.json', import.meta.url))
     })
-  ],
-};
+  ]
+}
