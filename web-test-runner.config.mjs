@@ -10,7 +10,7 @@ export default {
   playwright: true,
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'firefox', launchOptions: { executablePath: '/ms-playwright/firefox-1357/firefox/' } }),
+    playwrightLauncher({ product: 'firefox', launchOptions: { executablePath: '/ms-playwright/firefox-1357' } }),
     playwrightLauncher({ product: 'webkit' })
   ],
   plugins: [
