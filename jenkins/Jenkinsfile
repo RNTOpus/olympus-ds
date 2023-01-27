@@ -46,7 +46,7 @@ pipeline {
       }
     }
     stage('Test') {
-      when { anyOf { branch 'master'; branch 'develop'; branch 'test-jenkins-gh'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
+      when { anyOf { branch 'master'; branch 'develop'; branch pattern: '^(hotfix/.*|release/.*)', comparator: 'REGEXP' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -61,7 +61,7 @@ pipeline {
       }
     }
     stage('Build package') {
-      when { anyOf { branch 'master' } }
+      when { anyOf { branch 'master'; branch 'test-jenkins-gh' } }
       agent {
         dockerfile {
           filename 'Dockerfile.build'
@@ -72,6 +72,8 @@ pipeline {
       steps {
         script {
           sh "npx nx affected --base=${BASE_SHA} --target=build --parallel=3"
+          sh "git config --global user.name 'Jenkins'"
+          sh "git config --global user.email 'jenkins@jenkins.com'"
         }
       }
     }
